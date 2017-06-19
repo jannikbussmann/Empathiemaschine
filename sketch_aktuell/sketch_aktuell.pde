@@ -10,6 +10,12 @@ int mitarbeiterFrueh = 0;
 int mitarbeiterMitte = 0;
 int mitarbeiterSpaet = 0;
 
+
+int xPos;
+int yPos;
+int xSize =10;
+int ySize =2;
+
 int clicker;
 
 String wunscherfuellung;
@@ -49,9 +55,8 @@ void loadData(){
     wunscherfuellung = row.getString("Wunscherfüllung");
     
     countEmployee(); 
-    
 
-    objects[k] = new Object(10+(k*15), testVal, testVal, testVal);
+    objects[k] = new Object(xPos,yPos+10+k*2, xSize, ySize);
 
   }
   
@@ -69,12 +74,15 @@ void draw() {
 void countEmployee(){
   if(mitarbeiterProfil==1){
     mitarbeiterFrueh++;
+    xPos=10;
   }
   else if(mitarbeiterProfil==2){
     mitarbeiterMitte++;
+    xPos=20;
   }
-  else   if(mitarbeiterProfil==3){
+  else if(mitarbeiterProfil==3){
     mitarbeiterSpaet++;
+    xPos=30;
   };
 };
 
