@@ -1,0 +1,137 @@
+{"bubbles": [
+  {
+    "diameter": 47.8549919128418,
+    "position": {
+      "x": 944,
+      "y": 75
+    },
+    "id": 6,
+    "label": "New label"
+  },
+  {
+    "diameter": 49.14219665527344,
+    "position": {
+      "x": 620,
+      "y": 107
+    },
+    "id": 7,
+    "label": "New label"
+  },
+  {
+    "diameter": 53.7124137878418,
+    "position": {
+      "x": 364,
+      "y": 115
+    },
+    "id": 8,
+    "label": "New label"
+  },
+  {
+    "diameter": 77.36141967773438,
+    "position": {
+      "x": 299,
+      "y": 304
+    },
+    "id": 9,
+    "label": "New label"
+  },
+  {
+    "diameter": 62.288726806640625,
+    "position": {
+      "x": 278,
+      "y": 430
+    },
+    "id": 10,
+    "label": "New label"
+  },
+  {
+    "diameter": 45.8632926940918,
+    "position": {
+      "x": 180,
+      "y": 420
+    },
+    "id": 11,
+    "label": "New label"
+  },
+  {
+    "diameter": 61.02954864501953,
+    "position": {
+      "x": 139,
+      "y": 266
+    },
+    "id": 12,
+    "label": "New label"
+  },
+  {
+    "diameter": 71.90260314941406,
+    "position": {
+      "x": 121,
+      "y": 171
+    },
+    "id": 13,
+    "label": "New label"
+  },
+  {
+    "diameter": 72.76788330078125,
+    "position": {
+      "x": 136,
+      "y": 86
+    },
+    "id": 14,
+    "label": "New label"
+  },
+  {
+    "diameter": 56.98206329345703,
+    "position": {
+      "x": 228,
+      "y": 133
+    },
+    "id": 15,
+    "label": "New label"
+  },
+  {
+    "diameter": 51.49798583984375,
+    "position": {
+      "x": 411,
+      "y": 218
+    },
+    "id": 16,
+    "label": "New label"
+  },
+  {
+    "diameter": 53.781002044677734,
+    "position": {
+      "x": 436,
+      "y": 441
+    },
+    "id": 17,
+    "label": "New label"
+  },
+  {
+    "diameter": 45.56427001953125,
+    "position": {
+      "x": 587,
+      "y": 534
+    },
+    "id": 18,
+    "label": "New label"
+  },
+  {
+    "diameter": 46.07161331176758,
+    "position": {
+      "x": 428,
+      "y": 584
+    },
+    "id": 19,
+    "label": "New label"
+  },
+  {
+    "diameter": 46.97874450683594,
+    "position": {
+      "x": 109,
+      "y": 648
+    },
+    "id": 20,
+    "label": "New label"
+  }
+]}
