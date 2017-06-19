@@ -10,15 +10,18 @@ int mitarbeiterFrueh = 0;
 int mitarbeiterMitte = 0;
 int mitarbeiterSpaet = 0;
 
-
 int mitarbeiterProfilBefore=0;
 
 color schichtFarbe = #5AA090;
 
 int xPos;
-int yPos;
-int xSize =10;
-int ySize =2;
+int yPos = 10;
+int xSize = 20;
+int ySize = 10;
+
+int yPosFrueh = 0;
+int yPosMitte = 0;
+int yPosSpaet = 0;
 
 int clicker;
 
@@ -73,8 +76,16 @@ void loadData(){
     
     countEmployee(); 
     //fill(schichtFarbe);
-    objects[k] = new Object(xPos,yPos, xSize, ySize);
 
+    if(mitarbeiterProfil==1){
+    objects[k] = new Object(xPos,yPosFrueh, xSize, ySize);
+    }
+    else if (mitarbeiterProfil==2){
+    objects[k] = new Object(xPos,yPosMitte, xSize, ySize);
+    }
+    else if (mitarbeiterProfil==3){
+    objects[k] = new Object(xPos,yPosSpaet, xSize, ySize);
+    }
   }
   
 
@@ -91,41 +102,43 @@ void draw() {
 void countEmployee(){
   
   if(mitarbeiterProfil==1){
-    mitarbeiterFrueh++;
-    xPos=10;
-   // yPos+=2;
-    if(mitarbeiterProfilBefore !=1){
-    //if(mitarbeiterProfilBefore==2||mitarbeiterProfilBefore==3){
-      yPos+=0;
-    } else if (mitarbeiterProfilBefore ==1){
-      yPos+=2;
+    //mitarbeiterFrueh++;
+    xPos=20;
+   //// yPos+=2;
+    ////if(mitarbeiterProfilBefore !=1){
+     //f(mitarbeiterProfilBefore==2||mitarbeiterProfilBefore==3){
+    //  yPosFrueh = 0;
+    //} else if (mitarbeiterProfilBefore ==1){
+      yPosFrueh+=10;
       schichtFarbe = #C03779;
-    }
+  //  }
     
   }
-  else if(mitarbeiterProfil==2){
-    mitarbeiterMitte++;
-    xPos=20;
-    //  yPos+=2;
-    //if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==3)
-    if(mitarbeiterProfilBefore !=2){
-      yPos-=0;
-    }else if (mitarbeiterProfilBefore ==2){
-      yPos+=2;
+  
+   if(mitarbeiterProfil==2){
+    //mitarbeiterMitte++;
+    xPos=40;
+    ////  yPos+=2;
+    //if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==3){
+    ////if(mitarbeiterProfilBefore !=2){
+    //  yPosMitte=0;
+    //}else if (mitarbeiterProfilBefore ==2){
+      yPosMitte+=10;
       schichtFarbe = #26DFEE;
-    }
+   // }
   }
-  else if(mitarbeiterProfil==3){
-    mitarbeiterSpaet++;
-    xPos=30;
-   // yPos+=2;
-  //  if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==2){
-  if(mitarbeiterProfilBefore !=3){
-      yPos-=0;
-    } else if (mitarbeiterProfilBefore ==3){
-      yPos+=2;
+  
+   if(mitarbeiterProfil==3){
+    //mitarbeiterSpaet++;
+    xPos=60;
+   //// yPos+=2;
+    //if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==2){
+  ////if(mitarbeiterProfilBefore !=3){
+    //  yPosSpaet=0;
+    //} else if (mitarbeiterProfilBefore ==3){
+      yPosSpaet+=10;
       schichtFarbe =#7ABB6B;
-    }
+   // }
   };
   
   
