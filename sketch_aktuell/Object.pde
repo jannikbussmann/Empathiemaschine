@@ -11,7 +11,7 @@ class Object{
   
   void display(){
     stroke(0);
-    fill(200);
+    fill(schichtFarbe);
     rect(x,y,sizeX,sizeY);
   };
   
