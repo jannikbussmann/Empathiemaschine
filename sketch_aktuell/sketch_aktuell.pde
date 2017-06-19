@@ -6,9 +6,9 @@ int dienstart;
 int punkteverteilung;
 int testVal;
 
-int mitarbeiterFrueh;
-int mitarbeiterMitte;
-int mitarbeiterSpaet;
+int mitarbeiterFrueh = 0;
+int mitarbeiterMitte = 0;
+int mitarbeiterSpaet = 0;
 
 int clicker;
 
@@ -23,13 +23,16 @@ void setup() {
   background(255);
 
   loadData();
+  
+  println("früh: "+mitarbeiterFrueh+" mitte: "+mitarbeiterMitte+" spät: "+mitarbeiterSpaet);
 
 };
 
 void loadData(){
     // Tabelle reinladen 
   Table table = loadTable("data.csv", "header"); 
-  objects = new Object[table.getRowCount()];
+  //objects = new Object[table.getRowCount()];
+    objects = new Object[table.getRowCount()];
   //Alle Reihen in Tabelle durchgehen und in row Schreiben
   for (int k = 0; k<table.getRowCount(); k++) {
     
@@ -45,21 +48,34 @@ void loadData(){
     punkteverteilung = row.getInt("Punkteverteilung Dienstwunsch");
     wunscherfuellung = row.getString("Wunscherfüllung");
     
-    objects[k] = new Object(testVal+(k*15), testVal, testVal, testVal);
+    countEmployee(); 
+    
+
+    objects[k] = new Object(10+(k*15), testVal, testVal, testVal);
+
   }
+  
+
 };
 
 void draw() {
-/*  for (int i = 0; i<objects.length; i++) {
-    
-    objects[clicker].display();
-    
-  }*/
+  
+  for (int i = 0; i<objects.length; i++) {   
+    objects[i].display();   
+  }
   //println(clicker);
 };
 
 void countEmployee(){
-  
+  if(mitarbeiterProfil==1){
+    mitarbeiterFrueh++;
+  }
+  else if(mitarbeiterProfil==2){
+    mitarbeiterMitte++;
+  }
+  else   if(mitarbeiterProfil==3){
+    mitarbeiterSpaet++;
+  };
 };
 
 
@@ -68,6 +84,5 @@ void mouseClicked(){
   
   if(clicker>29){
     clicker=0;
-    
   };
 }
