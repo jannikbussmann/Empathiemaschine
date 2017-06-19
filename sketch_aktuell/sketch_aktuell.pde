@@ -11,8 +11,9 @@ int mitarbeiterMitte = 0;
 int mitarbeiterSpaet = 0;
 
 int mitarbeiterProfilBefore=0;
+int datumBefore=0;
 
-color schichtFarbe = #5AA090;
+color schichtFarbe;
 
 int xPos;
 int yPos = 10;
@@ -56,6 +57,7 @@ void loadData(){
     if(k>0){
      TableRow rowTwo = table.getRow(k-1);
      mitarbeiterProfilBefore   = rowTwo.getInt("Mitarbeiterprofil"); 
+     datumBefore = row.getInt("Datum (Tagnummer)");
     }
   
     testVal = row.getInt("test"); 
@@ -77,14 +79,17 @@ void loadData(){
     countEmployee(); 
     //fill(schichtFarbe);
 
-    if(mitarbeiterProfil==1){
-    objects[k] = new Object(xPos,yPosFrueh, xSize, ySize);
+   if(mitarbeiterProfil==1){
+    schichtFarbe = #C03779;
+    objects[k] = new Object(xPos,yPosFrueh, xSize, ySize, schichtFarbe);
     }
-    else if (mitarbeiterProfil==2){
-    objects[k] = new Object(xPos,yPosMitte, xSize, ySize);
+   else if (mitarbeiterProfil==2){
+    schichtFarbe = #26DFEE;
+    objects[k] = new Object(xPos,yPosMitte, xSize, ySize, schichtFarbe);
     }
     else if (mitarbeiterProfil==3){
-    objects[k] = new Object(xPos,yPosSpaet, xSize, ySize);
+    schichtFarbe =#7ABB6B;
+    objects[k] = new Object(xPos,yPosSpaet, xSize, ySize, schichtFarbe);
     }
   }
   
@@ -102,7 +107,7 @@ void draw() {
 void countEmployee(){
   
   if(mitarbeiterProfil==1){
-    //mitarbeiterFrueh++;
+    mitarbeiterFrueh++;
     xPos=20;
    //// yPos+=2;
     ////if(mitarbeiterProfilBefore !=1){
@@ -110,13 +115,13 @@ void countEmployee(){
     //  yPosFrueh = 0;
     //} else if (mitarbeiterProfilBefore ==1){
       yPosFrueh+=10;
-      schichtFarbe = #C03779;
+      
   //  }
     
   }
   
    if(mitarbeiterProfil==2){
-    //mitarbeiterMitte++;
+    mitarbeiterMitte++;
     xPos=40;
     ////  yPos+=2;
     //if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==3){
@@ -124,12 +129,12 @@ void countEmployee(){
     //  yPosMitte=0;
     //}else if (mitarbeiterProfilBefore ==2){
       yPosMitte+=10;
-      schichtFarbe = #26DFEE;
+      
    // }
   }
   
    if(mitarbeiterProfil==3){
-    //mitarbeiterSpaet++;
+    mitarbeiterSpaet++;
     xPos=60;
    //// yPos+=2;
     //if(mitarbeiterProfilBefore==1||mitarbeiterProfilBefore==2){
@@ -137,7 +142,7 @@ void countEmployee(){
     //  yPosSpaet=0;
     //} else if (mitarbeiterProfilBefore ==3){
       yPosSpaet+=10;
-      schichtFarbe =#7ABB6B;
+      
    // }
   };
   
