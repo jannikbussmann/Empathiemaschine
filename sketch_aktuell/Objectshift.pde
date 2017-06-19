@@ -1,8 +1,8 @@
-class Object{
+class Objectshift{
   int x,y,sizeX,sizeY;
   color fillColor;
   
-  Object(int x, int y, int sizeX, int sizeY, color fillColor)
+  Objectshift(int x, int y, int sizeX, int sizeY, color fillColor)
   {
     this.x = x;
     this.y = y;
