@@ -48,6 +48,7 @@ int yPosSpaetShift = 0;
 int clicker;
 
 int profil;
+int schichtprofil;
 
 
 String wunscherfuellung;
@@ -66,6 +67,8 @@ Objectshift[] objectshifts;
 ArrayList<Integer> daten = new ArrayList<Integer>();
 
 ArrayList<Integer> mitarbeiterprofil = new ArrayList<Integer>();
+
+ArrayList<Integer> schichtart = new ArrayList<Integer>();
 
 
 boolean checkDay = true;
@@ -105,7 +108,7 @@ void loadData() {
     //alle Daten in Arraylist daten schreiben
     daten.add(row.getInt("Datum (Tagnummer)"));
     mitarbeiterprofil.add(row.getInt("Mitarbeiterprofil"));   
-
+     schichtart.add(row.getInt("Dienstart")); 
     // Abfrage nach wunscherfüllung, wenn nicht gegeben wird mitarbeiter und Schicht rot markiert
     if (wunscherfuellung_b) {
       schichtFarbe = #F7E6D9;
@@ -152,15 +155,45 @@ void draw() {
   nextDay();
  
   if (runOnce) {
+   
+    for (int i = 0; i<schichtart.size(); i++) { 
+      schichtprofil = schichtart.get(i);
+  // Objekte werden je nach Schichtprofil mit unterschiedlichen Positionen erstellt
+      if (schichtprofil==1) {
+        // println("d1");
+        // schichtFarbe = #EAAECE;
+        dienstFrueh++;
+        yPosFruehShift+=10;
+        xPosShift=20;
+
+        objectshifts[i] = new Objectshift(xPosShift, yPosFruehShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
+      } else if (schichtprofil==2) {
+        // println("d2");
+        // schichtFarbe = #9F3AC7;
+       dienstMitte++;
+      yPosMitteShift+=10;
+      xPosShift=40;
+        objectshifts[i] = new Objectshift(xPosShift, yPosMitteShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
+      } else if (schichtprofil==3) {
+        //  println("d3");
+        // schichtFarbe =#7FDCF9;
+         dienstSpaet++;
+        yPosSpaetShift+=10;
+        xPosShift=60;
+        objectshifts[i] = new Objectshift(xPosShift, yPosSpaetShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
+      } 
+     objectshifts[i].display();
+    }
+    
     for (int j=0; j < mitarbeiterprofil.size(); j++) {
 
       profil=mitarbeiterprofil.get(j);
-
+      
       if (profil==1) {
         schichtFarbe = #C03779;
         mitarbeiterFrueh++;
         xPos=20;
-        yPosFrueh+=10;
+        yPosFrueh-=10;
         //yPos -= (mitarbeiterMitte+mitarbeiterSpaet)*10;
         //yPos += 10;
         //println("1");
@@ -170,7 +203,7 @@ void draw() {
         //println("oassiert");
         mitarbeiterMitte++;
         xPos=40;
-        yPosMitte+=10;
+        yPosMitte-=10;
         //yPos -= (mitarbeiterFrueh+mitarbeiterSpaet)*10;
         //yPos += 10;
         //println(mitarbeiterMitte);
@@ -180,7 +213,7 @@ void draw() {
         mitarbeiterSpaet++;
         //yPos -= (mitarbeiterMitte+mitarbeiterFrueh)*10;
         xPos=60;
-        yPosSpaet+=10;
+        yPosSpaet-=10;
         //yPos += 10;
         objects[j] = new Object(xPos, yPosSpaet+yPos, xSize, ySize, schichtFarbe);
       }
@@ -188,6 +221,8 @@ void draw() {
       //println(" spät: "+mitarbeiterSpaet+" mitte: "+mitarbeiterMitte+" frueh: "+mitarbeiterFrueh);
       objects[j].display();
     };
+
+
 
 
     //yPos += 10;
