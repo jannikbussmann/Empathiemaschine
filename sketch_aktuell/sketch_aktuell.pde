@@ -36,6 +36,9 @@ int yPosFrueh = 0;
 int yPosMitte = 0;
 int yPosSpaet = 0;
 
+int xPosAdd=0;
+
+
 // Verschiedene Positionsvariablen für verschiedene Schichten
 int xPosShift;
 int yPosShift = 200;
@@ -114,70 +117,42 @@ void loadData() {
       schichtFarbe = #F7E6D9;
     } else {
       schichtFarbe = #C6184B;
-    };
-
-
-
-    // Objekte werden je nach Mitarbeiterprofil mit unterschiedlichen Positionen erstellt
-    // 1 = Frühprofil, 2 = Mittleres Profil, 3 = Spätprofil
-    //if (mitarbeiterProfil==1) {
-    //   //schichtFarbe = #C03779;
-    //   objects[k] = new Object(xPos, yPosFrueh+yPos, xSize, ySize, schichtFarbe);
-    // } else if (mitarbeiterProfil==2) {
-    //   //schichtFarbe = #26DFEE;
-    //   objects[k] = new Object(xPos, yPosMitte+yPos, xSize, ySize, schichtFarbe);
-    // } else if (mitarbeiterProfil==3) {
-    //   //schichtFarbe =#7ABB6B;
-    //   objects[k] = new Object(xPos, yPosSpaet+yPos, xSize, ySize, schichtFarbe);
-    // }
-
-    // Objekte werden je nach Schichtprofil mit unterschiedlichen Positionen erstellt
-    //if (dienstart==1) {
-    //  // println("d1");
-    //  // schichtFarbe = #EAAECE;
-    //  objectshifts[k] = new Objectshift(xPosShift, yPosFruehShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-    //} else if (dienstart==2) {
-    //  // println("d2");
-    //  // schichtFarbe = #9F3AC7;
-    //  objectshifts[k] = new Objectshift(xPosShift, yPosMitteShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-    //} else if (dienstart==3) {
-    //  //  println("d3");
-    //  // schichtFarbe =#7FDCF9;
-    //  objectshifts[k] = new Objectshift(xPosShift, yPosSpaetShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-    //}
+    };  
+    
+   countEmployee(); 
+   countShift();
   }
 };
 
 void draw() {
-  // countEmployee(); 
-  // countShift();
+
   // displayfunktion der Objekte (Rectangle) wird ausgeführt
   nextDay();
  
   if (runOnce) {
-   
+ 
     for (int i = 0; i<schichtart.size(); i++) { 
       schichtprofil = schichtart.get(i);
   // Objekte werden je nach Schichtprofil mit unterschiedlichen Positionen erstellt
       if (schichtprofil==1) {
-        // println("d1");
-        // schichtFarbe = #EAAECE;
+
+        //schichtFarbe = #EAAECE;
         dienstFrueh++;
         yPosFruehShift+=10;
         xPosShift=20;
 
         objectshifts[i] = new Objectshift(xPosShift, yPosFruehShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
       } else if (schichtprofil==2) {
-        // println("d2");
-        // schichtFarbe = #9F3AC7;
+
+       //schichtFarbe = #9F3AC7;
        dienstMitte++;
       yPosMitteShift+=10;
       xPosShift=40;
         objectshifts[i] = new Objectshift(xPosShift, yPosMitteShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
       } else if (schichtprofil==3) {
-        //  println("d3");
-        // schichtFarbe =#7FDCF9;
-         dienstSpaet++;
+
+       // schichtFarbe =#7FDCF9;
+        dienstSpaet++;
         yPosSpaetShift+=10;
         xPosShift=60;
         objectshifts[i] = new Objectshift(xPosShift, yPosSpaetShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
@@ -190,95 +165,25 @@ void draw() {
       profil=mitarbeiterprofil.get(j);
       
       if (profil==1) {
-        schichtFarbe = #C03779;
         mitarbeiterFrueh++;
         xPos=20;
         yPosFrueh-=10;
-        //yPos -= (mitarbeiterMitte+mitarbeiterSpaet)*10;
-        //yPos += 10;
-        //println("1");
-        objects[j] = new Object(xPos, yPosFrueh+yPos, xSize, ySize, schichtFarbe);
+        objects[j] = new Object(xPos+xPosAdd, yPosFrueh+yPos, xSize, ySize, schichtFarbe);
       } else if (profil==2) {
-        schichtFarbe = #26DFEE;
-        //println("oassiert");
         mitarbeiterMitte++;
         xPos=40;
         yPosMitte-=10;
-        //yPos -= (mitarbeiterFrueh+mitarbeiterSpaet)*10;
-        //yPos += 10;
-        //println(mitarbeiterMitte);
-        objects[j] = new Object(xPos, yPosMitte+yPos, xSize, ySize, schichtFarbe);
+        objects[j] = new Object(xPos+xPosAdd, yPosMitte+yPos, xSize, ySize, schichtFarbe);
       } else if (profil==3) {
-        schichtFarbe =#7ABB6B;
         mitarbeiterSpaet++;
-        //yPos -= (mitarbeiterMitte+mitarbeiterFrueh)*10;
         xPos=60;
         yPosSpaet-=10;
-        //yPos += 10;
-        objects[j] = new Object(xPos, yPosSpaet+yPos, xSize, ySize, schichtFarbe);
+        objects[j] = new Object(xPos+xPosAdd, yPosSpaet+yPos, xSize, ySize, schichtFarbe);
       }
       runOnce=false;
-      //println(" spät: "+mitarbeiterSpaet+" mitte: "+mitarbeiterMitte+" frueh: "+mitarbeiterFrueh);
       objects[j].display();
     };
-
-
-
-
-    //yPos += 10;
-
-
-
-    // Objekte werden je nach Mitarbeiterprofil mit unterschiedlichen Positionen erstellt
-    // 1 = Frühprofil, 2 = Mittleres Profil, 3 = Spätprofil
-    //objects[i] = new Object(xPos, yPosFrueh+yPos, xSize, ySize, schichtFarbe);
-
-    //objects[i] = new Object(xPos, yPos, xSize, ySize, schichtFarbe);
-
-    //noLoop();
   } 
-
-
-
-  //for (int i = 0; i<(objectshifts.length); i++) {  
-  //// Objekte werden je nach Schichtprofil mit unterschiedlichen Positionen erstellt
-  //    if (dienstart==1) {
-  //      // println("d1");
-  //      // schichtFarbe = #EAAECE;
-  //      dienstFrueh++;
-  //      yPosFruehShift+=10;
-  //      xPosShift=20;
-
-  //      objectshifts[i] = new Objectshift(xPosShift, yPosFruehShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-  //    } else if (dienstart==2) {
-  //      // println("d2");
-  //      // schichtFarbe = #9F3AC7;
-  //     dienstMitte++;
-  //    yPosMitteShift+=10;
-  //    xPosShift=40;
-  //      objectshifts[i] = new Objectshift(xPosShift, yPosMitteShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-  //    } else if (dienstart==3) {
-  //      //  println("d3");
-  //      // schichtFarbe =#7FDCF9;
-  //       dienstSpaet++;
-  //      yPosSpaetShift+=10;
-  //      xPosShift=60;
-  //      objectshifts[i] = new Objectshift(xPosShift, yPosSpaetShift+yPos, xSizeShift, ySizeShift, schichtFarbe);
-  //    } 
-
-  //  }
-
-  // for (int i = 0; i<(objectshifts.length); i++) { 
-  //   objectshifts[i].display();
-  // }
-
-
-
-
-  //println(clicker);
-
-
-  //println(datum);
 };
 
 // erfassen, ob der nächste Tag eingetreten ist, wenn ja Position der Objekte um 60 Pixel verschieben
@@ -288,8 +193,10 @@ void nextDay() {
     if (firstVal<daten.get(i)&&checkDay) {
       firstVal = daten.get(i);
       println("firstVal: "+firstVal);
+      
+      xPosAdd+=60;
+      runOnce=true;
       checkDay=false;
-      //xPos+=60;
     }
   }
 }
@@ -300,16 +207,10 @@ void countEmployee() {
   // Zählen der vorkommenden Mitarbeiterprofile
   if (mitarbeiterProfil==1) {
     mitarbeiterFrueh++;
-    xPos=20;
-    yPosFrueh-=10;
   } else if (mitarbeiterProfil==2) {
     mitarbeiterMitte++;
-    xPos=40;
-    yPosMitte-=10;
   } else if (mitarbeiterProfil==3) {
     mitarbeiterSpaet++;
-    xPos=60;
-    yPosSpaet-=10;
   };
 };
 
@@ -318,20 +219,12 @@ void countShift() {
   // Zählen der vorkommenden Schichtprofile
   if (dienstart==1) {
     dienstFrueh++;
-    yPosFruehShift+=10;
-    xPosShift=20;
   } else if (dienstart==2) {
     dienstMitte++;
-    yPosMitteShift+=10;
-    xPosShift=40;
   } else if (dienstart==3) {
     dienstSpaet++;
-    yPosSpaetShift+=10;
-    xPosShift=60;
   }
 }
-
-
 
 // Clicken soll später Anzeige von Objekten beeinflussen
 void mouseClicked() {
