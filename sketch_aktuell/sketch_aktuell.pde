@@ -58,6 +58,8 @@ Object[] objects;
 //Objekte für Schichten deklarieren
 Objectshift[] objectshifts;
 
+ArrayList<Integer> daten = new ArrayList<Integer>();
+
 void setup() {
 
   size(720, 720);
@@ -89,7 +91,10 @@ void loadData() {
     punkteverteilung = row.getInt("Punkteverteilung Dienstwunsch");
     wunscherfuellung = row.getString("Wunscherfüllung");
     boolean wunscherfuellung_b = boolean(wunscherfuellung);
-
+    
+    //alle Daten in Arraylist daten schreiben
+    daten.add(row.getInt("Datum (Tagnummer)"));
+    
     // Abfrage nach wunscherfüllung, wenn nicht gegeben wird mitarbeiter und Schicht rot markiert
     if (wunscherfuellung_b) {
       schichtFarbe = #F7E6D9;
