@@ -12,7 +12,7 @@ class Object{
   };
   
   void display(){
-    stroke(0);
+    stroke(0);  
     fill(fillColor);
     rect(x,y,sizeX,sizeY);
   };
