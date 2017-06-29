@@ -1,23 +1,5 @@
 {"bubbles": [
   {
-    "diameter": 47.8549919128418,
-    "position": {
-      "x": 944,
-      "y": 75
-    },
-    "id": 6,
-    "label": "New label"
-  },
-  {
-    "diameter": 49.14219665527344,
-    "position": {
-      "x": 620,
-      "y": 107
-    },
-    "id": 7,
-    "label": "New label"
-  },
-  {
     "diameter": 53.7124137878418,
     "position": {
       "x": 364,
@@ -132,6 +114,24 @@
       "y": 648
     },
     "id": 20,
+    "label": "New label"
+  },
+  {
+    "diameter": 52.04334259033203,
+    "position": {
+      "x": 309,
+      "y": 301
+    },
+    "id": 0,
+    "label": "New label"
+  },
+  {
+    "diameter": 47.65586853027344,
+    "position": {
+      "x": 449,
+      "y": 290
+    },
+    "id": 1,
     "label": "New label"
   }
 ]}
