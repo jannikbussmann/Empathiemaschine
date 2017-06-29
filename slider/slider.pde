@@ -8,7 +8,6 @@ int lastCol;
 int status;
 int oneBang;
 PGraphics pg;
-//PShape pg;
 
 void setup() {
   size(512, 1024, P2D);
@@ -18,13 +17,13 @@ void setup() {
 void draw() {
 
   pg.beginDraw();
-  pg.background(100);
+  pg.background(lastCol, 200, 155);
   pg.noStroke();
   pg.endDraw();
 
   slideTimer = (millis()%1000.0f)/1000.0f;
 
-  if (slideTimer<0.1) {
+  if (slideTimer < 0.1) {
     if (oneBang==0) {
       oneBang = 1;
       lastCol = col;
@@ -34,7 +33,7 @@ void draw() {
         status=0;
       }
     }
-  } else if (slideTimer>0.5) {
+  } else if (slideTimer > 0.5) {
     oneBang = 0;
   }
 
@@ -42,28 +41,26 @@ void draw() {
   rect(0, 0, width, height);
   fill(col, 200, 255);
 
-
   switch(status) {
   case 0:
-    image(pg, 0, 0, width, slideTimer*height);
+    image(pg, 0, slideTimer*height, width, height);
     break;
 
   case 1:
-    image(pg, 0, 0, width, slideTimer*height);
+    image(pg, 0, slideTimer*height, width, height);
     break;
 
   case 2:
-    image(pg, 0, 0, width, slideTimer*height);
+    image(pg, 0, slideTimer*height, width, height);
     break;
 
   case 3:
-    image(pg, 0, 0, width, slideTimer*height);
+    image(pg, 0, slideTimer*height, width, height);
     break;
   }
 
-
   fill(255);
-  textSize(300);
+  textSize(100);
   textAlign(CENTER, CENTER);
-  text(status, 300, 300);
+  text(status, width/2, height/2-200);
 }
