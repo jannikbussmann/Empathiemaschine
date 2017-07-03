@@ -9,5 +9,56 @@
 		<script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="data.js"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script>
+
+
+<script>
+
+var Particle = require('particle-api-js');
+var particle = new Particle();
+
+var token='0704e0d723377ecab782c74a6cc9f3ce5d688f40';
+var d_uid='2c001f000247343337373739';
+var timer1;
+
+timer1 = setInterval(talk_with_photon,10000);
+
+function talk_with_photon() {
+    g_var(d_uid, token);
+    c_func(d_uid, token);
+}
+
+function g_var(d_id,l_token){
+    particle.getVariable({ deviceId: d_id, name: 'int_val', auth: l_token }).then(
+        function (data) {
+            console.log('Device variable retrieved successfully:', data.body.result);
+        }, function (err) {
+            console.log('An error occurred while getting attrs:', err);
+        });
+}
+
+function c_func(d_id, l_token) {
+
+    var fnPr = particle.callFunction({ deviceId: d_id, name: 'int_fun', argument: 'wifi_rssi', auth: l_token });
+
+    fnPr.then(
+        function (data) {
+            console.log('Function called succesfully WiFi_RSSI: ', data.body.return_value);
+        }, function (err) {
+            console.log('An error occurred:', err);
+        });
+
+    var fnPr2 = particle.callFunction({ deviceId: d_id, name: 'int_fun', argument: 'blink', auth: l_token });
+
+    fnPr2.then(
+        function (data) {
+            console.log('Function called succesfully LED: ', data.body.return_value);
+        }, function (err) {
+            console.log('An error occurred:', err);
+        });
+}
+
+</script>
+
+
 </body>
 </html>
