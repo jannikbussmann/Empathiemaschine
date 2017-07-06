@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remote Photon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Info: fundamentals https://github.com/technobly/Remote-Spark -->
+  </head>
+  <body>
+
+    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        var statusTimer = null;
+        var timer1, timer2, timer3, timer4;
+        var baseURL = "https://api.spark.io/v1/devices/";
+
+        //--------------------------------------------------------------
+        // START - EDITABLE USER DATA
+        //
+        var accessToken = "0704e0d723377ecab782c74a6cc9f3ce5d688f40";
+        var coreID = "2c001f000247343337373739";
+        // App Heading
+        var appHeading = "Remote Photon";
+        // Variable 1
+        var varKey1 = "SENSOR-WERT";
+        var var1onLabel = "Running!";
+        var var1offLabel = "Stopped.";
+        var var1onState = 1; // Set to null to allow raw value to be displayed.
+        var var1offState = 0; // Set to null to allow raw value to be displayed.
+        var refresh1 = 1000; // variable 1 refresh rate in milliseconds (set to 0 to disable)
+        // Variable 2
+        var varKey2 = "RFID-SCAN";
+        var args4 = "";
+        var var2onLabel = "Open!";
+        var var2offLabel = "Closed.";
+        var var2onState = 1; // Set to null to allow raw value to be displayed.
+        var var2offState = 0; // Set to null to allow raw value to be displayed.
+        var refresh2 = 5000; // variable 2 refresh rate in milliseconds (set to 0 to disable)
+        //
+        //--------------------------------------------------------------
+
+        // Update app heading
+        $("#app-heading").html(appHeading);
+
+        // Override button styles
+        $(".btn-lg").css({"width":"60%"});
+
+        // Override text input styles
+        $(".form-control").css({"display":"inline","width":"35%"});
+
+        // Hide variable text fields if not in use.
+        if(refresh1 === 0) $("#var-val-1").hide();
+        if(refresh2 === 0) $("#var-val-2").hide();
+
+        // Auto-refresh
+        // Turn on/off the variable refresh if refresh rates are defined
+        if(refresh1) {
+          $("#get-var-1").attr("disabled", "disabled");
+          timer1 = setInterval(function () {
+            getVariable1();
+          }, refresh1);
+        }
+        if(refresh2) {
+          $("#get-var-2").attr("disabled", "disabled");
+          timer2 = setInterval(function () {
+            getVariable2();
+          }, refresh2);
+        }
+
+        ////
+        // Alerts
+        ////
+        $("#info-alert").alert();
+        $("#info-alert").affix();
+
+        ////
+        // Methods
+        ////
+        function onMethodSuccess() {
+          alert = $("#info-alert");
+          alert.text("Success!").removeClass("alert-danger").addClass("alert-success");
+          if(statusTimer != null) {
+            clearTimeout(statusTimer);
+            alert.hide();
+            setTimeout(function() {
+              alert.show();
+              statusTimer = setTimeout(function() {
+                statusTimer = null;
+                alert.hide();
+              }, 1750);
+            }, 250);
+          }
+          else {
+            alert.show();
+            statusTimer = setTimeout(function() {
+              statusTimer = null;
+              alert.hide();
+            }, 2000);
+          }
+        }
+
+        function onMethodFailure(data) {
+          alert = $("#info-alert");
+          alert.text((data)?"Error! "+data:"Error!").removeClass("alert-success").addClass("alert-danger");
+          if(statusTimer != null) {
+            clearTimeout(statusTimer);
+            alert.hide();
+            setTimeout(function() {
+              alert.show();
+              statusTimer = setTimeout(function() {
+                statusTimer = null;
+                alert.hide();
+              }, 1750);
+            }, 250);
+          }
+          else {
+            alert.show();
+            statusTimer = setTimeout(function() {
+              statusTimer = null;
+              alert.hide();
+            }, 2000);
+          }
+        }
+
+        // The base level run method command
+        function doMethod(method, data) {
+          var url = baseURL + coreID + "/" + method;
+          $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+              access_token: accessToken,
+              args: data
+            },
+            dataType: "json"
+          }).success(function(obj) {
+            console.log(obj);
+            (obj.return_value && obj.return_value == 200) ? onMethodSuccess() : onMethodFailure((obj.error)?obj.error:"");
+          }).fail(function(obj) {
+            onMethodFailure();
+          });
+        }
+        ////
+        // Variables
+        ////
+        function getVariable(variable, callback) {
+          var url = baseURL + coreID + "/" + variable + "?access_token=" + accessToken;
+          $.ajax({
+            url: url,
+            dataType: "json"
+          }).success(function(obj) {
+            console.log(obj);
+            (obj.coreInfo.deviceID && obj.coreInfo.deviceID == coreID) ? onMethodSuccess() : onMethodFailure((obj.error)?obj.error:"");
+            callback(obj.result);
+          }).fail(function(obj) {
+            onMethodFailure();
+          });
+        }
+
+        // Get variable methods
+        function getVariable1() {
+          getVariable(varKey1, function (res) {
+            if(res === var1onState)
+              $("#var-val-1").val(var1onLabel);
+            else if(res === var1offState)
+              $("#var-val-1").val(var1offLabel);
+            else
+              $("#var-val-1").val(res);
+          });
+        }
+        function getVariable2() {
+          getVariable(varKey2, function (res) {
+            if(res === var2onState)
+              $("#var-val-2").val(var2onLabel);
+            else if(res === var2offState)
+              $("#var-val-2").val(var2offLabel);
+            else
+              $("#var-val-2").val(res);
+          });
+        }
+
+      });
+    </script>
+
+    <div class="container">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title" id="app-heading">
+            Control
+          </h4>
+        </div>
+        <div id="buttons" class="panel">
+          <div class="panel-body">
+            <input type="text" class="form-control" value="---" readonly id="var-val-1"><br/><br/>
+            <input type="text" class="form-control" value="---" readonly id="var-val-2"><br/><br/>
+          </div>
+        </div>
+      </div>
+      <div class="alert fade in" id="info-alert" hidden data-spy="affix"></div>
+    </div>
+
+  </body>
+</html>
