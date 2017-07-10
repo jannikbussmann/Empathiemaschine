@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to Ionic!</h2>
+  <ion-list>
+    <div *ngIf="data != undefined">
+      <div *ngFor="let gif of data.children, let i = index">
+        <ion-item *ngIf="gif.data.url.substring(gif.data.url.lastIndexOf('.'),gif.data.url.length)==='.gif'">
+        <img [src]="gif.data.url" />
+      </ion-item>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>
