@@ -5,7 +5,7 @@ var height = 500;
 //Tage untereinander, muss translate angepasst werden (Bsp. Tag1 und Tag2)
 var paddingTag = 130;
 
-
+var kreisZuKreis = 12;
 //Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh)
 var zweiteHälfte = 12;
 
@@ -48,14 +48,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -63,14 +63,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -78,14 +78,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -93,14 +93,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -113,14 +113,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 		}
 
@@ -128,14 +128,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -143,14 +143,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -158,14 +158,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -176,14 +176,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -191,14 +191,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -206,14 +206,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -221,14 +221,14 @@ d3.csv("week1.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -263,14 +263,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -278,14 +278,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -293,14 +293,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -308,14 +308,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -327,14 +327,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 		}
 
@@ -342,14 +342,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -357,14 +357,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -372,14 +372,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -390,14 +390,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -405,14 +405,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -420,14 +420,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -435,14 +435,14 @@ d3.csv("week2.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -476,14 +476,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -491,14 +491,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -506,14 +506,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -521,14 +521,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
 			.attr("r",radius)
 
 		}
@@ -540,14 +540,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 		}
 
@@ -555,14 +555,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -570,14 +570,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -585,14 +585,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -603,14 +603,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -618,14 +618,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -633,14 +633,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
@@ -648,14 +648,14 @@ d3.csv("week3.csv", function(error, data){
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
-			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
 			.attr("r",radius)
 
 		}
