@@ -1,5 +1,5 @@
 
-var width = 1900;
+var width = 1800;
 var height = 500;
 
 //Tage untereinander, muss translate angepasst werden (Bsp. Tag1 und Tag2)
@@ -29,7 +29,7 @@ var chart = d3.select(".chart").append("svg")
 .attr("height",height);
 
 
-d3.csv("week1.csv", function(error, data){
+d3.csv("weekOne.csv", function(error, data){
 
 	var passend = chart.selectAll("passend")
 	.data(data)
@@ -50,60 +50,124 @@ d3.csv("week1.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -115,60 +179,124 @@ d3.csv("week1.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 		}
 
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -178,60 +306,124 @@ d3.csv("week1.csv", function(error, data){
 	mitarbeitermangel.each(function(d,i) {
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -244,7 +436,7 @@ var two = d3.select(".two").append("svg")
 .attr("width", width)
 .attr("height",height);
 
-d3.csv("week2.csv", function(error, data){
+d3.csv("weekTwo.csv", function(error, data){
 
 	var passend = two.selectAll("passend")
 	.data(data)
@@ -265,60 +457,124 @@ d3.csv("week2.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -329,60 +585,124 @@ d3.csv("week2.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 		}
 
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -392,60 +712,124 @@ d3.csv("week2.csv", function(error, data){
 	mitarbeitermangel.each(function(d,i) {
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -457,7 +841,7 @@ var three = d3.select(".three").append("svg")
 .attr("width", width)
 .attr("height",height);
 
-d3.csv("week3.csv", function(error, data){
+d3.csv("weekthree.csv", function(error, data){
 
 	var passend = three.selectAll("passend")
 	.data(data)
@@ -478,60 +862,124 @@ d3.csv("week3.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -542,60 +990,124 @@ d3.csv("week3.csv", function(error, data){
 
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 		}
 
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
@@ -605,60 +1117,124 @@ d3.csv("week3.csv", function(error, data){
 	mitarbeitermangel.each(function(d,i) {
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Frühschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 40})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Mittelschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 80})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Spätschicht_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200+ 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
+<<<<<<< Updated upstream
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingGeteilt})
+<<<<<<< Updated upstream
 			.attr("cy", function(d,i){return (x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)})
+=======
+=======
+			.attr("cx", function(d,i){return d.Tagnummer * 200 + 20 + 120})
+>>>>>>> Stashed changes
+			.attr("cy", function(d,i){return (x + 1)*15+(d.Geteilt_gedeckt/2*15)})
+>>>>>>> Stashed changes
 			.attr("r",radius)
 
 		}
