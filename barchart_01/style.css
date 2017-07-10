@@ -134,8 +134,7 @@ font-size: 22px;
 }
 
 .csurplus {
-	 background-image: url(img/circle_surplus.svg);
-    display: block;
+	 fill:#4F5855;
 }
 
 .cequalized {
