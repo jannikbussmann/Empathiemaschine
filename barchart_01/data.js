@@ -5,11 +5,8 @@ var height = 500;
 //Tage untereinander, muss translate angepasst werden (Bsp. Tag1 und Tag2)
 var paddingTag = 130;
 
-// Kreise in Y-Achse zueinander
 var kreisZuKreis = 12;
-
-//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh) 
-//Auf der X-Achse
+//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh)
 var zweiteHälfte = 12;
 
 // Abstand von einer Schichtart zu anderen (Bsp.: Früh zu Mitte)
