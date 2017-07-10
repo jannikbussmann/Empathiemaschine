@@ -126,15 +126,18 @@ font-size: 22px;
 
 .cmatch circle{
 	fill: #A0B1AB;
+  transform: translate(-180px, 0px);
 }
 
 .cdeficit circle {
 	stroke: #A0B1AB;
 	fill : none;
+  transform: translate(-180px, 0px);
 }
 
-.csurplus {
-	 fill:#4F5855;
+.csurplus circle{
+	fill:#4F5855;
+  transform: translate(-180px, 0px);
 }
 
 .cequalized {
