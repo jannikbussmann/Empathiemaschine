@@ -1,5 +1,5 @@
 var width = 1900;
-var height = 500;
+var height = 400;
 
 //var clicks = 1;
 //Tage untereinander, muss translate angepasst werden (Bsp. Tag1 und Tag2)
@@ -20,6 +20,8 @@ var paddingSchichtart = 30;
 // Radius der Kreise
 var radius = 4;
 
+
+var cDelay = 750;
 
 var counter = 1;
 var counterTwo = 1;
@@ -80,13 +82,28 @@ function onClick()
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
 				.attr("r",radius)
+				
 
 			}
 			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
 				.attr("r",radius)
 
 			}
@@ -95,6 +112,13 @@ function onClick()
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
 				.attr("r",radius)
 
 			}
@@ -102,7 +126,14 @@ function onClick()
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",radius)
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 			}
 
@@ -110,14 +141,28 @@ function onClick()
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",radius)
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 			}
 			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",radius)
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 			}
 
@@ -125,14 +170,28 @@ function onClick()
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",radius)
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 			}
 			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 				d3.select(this).append("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",radius)
+				.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 			}
 
@@ -145,14 +204,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 		}
 
 
@@ -160,14 +233,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -175,14 +262,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -190,14 +291,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -208,14 +323,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -223,14 +352,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -238,14 +381,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -253,14 +410,28 @@ function onClick()
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		})
@@ -296,14 +467,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= a.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -311,14 +496,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= a.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -326,14 +525,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= a.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -341,14 +554,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= a.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -361,14 +588,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 	}
 
 
@@ -376,14 +617,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -391,14 +646,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -406,14 +675,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -424,14 +707,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -439,14 +736,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -454,14 +765,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -469,14 +794,28 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= a.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	})
@@ -510,14 +849,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= b.Frühschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -525,14 +878,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= b.Mittelschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -540,14 +907,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= b.Spätschicht_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -555,14 +936,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 		for (var x = 1; x <= b.Geteilt_gedeckt/2; x++) {
 			d3.select(this).append("circle")
 			.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(b,i){return topdown-(x + 1)*kreisZuKreis})
-			.attr("r",radius)
+			.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 		}
 
@@ -575,14 +970,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 	}
 
 
@@ -590,14 +999,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingMitte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -605,14 +1028,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+ paddingSpät})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -620,14 +1057,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingGeteilt})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Geteilt_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Geteilt_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -638,14 +1089,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Frühschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -653,14 +1118,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingMitte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Mittelschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Mittelschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -668,14 +1147,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+ paddingSpät})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+(b.Spätschicht_gedeckt/2*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+((b.Spätschicht_gedeckt/2)*kreisZuKreis))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 
@@ -683,14 +1176,28 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag+paddingGeteilt})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+((b.Geteilt_gedeckt/2)*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	for (var x = 1; x <= b.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(b,i){return b.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 		.attr("cy", function(b,i){return topdown-((x + 1)*kreisZuKreis+((b.Geteilt_gedeckt/2)*kreisZuKreis-test))})
-		.attr("r",radius)
+		.attr("r",0)
+				.transition()
+				.attr("r",radius+1)
+				.delay(cDelay * i)
+				.duration(250)
+				.transition()
+				.duration(750)
+				.attr("r",radius);
 
 	}
 	})

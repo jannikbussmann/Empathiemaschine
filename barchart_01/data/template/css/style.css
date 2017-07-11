@@ -38,7 +38,9 @@
 
 }
 
-
+*:focus {
+  outline: none !important;
+}
 
 body {
     font-family: 'museo300';
@@ -49,6 +51,15 @@ body {
 
 h1 {
 font-size: 22px;
+}
+
+button {
+  background-color: #4CD4B0;
+  border-radius: 50px;
+  -webkit-appearance: none;
+  border: none;
+  margin: 20px 20px 20px 0px;
+  padding: 10px;
 }
 
 .subhead {
@@ -146,4 +157,12 @@ font-size: 22px;
 
 .cequalized {
 
+}
+
+.two {
+  opacity:0.50;
+}
+
+.three {
+  opacity:0.25;
 }
