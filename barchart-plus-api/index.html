@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+	<link href="data/template/css/bootstrap.min.css" rel="stylesheet">
+	<link href="data/template/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <script type="text/javascript" src="http://codeorigin.jquery.com/jquery-2.0.3.min.js"></script>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="data/template/css/img/logo_empathiemaschine.svg">
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="row">
+		<div class="container-fluid ">
+			<div class="col-md-12 section">
+				<h1>Entwicklung des Wunscherfüllungsgrads</h1>
+			</div>
+			<div class="col-md-12">
+				<p>Hier kommt das Liniendiagramm rein</p>
+				<!--div class="ct-chart ct-golden-section"></div-->
+
+						<input type="text" class="form-control" value="---" readonly id="var-val-1"><br/><br/>
+						<input type="text" class="form-control" value="---" readonly id="var-val-2"><br/><br/>
+
+				<button type="button" onClick="onClick()">Click me</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-12 section">
+				<h1>Verhältnis: Wunschprofil zu Diensten</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="col-md-11">
+				<div class="allCharts">
+					<div class="chart"></div>
+					<div class="two"></div>
+					<div class="three"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<!--script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script-->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="data/template/js/bootstrap.min.js"></script>
+	<script src="https://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+	<script src="data/template/js/data.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			var statusTimer = null;
+			var timer1, timer2, timer3, timer4;
+			var baseURL = "https://api.spark.io/v1/devices/";
+
+			//--------------------------------------------------------------
+			// USER DATA
+			//
+			var accessToken = "0704e0d723377ecab782c74a6cc9f3ce5d688f40";
+			var coreID = "2c001f000247343337373739";
+			// App Heading
+			var appHeading = "Remote Photon";
+			// Variable 1
+			var varKey1 = "SENSOR-WERT";
+			var var1onLabel = "Running!";
+			var var1offLabel = "Stopped.";
+			var var1onState = 1; // Set to null to allow raw value to be displayed.
+			var var1offState = 0; // Set to null to allow raw value to be displayed.
+			var refresh1 = 1000;
+			// Variable 2
+			var varKey2 = "RFID-SCAN";
+			var args4 = "";
+			var var2onLabel = "Open!";
+			var var2offLabel = "Closed.";
+			var var2onState = 1; // Set to null to allow raw value to be displayed.
+			var var2offState = 0; // Set to null to allow raw value to be displayed.
+			var refresh2 = 5000;
+			//
+			//--------------------------------------------------------------
+
+			// Update app heading
+			$("#app-heading").html(appHeading);
+			$(".btn-lg").css({"width":"60%"});
+			$(".form-control").css({"display":"inline","width":"35%"});
+
+			// Hide variable text fields if not in use.
+			if(refresh1 === 0) $("#var-val-1").hide();
+			if(refresh2 === 0) $("#var-val-2").hide();
+
+			// Auto-refresh
+			if(refresh1) {
+				$("#get-var-1").attr("disabled", "disabled");
+				timer1 = setInterval(function () {
+					getVariable1();
+				}, refresh1);
+			}
+			if(refresh2) {
+				$("#get-var-2").attr("disabled", "disabled");
+				timer2 = setInterval(function () {
+					getVariable2();
+				}, refresh2);
+			}
+
+			////
+			// Alerts
+			////
+			$("#info-alert").alert();
+			$("#info-alert").affix();
+
+			////
+			// Methods
+			////
+			function onMethodSuccess() {
+				alert = $("#info-alert");
+				alert.text("Success!").removeClass("alert-danger").addClass("alert-success");
+				if(statusTimer != null) {
+					clearTimeout(statusTimer);
+					alert.hide();
+					setTimeout(function() {
+						alert.show();
+						statusTimer = setTimeout(function() {
+							statusTimer = null;
+							alert.hide();
+						}, 1750);
+					}, 250);
+				}
+				else {
+					alert.show();
+					statusTimer = setTimeout(function() {
+						statusTimer = null;
+						alert.hide();
+					}, 2000);
+				}
+			}
+
+			function onMethodFailure(data) {
+				alert = $("#info-alert");
+				alert.text((data)?"Error! "+data:"Error!").removeClass("alert-success").addClass("alert-danger");
+				if(statusTimer != null) {
+					clearTimeout(statusTimer);
+					alert.hide();
+					setTimeout(function() {
+						alert.show();
+						statusTimer = setTimeout(function() {
+							statusTimer = null;
+							alert.hide();
+						}, 1750);
+					}, 250);
+				}
+				else {
+					alert.show();
+					statusTimer = setTimeout(function() {
+						statusTimer = null;
+						alert.hide();
+					}, 2000);
+				}
+			}
+
+			// The base level run method command
+			function doMethod(method, data) {
+				var url = baseURL + coreID + "/" + method;
+				$.ajax({
+					type: "POST",
+					url: url,
+					data: {
+						access_token: accessToken,
+						args: data
+					},
+					dataType: "json"
+				}).success(function(obj) {
+					console.log(obj);
+					(obj.return_value && obj.return_value == 200) ? onMethodSuccess() : onMethodFailure((obj.error)?obj.error:"");
+				}).fail(function(obj) {
+					onMethodFailure();
+				});
+			}
+			////
+			// Variables
+			////
+			function getVariable(variable, callback) {
+				var url = baseURL + coreID + "/" + variable + "?access_token=" + accessToken;
+				$.ajax({
+					url: url,
+					dataType: "json"
+				}).success(function(obj) {
+					console.log(obj);
+					(obj.coreInfo.deviceID && obj.coreInfo.deviceID == coreID) ? onMethodSuccess() : onMethodFailure((obj.error)?obj.error:"");
+					callback(obj.result);
+				}).fail(function(obj) {
+					onMethodFailure();
+				});
+			}
+
+			// Get variable methods
+			function getVariable1() {
+				getVariable(varKey1, function (res) {
+					if(res === var1onState)
+						$("#var-val-1").val(var1onLabel);
+					else if(res === var1offState)
+						$("#var-val-1").val(var1offLabel);
+					else
+						$("#var-val-1").val(res);
+				});
+			}
+			function getVariable2() {
+				getVariable(varKey2, function (res) {
+					if(res === var2onState)
+						$("#var-val-2").val(var2onLabel);
+					else if(res === var2offState)
+						$("#var-val-2").val(var2offLabel);
+					else
+						$("#var-val-2").val(res);
+				});
+			}
+
+		});
+
+	</script>
+
+</body>
+</html>
