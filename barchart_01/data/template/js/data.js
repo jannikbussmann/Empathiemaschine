@@ -1,6 +1,3 @@
-
-
-
 var width = 1900;
 var height = 500;
 
@@ -60,7 +57,7 @@ function onClick()
 	.attr("width", width)
 	.attr("height",height);
 
-	d3.csv("week1.csv", function(error, data){
+	d3.csv("data/template/csv/week1.csv", function(error, data){
 
 		var passend = chart.selectAll("passend")
 		.data(data)
@@ -276,7 +273,7 @@ var two = d3.select(".two").append("svg")
 .attr("width", width)
 .attr("height",height);
 
-d3.csv("week2.csv", function(error, data){
+d3.csv("data/template/csv/week2.csv", function(error, data){
 
 	var passend = two.selectAll("passend")
 	.data(data)
@@ -490,7 +487,7 @@ var three = d3.select(".three").append("svg")
 .attr("width", width)
 .attr("height",height);
 
-d3.csv("week3.csv", function(error, data){
+d3.csv("data/template/csv/week3.csv", function(error, data){
 
 	var passend = three.selectAll("passend")
 	.data(data)

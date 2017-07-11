@@ -86,6 +86,10 @@ font-size: 22px;
     padding-left: 15px;
 }
 
+.section {
+  border-top:1px solid #303030;
+  border-bottom:1px solid #303030;
+}
 
 .day {
   float: left;
@@ -143,4 +147,3 @@ font-size: 22px;
 .cequalized {
 
 }
-

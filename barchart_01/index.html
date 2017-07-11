@@ -1,20 +1,63 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <head>
-	<link href="style.css" rel="stylesheet">
+	<link href="data/template/css/bootstrap.min.css" rel="stylesheet">
+	<link href="data/template/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-	<button type="button" onClick="onClick()">Click me</button>
-    
-	<div class="allCharts">
-	<div class="chart"></div>
-	<div class="two"></div>
-	<div class="three"></div>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="data/template/css/img/logo_empathiemaschine.svg">
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<div class="row">
+		<div class="container-fluid ">
+			<div class="col-md-12 section">
+				<h1>Entwicklung des Wunscherfüllungsgrads</h1>
+			</div>
+			<div class="col-md-12">
+				<p>Hier kommt das Liniendiagramm rein</p>
+				<!--div class="ct-chart ct-golden-section"></div-->
+				<button type="button" onClick="onClick()">Click me</button>
+			</div>
+		</div>
 	</div>
 
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-md-12 section">
+				<h1>Verhältnis: Wunschprofil zu Diensten</h1>
+			</div>
+		</div>
+
+		<div class="container-fluid">
+			<div class="col-md-11">
+				<div class="allCharts">
+					<div class="chart"></div>
+					<div class="two"></div>
+					<div class="three"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+	
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="data/template/js/bootstrap.min.js"></script>
 	<script src="https://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
-	<script src="data.js"></script>
+	<script src="data/template/js/data.js"></script>
 </body>
 
 </html>
