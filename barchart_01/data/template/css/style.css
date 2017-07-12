@@ -155,6 +155,15 @@ button {
   transform: translate(-117px, 0px);
 }
 
+.chart text {
+    text-anchor: middle;
+    font-family: 'museo300';
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 15px;
+    transform: translate(-117px, 0px);
+}
+
 .cequalized {
 
 }
