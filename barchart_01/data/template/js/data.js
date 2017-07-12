@@ -127,9 +127,10 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
 				.transition()
+				//.delay(5000)
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius)
@@ -144,7 +145,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius)
@@ -159,7 +160,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius)
@@ -173,7 +174,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -188,7 +189,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -202,7 +203,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -217,7 +218,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -231,7 +232,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -251,7 +252,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -265,7 +266,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -280,7 +281,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -294,7 +295,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -309,7 +310,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -323,7 +324,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -338,7 +339,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -352,7 +353,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -370,7 +371,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -384,7 +385,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -399,7 +400,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -413,7 +414,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -428,7 +429,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -442,7 +443,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -457,7 +458,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -471,7 +472,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -551,7 +552,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -565,7 +566,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -580,7 +581,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -594,7 +595,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -609,7 +610,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -623,7 +624,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -638,7 +639,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -652,7 +653,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -672,7 +673,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -686,7 +687,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -701,7 +702,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -715,7 +716,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -730,7 +731,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -744,7 +745,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -759,7 +760,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -773,7 +774,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -791,7 +792,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -805,7 +806,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -820,7 +821,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -834,7 +835,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -849,7 +850,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -863,7 +864,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -878,7 +879,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -892,7 +893,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -970,7 +971,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -984,7 +985,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -999,7 +1000,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1013,7 +1014,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1028,7 +1029,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1042,7 +1043,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1057,7 +1058,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1071,7 +1072,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1091,7 +1092,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1105,7 +1106,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1120,7 +1121,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1134,7 +1135,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1149,7 +1150,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1163,7 +1164,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1178,7 +1179,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1192,7 +1193,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1210,7 +1211,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1224,7 +1225,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1239,7 +1240,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1253,7 +1254,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1268,7 +1269,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1282,7 +1283,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1297,7 +1298,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
@@ -1311,7 +1312,7 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 				.transition()
 				.attr("r",radius+1)
 				.delay(cDelay * i)
-				.duration(250)
+				.duration(450)
 				.transition()
 				.duration(750)
 				.attr("r",radius);
