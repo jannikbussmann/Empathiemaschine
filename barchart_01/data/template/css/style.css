@@ -50,7 +50,15 @@ body {
 }
 
 h1 {
-font-size: 22px;
+font-size: 30px;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+
+h2 {
+  font-size:22px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 button {
@@ -79,6 +87,7 @@ button {
 .navbar {
     background-color: #1e1e1e;
     border: none;
+    margin-bottom: 0px;
 }
 .navbar-brand {
     float: left;
