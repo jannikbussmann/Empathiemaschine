@@ -64,6 +64,7 @@ function onClick()
 d3.csv("data/template/csv/week1.csv", function(error, data){
 
 
+/*
 	var texts = chart.selectAll("texts")
 		.data(data)
 		.enter().append("text")
@@ -71,9 +72,9 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 		.attr("y", topdown)
 		.attr("dy", ".35em")
 		.text(function(d) { return "F" })
-		.style("fill", "white");
+		.style("fill", "white");*/
 
-
+/*
 	var texts2 = chart.selectAll("texts2")
 		.data(data)
 		.enter().append("text")
@@ -99,7 +100,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 		.attr("y", topdown)
 		.attr("dy", ".35em")
 		.text(function(d) { return "G" })
-		.style("fill", "white");
+		.style("fill", "white");*/
 
 
 		var passend = chart.selectAll("passend")
@@ -117,6 +118,38 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 		.enter().append("svg")
 		.attr("class", "cdeficit");
 
+var text = chart.select("svg")
+	.selectAll("text")
+	.data(data).enter();
+
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "F" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "M" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "S" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "G" })
+	.style("fill", "white");
 
 
 		passend.each(function(d,i) {
@@ -490,43 +523,6 @@ var two = d3.select(".two").append("svg")
 
 d3.csv("data/template/csv/week2.csv", function(error, data){
 
-	var texts = chart.selectAll("texts")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "F" })
-		.style("fill", "white");
-
-
-	var texts2 = chart.selectAll("texts2")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "M" })
-		.style("fill", "white");
-
-	var texts3 = chart.selectAll("texts3")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "S" })
-		.style("fill", "white");
-
-	var texts4 = chart.selectAll("texts4")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "G" })
-		.style("fill", "white");
-
 	var passend = two.selectAll("passend")
 	.data(data)
 	.enter().append("svg")
@@ -541,6 +537,41 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 	.data(data)
 	.enter().append("svg")
 	.attr("class", "cdeficit");
+
+
+var text = two.select("svg")
+	.selectAll("text")
+	.data(data).enter();
+
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "F" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "M" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "S" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "G" })
+	.style("fill", "white");
+
 
 	passend.each(function(a,i) {
 
@@ -909,42 +940,6 @@ var three = d3.select(".three").append("svg")
 
 d3.csv("data/template/csv/week3.csv", function(error, data){
 
-	var texts = chart.selectAll("texts")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "F" })
-		.style("fill", "white");
-
-
-	var texts2 = chart.selectAll("texts2")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "M" })
-		.style("fill", "white");
-
-	var texts3 = chart.selectAll("texts3")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "S" })
-		.style("fill", "white");
-
-	var texts4 = chart.selectAll("texts4")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "G" })
-		.style("fill", "white");
 
 	var passend = three.selectAll("passend")
 	.data(data)
@@ -960,6 +955,39 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 	.data(data)
 	.enter().append("svg")
 	.attr("class", "cdeficit");
+
+var text = three.select("svg")
+	.selectAll("text")
+	.data(data).enter();
+
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "F" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "M" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "S" })
+	.style("fill", "white");
+
+text.append("text")
+	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+	.attr("y", topdown)
+	.attr("dy", ".35em")
+	.text(function(d) { return "G" })
+	.style("fill", "white");
 
 	passend.each(function(b,i) {
 

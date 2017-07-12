@@ -3,11 +3,6 @@
   /*background-color: #272626;*/
 }
 
-.chart text {
-  fill: white;
-  font: 10px sans-serif;
-  text-anchor: middle;
-}
 
 
 
@@ -164,7 +159,7 @@ button {
   transform: translate(-117px, 0px);
 }
 
-.chart text {
+text {
     text-anchor: middle;
     font-family: 'museo300';
     background-color: #1e1e1e;
