@@ -51,20 +51,20 @@ function onClick()
 
  	console.log(counter+" "+ counterTwo+" "+ counterThree);
 
-}
+
 
 
 
 	//Woche eins
-	var chart = d3.select(".chart").append("svg")
+	var chart = d3.select(".one").insert("svg","svg")
 	.attr("width", width)
 	.attr("height",height);
 
 
-d3.csv("data/template/csv/week1.csv", function(error, data){
+	d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
 
-/*
+	/*
 	var texts = chart.selectAll("texts")
 		.data(data)
 		.enter().append("text")
@@ -74,7 +74,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 		.text(function(d) { return "F" })
 		.style("fill", "white");*/
 
-/*
+	/*
 	var texts2 = chart.selectAll("texts2")
 		.data(data)
 		.enter().append("text")
@@ -105,57 +105,57 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 
 		var passend = chart.selectAll("passend")
 		.data(data)
-		.enter().append("svg")
+		.enter().insert("svg")
 		.attr("class", "cmatch");
 
 		var mitarbeiterüberschuss = chart.selectAll("überschuss")
 		.data(data)
-		.enter().append("svg")
+		.enter().insert("svg")
 		.attr("class", "csurplus");
 
 		var mitarbeitermangel = chart.selectAll("mangel")
 		.data(data)
-		.enter().append("svg")
+		.enter().insert("svg")
 		.attr("class", "cdeficit");
 
-var text = chart.select("svg")
-	.selectAll("text")
-	.data(data).enter();
+	var text = chart.select("svg")
+		.selectAll("text")
+		.data(data).enter();
 
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "F" })
-	.style("fill", "white");
+	text.insert("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "F" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "M" })
-	.style("fill", "white");
+	text.insert("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "M" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "S" })
-	.style("fill", "white");
+	text.insert("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "S" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "G" })
-	.style("fill", "white");
+	text.insert("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "G" })
+		.style("fill", "white");
 
 
 		passend.each(function(d,i) {
 
 			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -171,7 +171,7 @@ text.append("text")
 
 			}
 			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -186,7 +186,7 @@ text.append("text")
 			}
 
 			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -200,7 +200,7 @@ text.append("text")
 
 			}
 			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -215,7 +215,7 @@ text.append("text")
 			}
 
 			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -229,7 +229,7 @@ text.append("text")
 
 			}
 			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -244,7 +244,7 @@ text.append("text")
 			}
 
 			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -258,7 +258,7 @@ text.append("text")
 
 			}
 			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
-				d3.select(this).append("circle")
+				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
 				.attr("r",0)
@@ -278,7 +278,7 @@ text.append("text")
 		mitarbeiterüberschuss.each(function(d,i) {
 
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -292,7 +292,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -307,7 +307,7 @@ text.append("text")
 
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
 			.attr("r",0)
@@ -321,7 +321,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
 			.attr("r",0)
@@ -336,7 +336,7 @@ text.append("text")
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -350,7 +350,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -365,7 +365,7 @@ text.append("text")
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -379,7 +379,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -397,7 +397,7 @@ text.append("text")
 
 		mitarbeitermangel.each(function(d,i) {
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -411,7 +411,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -426,7 +426,7 @@ text.append("text")
 		}
 
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -440,7 +440,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -455,7 +455,7 @@ text.append("text")
 		}
 
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -469,7 +469,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
 			.attr("r",0)
@@ -484,7 +484,7 @@ text.append("text")
 		}
 
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
 			.attr("r",0)
@@ -498,7 +498,7 @@ text.append("text")
 
 		}
 		for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
-			d3.select(this).append("circle")
+			d3.select(this).insert("circle")
 			.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
 			.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
 			.attr("r",0)
@@ -514,7 +514,7 @@ text.append("text")
 		})
 	})
 
-
+}
 
 //Woche zwei
 var two = d3.select(".two").append("svg")
@@ -539,38 +539,38 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 	.attr("class", "cdeficit");
 
 
-var text = two.select("svg")
-	.selectAll("text")
-	.data(data).enter();
+	var text = two.select("svg")
+		.selectAll("text")
+		.data(data).enter();
 
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "F" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "F" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "M" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "M" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "S" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "S" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "G" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "G" })
+		.style("fill", "white");
 
 
 	passend.each(function(a,i) {
@@ -938,7 +938,7 @@ var three = d3.select(".three").append("svg")
 .attr("width", width)
 .attr("height",height);
 
-d3.csv("data/template/csv/week3.csv", function(error, data){
+d3.csv("data/template/csv/week1.csv", function(error, data){
 
 
 	var passend = three.selectAll("passend")
@@ -956,38 +956,38 @@ d3.csv("data/template/csv/week3.csv", function(error, data){
 	.enter().append("svg")
 	.attr("class", "cdeficit");
 
-var text = three.select("svg")
-	.selectAll("text")
-	.data(data).enter();
+	var text = three.select("svg")
+		.selectAll("text")
+		.data(data).enter();
 
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "F" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "F" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "M" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "M" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "S" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "S" })
+		.style("fill", "white");
 
-text.append("text")
-	.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-	.attr("y", topdown)
-	.attr("dy", ".35em")
-	.text(function(d) { return "G" })
-	.style("fill", "white");
+	text.append("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+		.attr("y", topdown)
+		.attr("dy", ".35em")
+		.text(function(d) { return "G" })
+		.style("fill", "white");
 
 	passend.each(function(b,i) {
 
