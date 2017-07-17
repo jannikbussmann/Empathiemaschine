@@ -23,7 +23,7 @@ var radius = 4;
 
 var cDelay = 750;
 
-var counter = 1;
+var counter = 2;
 var counterTwo = 1;
 var counterThree = 2;
 
@@ -36,20 +36,12 @@ function onClick()
 {
  	//window.location.reload();
  	counter += 1;
- 	counterTwo += 1;
- 	counterThree += 1;
 
- 	if (counter > 3) {
+ 	if (counter > 6) {
  		counter = 1
  	}
- 	if (counterTwo > 3) {
- 		counterTwo = 1
- 	}
- 	if (counterThree > 3) {
- 		counterThree = 1
- 	}
 
- 	console.log(counter+" "+ counterTwo+" "+ counterThree);
+ 	console.log("counter: "+counter);
 
 
 
