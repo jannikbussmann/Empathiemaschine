@@ -2,24 +2,8 @@
 
 
 
-var circleWidth = 360;
-var circleHeight = 360;
-var circleRadius = Math.min(width, height) / 2;
-
-/*
-var newCircle = d3.select('.one')
-  .append('svg')
-  .attr('width', width)
-  .attr('height', height)
-  	.append('g')
-  .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
 
 
-
-
-var color = d3.scaleOrdinal()
-  .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']);
-*/
 /*
 --------------------------------
 ------- WOCHENÜBERSICHT --------
@@ -68,6 +52,8 @@ var counterThree = 2;*/
 var paddingMitte = paddingSchichtart;
 var paddingSpät = paddingSchichtart + paddingSchichtart;
 var paddingGeteilt = paddingSchichtart + paddingSchichtart + paddingSchichtart;
+
+
 
 
 
