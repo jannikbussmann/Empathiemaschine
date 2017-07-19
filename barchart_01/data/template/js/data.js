@@ -1,6 +1,25 @@
 
 
 
+
+var circleWidth = 360;
+var circleHeight = 360;
+var circleRadius = Math.min(width, height) / 2;
+
+/*
+var newCircle = d3.select('.one')
+  .append('svg')
+  .attr('width', width)
+  .attr('height', height)
+  	.append('g')
+  .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
+
+
+
+
+var color = d3.scaleOrdinal()
+  .range(['#A60F2B', '#648C85', '#B3F2C9', '#528C18', '#C3F25C']);
+*/
 /*
 --------------------------------
 ------- WOCHENÜBERSICHT --------
@@ -11,8 +30,11 @@ Schichtdichte auf Mitarbeiteranzahl
 
 */
 
-var width = 1900;
+var width = 930;
 var height = 400;
+
+
+
 
 //var clicks = 1;
 //Tage untereinander, muss translate angepasst werden (Bsp. Tag1 und Tag2)
@@ -58,8 +80,13 @@ function onClick()
 	 		counter = 1
 	 	}
 
-	 	console.log("counter: "+counter);
 
+
+	 	//console.log("counter: "+counter);
+
+// An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile 
+// 536 einkommentieren
+}
 		//Woche eins
 	var chart = d3.select(".one").insert("svg","svg")
 		.attr("width", width)
@@ -67,6 +94,9 @@ function onClick()
 
 
 		d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
+
+
+
 
 
 			/*
@@ -107,6 +137,9 @@ function onClick()
 				.text(function(d) { return "G" })
 				.style("fill", "white");*/
 
+				//var result = function(d,i){return d.Tagnummer * paddingTag + 5};
+
+				//console.log("result: "+result);
 
 				var passend = chart.selectAll("passend")
 				.data(data)
@@ -518,7 +551,11 @@ function onClick()
 				}
 				})
 		})
-}
+
+
+
+//an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
+//}
 
 	//Woche zwei
 	var two = d3.select(".two").append("svg")
