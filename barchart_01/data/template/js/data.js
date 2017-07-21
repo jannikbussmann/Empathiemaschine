@@ -72,7 +72,7 @@ function onClick()
 
 // An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile 
 // 536 einkommentieren
-}
+//}
 		//Woche eins
 	var chart = d3.select(".one").insert("svg","svg")
 		.attr("width", width)
@@ -541,7 +541,7 @@ function onClick()
 
 
 //an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
-//}
+}
 
 	//Woche zwei
 	var two = d3.select(".two").append("svg")
