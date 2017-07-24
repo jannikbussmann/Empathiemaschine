@@ -1,44 +1,93 @@
-//var data = [{"letter":"w","presses":1},{"letter":"w","presses":5},{"letter":"e","presses":2}];
-d3.csv("data/template/csv/week2.csv", function(error, data){
+d3.csv("data/template/csv/week"+counter+".csv", function(error, data){});
 
-console.log(data);
+var colors = {
+    'pink': '#E1499A',
+    'yellow': '#f0ff08',
+    'green': '#47e495'
+};
 
-var width = 300,
-    height = 300,
-    // Think back to 5th grade. Radius is 1/2 of the diameter. What is the limiting factor on the diameter? Width or height, whichever is smaller 
-    radius = Math.min(width, height) / 2;
+var color = colors.pink;
 
-var color = d3.scaleOrdinal()
-    .range(["#2C93E8","#838690","#F56C4E"]);
-
-var pie = d3.pie()
-    .value(function(d) { return (d.Frühschicht_gedeckt + d.Frühschicht_Mitarbeitermangel + d.Frühschicht_Mitarbeiterüberschuss) })(data);
-
-
-var arc = d3.arc()
-    .outerRadius(radius - 10)
-    .innerRadius(0);
-    
-var labelArc = d3.arc()
-    .outerRadius(radius - 40)
-    .innerRadius(radius - 40);
+var circleradius = 100;
+var border = 5;
+var padding = 30;
+var startPercent = 0;
+var endPercent = 0.85;
 
 
-var svg = d3.select("#pie")
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(" + width/2 + "," + height/2 +")"); // Moving the center point. 1/2 the width and 1/2 the height
+var twoPi = Math.PI * 2;
+var formatPercent = d3.format('.0%');
+var boxSize = (circleradius + padding) * 2;
 
 
-    var g = svg.selectAll("arc")
-    .data(pie)
-    .enter().append("g")
-    .attr("class", "arc");
+var count = Math.abs((endPercent - startPercent) / 0.01);
+var step = endPercent < startPercent ? -0.01 : 0.01;
 
-    g.append("path")
-    .attr("d", arc)
-    .style("fill", function(d) { return color(d.data.Frühschicht_Mitarbeitermangel + d.Frühschicht_Mitarbeiterüberschuss);});
+var arc = d3.svg.arc()
+    .startAngle(0)
+    .innerRadius(circleradius)
+    .outerRadius(circleradius - border);
 
-})
+var parent = d3.select('div#content');
+
+var svg = parent.append('svg')
+    .attr('width', boxSize)
+    .attr('height', boxSize);
+
+var defs = svg.append('defs');
+
+var filter = defs.append('filter')
+    .attr('id', 'blur');
+
+filter.append('feGaussianBlur')
+    .attr('in', 'SourceGraphic')
+    .attr('stdDeviation', '7');
+
+var g = svg.append('g')
+    .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+var meter = g.append('g')
+    .attr('class', 'progress-meter');
+
+meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', '#ccc')
+    .attr('fill-opacity', 0.5)
+    .attr('d', arc.endAngle(twoPi));
+
+var foreground = meter.append('path')
+    .attr('class', 'foreground')
+    .attr('fill', color)
+    .attr('fill-opacity', 1)
+    .attr('stroke', color)
+    .attr('stroke-width', 5)
+    .attr('stroke-opacity', 1)
+    .attr('filter', 'url(#blur)');
+
+var front = meter.append('path')
+    .attr('class', 'foreground')
+    .attr('fill', color)
+    .attr('fill-opacity', 1);
+
+var numberText = meter.append('text')
+    .attr('fill', '#fff')
+    .attr('text-anchor', 'middle')
+    .attr('dy', '.35em');
+
+function updateProgress(progress) {
+    foreground.attr('d', arc.endAngle(twoPi * progress));
+    front.attr('d', arc.endAngle(twoPi * progress));
+    numberText.text(formatPercent(progress));
+}
+
+var progress = startPercent;
+
+(function loops() {
+    updateProgress(progress);
+
+    if (count > 0) {
+        count--;
+        progress += step;
+        setTimeout(loops, 10);
+    }
+})();
