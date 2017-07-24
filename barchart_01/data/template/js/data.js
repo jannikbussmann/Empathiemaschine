@@ -68,11 +68,11 @@ function onClick()
 
 	 	//console.log("counter: "+counter);
 
-// An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile 
-// 536 einkommentieren
-//}
+		// An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile 
+		// 536 einkommentieren
+		//}
 		//Woche eins
-	var chart = d3.select(".one").insert("svg","svg")
+		var chart = d3.select(".one").insert("svg","svg")
 		.attr("width", width)
 		.attr("height",height);
 
@@ -541,12 +541,12 @@ function onClick()
 //an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
 }
 
-	//Woche zwei
-	var two = d3.select(".two").append("svg")
-	.attr("width", width)
-	.attr("height",height);
+			var two = d3.select(".two").append("svg")
+			.attr("width", width)
+			.attr("height",height);
 
 		d3.csv("data/template/csv/week2.csv", function(error, data){
+			//Woche zwei
 
 			var passend = two.selectAll("passend")
 			.data(data)
@@ -958,12 +958,15 @@ function onClick()
 			})
 		})
 
-	//Woche drei
+
+				//Woche drei
 	var three = d3.select(".three").append("svg")
 	.attr("width", width)
 	.attr("height",height);
-
 		d3.csv("data/template/csv/week1.csv", function(error, data){
+
+
+	
 
 
 			var passend = three.selectAll("passend")

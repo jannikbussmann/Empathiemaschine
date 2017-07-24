@@ -144,7 +144,7 @@ button {
 
 .allCharts {
   height: 1200px;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 
 .circle {
