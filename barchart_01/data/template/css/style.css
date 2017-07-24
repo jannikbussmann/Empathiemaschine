@@ -171,6 +171,14 @@ button {
   transform: translate(-117px, 0px);
 }
 
+.cmoved circle {
+  fill: transparent;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease
+}
+
 text {
     text-anchor: middle;
     font-family: 'museo300';

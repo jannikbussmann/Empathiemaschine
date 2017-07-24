@@ -52,19 +52,14 @@ var paddingSpät = paddingSchichtart + paddingSchichtart;
 var paddingGeteilt = paddingSchichtart + paddingSchichtart + paddingSchichtart;
 
 
+$( ".addWeek" ).click(function() {
+  //window.location.reload();
 
-
-
-function onClick() 
-{
-	 	//window.location.reload();
 	 	counter += 1;
 
 	 	if (counter > 6) {
 	 		counter = 1
 	 	}
-
-
 
 	 	//console.log("counter: "+counter);
 
@@ -539,7 +534,7 @@ function onClick()
 
 
 //an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
-}
+});
 
 			var two = d3.select(".two").append("svg")
 			.attr("width", width)
