@@ -2,6 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 --------------------------------
 ------- WOCHENÜBERSICHT --------
@@ -74,7 +91,7 @@ $( ".addWeek" ).click(function() {
 
 		d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
-
+			
 
 
 
