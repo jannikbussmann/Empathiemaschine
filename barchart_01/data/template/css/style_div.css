@@ -152,26 +152,30 @@ button {
   height: 8px;
   display: block;
   margin: 2px;
-  float: left;
 }
 
-.cmatch circle{
-	fill: #A0B1AB;
-  transform: translate(-117px, 0px);
+.cmatch div{
+	background-image:url(img/circle_match.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /*transform: translate(-117px, 0px);*/
 }
 
-.cdeficit circle {
-	stroke: #A0B1AB;
-	fill : none;
-  transform: translate(-117px, 0px);
+.cdeficit div {
+	background-image:url(img/circle_deficit.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /*transform: translate(-117px, 0px);*/
 }
 
-.csurplus circle{
-	fill:#4F5855;
-  transform: translate(-117px, 0px);
+.csurplus div{
+	background-image:url(img/circle_surplus.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /*transform: translate(-117px, 0px);*/
 }
 
-.cmoved circle {
+.cmoved div {
   fill: transparent;
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
@@ -185,7 +189,12 @@ text {
     background-color: #1e1e1e;
     color: #ffffff;
     font-size: 15px;
-    transform: translate(-117px, 0px);
+    /*transform: translate(-117px, 0px);*/
+}
+
+span.days {
+  position: absolute;
+  display: block;
 }
 
 .cequalized {
@@ -194,10 +203,14 @@ text {
 
 .two {
   opacity:0.50;
+  position: relative;
+  height: 400px;
 }
 
 .three {
   opacity:0.25;
+  position: relative;
+  height:400px;
 }
 
 
@@ -650,7 +663,7 @@ Nur vorläufig für Balkendiagramme
 .ct-golden-section {
   display: block;
   position: relative;
-  width: 100%; 
+  width: 100%;
 height: 400px;}
   .ct-golden-section:before {
     display: block;
