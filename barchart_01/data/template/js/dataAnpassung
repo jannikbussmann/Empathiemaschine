@@ -34,7 +34,7 @@ $( ".addWeek" ).click(function() {
 
 d3.csv("data/template/csv/week1.csv", function(error, data){
 
-    var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;}) 
+    var passendDonut =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;}) 
                     + 
                     d3.sum(data, function(d){return d.Mittelschicht_gedeckt;}) 
                     +
@@ -43,7 +43,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
                     d3.sum(data, function(d){return d.Geteilt_gedeckt;})
                     );
 
-    var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; }) 
+    var unpassendDonut =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; }) 
                         + 
                         d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; }) 
                         +
@@ -60,11 +60,11 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
                         );
 
-    var gesamt = passend + unpassend;
+    var gesamt = passendDonut + unpassendDonut;
 
-    var prozent = (passend*100)/gesamt;
+    var prozent = (passendDonut*100)/gesamt;
 
-    console.log(passend+"+"+unpassend+"+"+gesamt);
+    console.log(passendDonut+"+"+unpassendDonut+"+"+gesamt);
 
     console.log(prozent);
 
