@@ -20,6 +20,9 @@ var formatPercent = d3.format('.0%');
 var boxSize = (circleradius + padding) * 2;
 var circleHeight = 400;
 
+
+var xPosDonut = 950;
+
 /*
 --------------------------------
 ------- WOCHENÜBERSICHT --------
@@ -30,7 +33,7 @@ Schichtdichte auf Mitarbeiteranzahl
 
 */
 
-var width = 930;
+var width = 1930;
 var height = 400;
 
 
@@ -90,6 +93,7 @@ $( ".addWeek" ).click(function() {
 		.attr("height",height);
 
 
+
 		d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
 			var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
@@ -139,13 +143,14 @@ $( ".addWeek" ).click(function() {
             .innerRadius(circleradius)
             .outerRadius(circleradius - border);
 
-        var parent = chart.selectAll('svg')
+        var parent = chart.selectAll("parent")
         .data(data)
 				.enter().append("svg");
 
         var svg = chart.append('svg')
             .attr('width', boxSize)
-            .attr('height', circleHeight);
+            .attr('height', circleHeight)
+            .attr("x", xPosDonut);
 
         var g = svg.append('g')
             .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
@@ -728,11 +733,14 @@ var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
             .innerRadius(circleradius)
             .outerRadius(circleradius - border);
 
-        var parent = d3.select('.two');
+        var parent = two.selectAll("parent")
+        .data(data)
+				.enter().append("svg");
 
-        var svg = parent.append('svg')
+        var svg = two.append('svg')
             .attr('width', boxSize)
-            .attr('height', circleHeight);
+            .attr('height', circleHeight)
+            .attr("x", xPosDonut);
 
         var g = svg.append('g')
             .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
@@ -1272,11 +1280,14 @@ var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
             .innerRadius(circleradius)
             .outerRadius(circleradius - border);
 
-        var parent = d3.select('.three');
+        var parent = three.selectAll("parent")
+        .data(data)
+				.enter().append("svg");
 
-        var svg = parent.append('svg')
+        var svg = three.append('svg')
             .attr('width', boxSize)
-            .attr('height', circleHeight);
+            .attr('height', circleHeight)
+            .attr("x", xPosDonut);
 
         var g = svg.append('g')
             .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
