@@ -3,7 +3,7 @@
 
 $(".allCharts").scroll(function() {
     if($(this).scrollTop()  > 0) {
-        $('#section2').addClass('drop-shadow-down');    
+        $('#section2').addClass('drop-shadow-down');
     } else {
         $('#section2').removeClass('drop-shadow-down');
     }
@@ -26,7 +26,7 @@ $( ".swap" ).click(function() {
 });
 
 // LINE CHART
-
+/*
 var chart = new Chartist.Line('.ct-chart', {
               labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25'],
               series: [
@@ -157,4 +157,3 @@ var chart = new Chartist.Line('.ct-chart', {
               }
               window.__exampleAnimateTimeout = setTimeout(chart.update.bind(chart), 12000);
             });*/
-

@@ -1,3 +1,179 @@
+var w = 1260,
+		h = 400,
+		padding = 25;
+
+var dataset = [
+		[1, 10],
+		[2, 50],
+		[3, 120],
+		[4, 80],
+		[5, 90],
+		[6, 50],
+		[7, 70],
+		[8, 90],
+		[9, 150],
+		[10, 50],
+		[11, 40],
+		[12, 70],
+		[13, 20],
+		[14, 40],
+		[15, 30],
+		[16, 10],
+		[17, 50],
+		[18, 120],
+		[19, 80],
+		[20, 90],
+		[21, 50],
+		[22, 70],
+		[23, 90],
+		[24, 150],
+		[25, 50],
+		[26, 40],
+		[27, 70],
+		[28, 20],
+		[29, 40],
+		[30, 30],
+		[31, 10],
+		[32, 50],
+		[33, 120],
+		[34, 80],
+		[35, 90],
+		[36, 50],
+		[37, 70],
+		[38, 90],
+		[39, 150],
+		[40, 50],
+		[41, 40],
+		[42, 70],
+		[43, 20],
+		[44, 40],
+		[45, 30],
+		[46, 50],
+		[47, 70],
+		[48, 90],
+		[49, 150],
+		[50, 50],
+		[51, 40],
+		[52, 70]
+];
+
+/*create svg element*/
+var svg = d3.select('.linechart')
+		.append('svg')
+		.attr('width', w)
+		.attr('height', h)
+		.attr('id', 'chart');
+
+/*x scale*/
+var xScale = d3.scale.linear()
+		.domain([0, d3.max(dataset, function(d) {
+				return d[0];
+		})])
+		.range([padding, w - padding]);
+
+/*y scale*/
+var yScale = d3.scale.linear()
+		.domain([0, d3.max(dataset, function(d) {
+				return d[1];
+		})])
+		.range([h - padding, padding]);
+
+/*x axis*/
+var xAxis = d3.svg.axis()
+		.scale(xScale)
+		.orient('bottom');
+
+/*append x axis*/
+svg.append('g')
+		.attr({
+				'class': 'xaxis',
+				'transform': 'translate(0,' + (h - padding) + ')'
+		})
+		.call(xAxis);
+
+/*y axis*/
+var yAxis = d3.svg.axis()
+		.scale(yScale)
+		.orient('left');
+
+/*append y axis*/
+svg.append('g')
+		.attr({
+				'class': 'yaxis',
+				'transform': 'translate(' + padding + ',0)'
+		})
+		.call(yAxis);
+
+/*define line*/
+var lines = d3.svg.line()
+		.x(function(d) {
+				return xScale(d[0])
+		})
+		.y(function(d) {
+				return yScale(d[1])
+		})
+		.interpolate('monotone');
+
+/*append line*/
+var path = svg.append('path')
+		.attr({
+				'd': lines(dataset),
+				'fill': 'none',
+				'class': 'lineChart'
+		});
+
+/*get length*/
+var length = svg.select('.lineChart').node().getTotalLength();
+
+/*animate line chart*/
+svg.select('.lineChart')
+		.attr("stroke-dasharray", length + " " + length)
+		.attr("stroke-dashoffset", length)
+		.transition()
+		.ease('linear')
+		.delay(function(d) {
+				return dataset.length * 100;
+		})
+		.duration(3000)
+		.attr("stroke-dashoffset", 0);
+
+/*add points*/
+var points = svg.selectAll('circle')
+		.data(dataset)
+		.enter()
+		.append('circle');
+
+/*point attributes*/
+points.attr('cy', function(d) {
+		return yScale(d[1])})
+		.style('opacity', 0)
+		.transition()
+		.duration(1000)
+		.ease('elastic')
+		.delay(function(d, i) {
+				return i * 100;
+		})
+		.attr({
+				'cx': function(d) {
+						return xScale(d[0]);
+				},
+				'cy': function(d) {
+						return yScale(d[1]);
+				},
+				'r': 7,
+				'class': 'datapoint',
+				'id': function(d, i) {
+						return i;
+				}
+		})
+
+		.style('opacity', 1);
+
+
+
+
+
+
 var colors = {
     'green': '#00F19F',
     'other':'#E98A82',
@@ -10,7 +186,7 @@ var other = colors.other;
 
 
 var circleradius = 100;
-var border = 45;
+var border = 25;
 var padding = 30;
 var startPercent = 0;
 var full = 1;
@@ -45,12 +221,12 @@ var xPosDonut = 950;
 ------- WOCHENÜBERSICHT --------
 --------------------------------
 
-Balkendiagramme zum vergleich von 
+Balkendiagramme zum vergleich von
 Schichtdichte auf Mitarbeiteranzahl
 
 */
 
-var width = 1930;
+var width = 1920;
 var height = 400;
 
 
@@ -65,7 +241,7 @@ var kreisZuKreis = 12;
 
 var test = 5;
 
-//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh) 
+//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh)
 //Auf der X-Achse
 var zweiteHälfte = 12;
 
@@ -80,7 +256,7 @@ var radius = 4;
 var cDelay = 750;
 
 // Counter zum Hochzählen der Wochen und der neuen Wochen-CSV Dateien
-var counter = 2; 
+var counter = 2;
 /*var counterTwo = 1;
 var counterThree = 2;*/
 
@@ -101,7 +277,7 @@ $( ".addWeek" ).click(function() {
 
 	 	//console.log("counter: "+counter);
 
-		// An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile 
+		// An dieser Stelle klammer für onClick funktion auskommenteiren und in Zeile
 		// 536 einkommentieren
 		//}
 		//Woche eins
@@ -113,29 +289,29 @@ $( ".addWeek" ).click(function() {
 
 		d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
-			var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;}) 
-                    + 
-                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;}) 
+			var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
                     +
-                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;}) 
-                    + 
+                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
+                    +
+                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
+                    +
                     d3.sum(data, function(d){return d.Geteilt_gedeckt;})
                     );
 
-    	var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; }) 
-                        + 
-                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; }) 
+    	var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
                         +
-                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
+                        +
+                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
+                        +
                         d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-                        + 
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; }) 
                         +
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
+                        +
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-                        + 
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
                         );
 
@@ -341,7 +517,7 @@ $( ".addWeek" ).click(function() {
 						.transition()
 						.duration(750)
 						.attr("r",radius)
-						
+
 
 					}
 					for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
@@ -703,29 +879,29 @@ $( ".addWeek" ).click(function() {
 
 
 
-var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;}) 
-                    + 
-                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;}) 
+var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
                     +
-                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;}) 
-                    + 
+                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
+                    +
+                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
+                    +
                     d3.sum(data, function(d){return d.Geteilt_gedeckt;})
                     );
 
-    var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; }) 
-                        + 
-                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; }) 
+    var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
                         +
-                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
+                        +
+                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
+                        +
                         d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-                        + 
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; }) 
                         +
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
+                        +
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-                        + 
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
                         );
 
@@ -1250,29 +1426,29 @@ var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
 		d3.csv("data/template/csv/week1.csv", function(error, data){
 
 
-var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;}) 
-                    + 
-                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;}) 
+var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
                     +
-                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;}) 
-                    + 
+                    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
+                    +
+                    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
+                    +
                     d3.sum(data, function(d){return d.Geteilt_gedeckt;})
                     );
 
-    var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; }) 
-                        + 
-                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; }) 
+    var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
                         +
-                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
+                        +
+                        d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
+                        +
                         d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-                        + 
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; }) 
                         +
-                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; }) 
-                        + 
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
+                        +
+                        d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-                        + 
+                        +
                         d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
                         );
 
@@ -1317,6 +1493,7 @@ var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
             .attr('fill', red)
             .attr('fill-opacity', 1)
             .attr('d', arc.endAngle(twoPi));
+
 
         var middle = meter.append('path')
             .attr('class', 'middle')
@@ -1369,7 +1546,7 @@ var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
                 }
         })
     ();
-	
+
 
 
 			var passend = three.selectAll("passend")
