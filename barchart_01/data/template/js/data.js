@@ -757,47 +757,7 @@ points.attr('cy', function(d) {
 		})
 		();
 
-		/*
-		var texts = chart.selectAll("texts")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "F" })
-		.style("fill", "white");*/
-
-		/*
-		var texts2 = chart.selectAll("texts2")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "M" })
-		.style("fill", "white");
-
-		var texts3 = chart.selectAll("texts3")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "S" })
-		.style("fill", "white");
-
-		var texts4 = chart.selectAll("texts4")
-		.data(data)
-		.enter().append("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "G" })
-		.style("fill", "white");*/
-
-		//var result = function(d,i){return d.Tagnummer * paddingTag + 5};
-
-		//console.log("result: "+result);
+// Schichtvisualisierung //
 
 		var passend = chart.selectAll("passend")
 		.data(data)
