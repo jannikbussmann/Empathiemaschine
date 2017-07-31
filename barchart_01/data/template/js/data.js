@@ -430,7 +430,7 @@ points.attr('cy', function(d) {
 					.attr('width', boxSize)
 					.attr('height', circleHeight)
 					.attr("x", xPosDonut)
-					.attr("y", 250);
+					.attr("y", marginDonut);
 
 					var g = svg.append('g')
 					.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
@@ -562,7 +562,8 @@ points.attr('cy', function(d) {
 				var svg = chart.append('svg')
 				.attr('width', boxSize)
 				.attr('height', circleHeight)
-				.attr("x", xPosDonut);
+				.attr("x", xPosDonut)
+				.attr("Y", marginDonut);
 
 				var g = svg.append('g')
 				.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
