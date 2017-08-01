@@ -256,7 +256,9 @@ button {
   position: relative;
 }
 
-
+.domain {
+  display: none;
+}
 /*
 --------------------------------
 ----------- CHARTIST -----------

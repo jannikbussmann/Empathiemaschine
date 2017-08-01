@@ -5,13 +5,13 @@ padding = 25;
 var dataset = [
 	[1, 10],
 	[2, 50],
-	[3, 120],
+	[3, 100],
 	[4, 80],
 	[5, 90],
 	[6, 50],
 	[7, 70],
 	[8, 90],
-	[9, 150],
+	[9, 100],
 	[10, 50],
 	[11, 40],
 	[12, 70],
@@ -20,13 +20,13 @@ var dataset = [
 	[15, 30],
 	[16, 10],
 	[17, 50],
-	[18, 120],
+	[18, 100],
 	[19, 80],
 	[20, 90],
 	[21, 50],
 	[22, 70],
 	[23, 90],
-	[24, 150],
+	[24, 100],
 	[25, 50],
 	[26, 40],
 	[27, 70],
@@ -35,13 +35,13 @@ var dataset = [
 	[30, 30],
 	[31, 10],
 	[32, 50],
-	[33, 120],
+	[33, 100],
 	[34, 80],
 	[35, 90],
 	[36, 50],
 	[37, 70],
 	[38, 90],
-	[39, 150],
+	[39, 100],
 	[40, 50],
 	[41, 40],
 	[42, 70],
@@ -51,7 +51,7 @@ var dataset = [
 	[46, 50],
 	[47, 70],
 	[48, 90],
-	[49, 150],
+	[49, 100],
 	[50, 50],
 	[51, 40],
 	[52, 70]
@@ -81,20 +81,25 @@ var yScale = d3.scale.linear()
 /*x axis*/
 var xAxis = d3.svg.axis()
 .scale(xScale)
-.orient('bottom');
+.orient('bottom')
+.ticks(40)
+.tickSize(0,0)
+//.tickPadding(padding);
 
 /*append x axis*/
 svg.append('g')
 .attr({
 	'class': 'xaxis',
-	'transform': 'translate(0,' + (h - padding) + ')'
+	//'transform': 'translate(0,' + (h - padding) + ')'
+	'transform': 'translate(0,' + 0 + ')'
 })
 .call(xAxis);
 
 /*y axis*/
 var yAxis = d3.svg.axis()
 .scale(yScale)
-.orient('left');
+.orient('left')
+.tickSize(0,0);
 
 /*append y axis*/
 svg.append('g')
