@@ -244,6 +244,13 @@ button {
     fill: #A0B1AB;
 }
 
+.lineChart {
+    fill: none;
+    stroke-width: 3px;
+    stroke: #A0B1AB;
+    width:1060px;
+}
+
 .linechart {
   width: 1035px;
   position: relative;
