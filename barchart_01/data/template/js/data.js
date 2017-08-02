@@ -228,9 +228,9 @@ points.attr('cy', function(d) {
 
 
 			var circleradius = 60;
-			var border = 25;
+			var border = 18;
 			var padding = 30;
-			var margin = 20;
+			var margin = 40;
 			var startPercent = 0;
 			var full = 1;
 
@@ -254,7 +254,7 @@ points.attr('cy', function(d) {
 			*/
 
 			var width = 1080;
-			var height = 400;
+			var height = 440;
 
 
 
@@ -443,6 +443,7 @@ points.attr('cy', function(d) {
 
 					$( ".individual" ).click(function() {
 						drawIndividualValue();
+						$("h1").text("Individuelle Übersicht");
 					});
 
 				};
@@ -720,10 +721,19 @@ points.attr('cy', function(d) {
 		.selectAll("text")
 		.data(data).enter();
 
+		//Kalenderwoche
+		text.insert("text")
+		.attr("class", "calendarWeek")
+		.attr("x", 120)
+		.attr("y", 10)
+		.attr("dy", ".35em")
+		.text("KW" + counter )
+		.style("fill", "white");
+
 		//Wochentage
 		text.insert("text")
 		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
-		.attr("y", 20)
+		.attr("y", margin)
 		.attr("dy", ".35em")
 		.text(function(d) { return d.Tag })
 		.style("fill", "white");
@@ -1259,6 +1269,7 @@ function drawIndividualValue (){
 
 	$( ".individual" ).click(function() {
 		drawIndividualValue();
+		$("h1").text("Individuelle Übersicht");
 	});
 
 };
@@ -1398,10 +1409,6 @@ var progressTwo = startPercent;
 drawDonut();
 
 
-
-
-
-
 var passend = two.selectAll("passend")
 .data(data)
 .enter().append("svg")
@@ -1422,11 +1429,20 @@ var text = two.select("svg")
 .selectAll("text")
 .data(data).enter();
 
+//Kalenderwoche
+text.insert("text")
+.attr("class", "calendarWeek")
+.attr("x", 120)
+.attr("y", 10)
+.attr("dy", ".35em")
+.text("KW" + counter )
+.style("fill", "white");
+
 
 //Wochentage
 text.insert("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
-.attr("y", 20)
+.attr("y", margin)
 .attr("dy", ".35em")
 .text(function(d) { return d.Tag })
 .style("fill", "white");
@@ -1958,6 +1974,10 @@ function drawIndividualValue (){
 
 	$( ".individual" ).click(function() {
 		drawIndividualValue();
+		$("h1").text("Individuelle Übersicht");
+		/*$("h1").fadeOut(function() {
+		  $(this).text("Individuelle Übersicht").fadeIn();
+		});*/
 	});
 
 };
@@ -2113,10 +2133,19 @@ var text = three.select("svg")
 .selectAll("text")
 .data(data).enter();
 
+//Kalenderwoche
+text.insert("text")
+.attr("class", "calendarWeek")
+.attr("x", 120)
+.attr("y", 10)
+.attr("dy", ".35em")
+.text("KW" + counter )
+.style("fill", "white");
+
 //Wochentage
 text.insert("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
-.attr("y", 20)
+.attr("y", margin)
 .attr("dy", ".35em")
 .text(function(d) { return d.Tag })
 .style("fill", "white");
