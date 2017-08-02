@@ -45,6 +45,7 @@ body {
     background-color: #1e1e1e;
     color: #ffffff;
     height: 1920px;
+    /*overflow: hidden;*/
 }
 
 h1 {
@@ -153,7 +154,7 @@ button {
 
 
 .allCharts {
-  height: 1200px;
+  height: 1300px;
   /*overflow: scroll;*/
 }
 
@@ -194,7 +195,7 @@ button {
     font-family: 'museo300';
     background-color: #1e1e1e;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px;
     transform: translate(-117px, 0px);
 }
 

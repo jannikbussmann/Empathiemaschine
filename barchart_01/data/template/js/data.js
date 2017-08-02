@@ -82,7 +82,7 @@ var yScale = d3.scale.linear()
 var xAxis = d3.svg.axis()
 .scale(xScale)
 .orient('bottom')
-.ticks(40)
+.ticks(20)
 .tickSize(0,0)
 //.tickPadding(padding);
 
@@ -380,6 +380,22 @@ points.attr('cy', function(d) {
 				var meter = g.append('g')
 				.attr('class', 'progress-meter');
 
+				//Donut Beschriftung
+				meter.append("text")
+				.attr("x", 110)
+				.attr("y", -45)
+				.attr("dy", "0em")
+				.text("Ihr Wunscherfüllungs-")
+				.style("fill", "white");
+
+				//Donut Beschriftung
+				meter.append("text")
+				.attr("x", 110)
+				.attr("y", -45)
+				.attr("dy", "1.4em")
+				.text("grad in %")
+				.style("fill", "white");
+
 				meter.append('path')
 				.attr('class', 'background')
 				.attr('fill', backgroundColor)
@@ -636,11 +652,30 @@ points.attr('cy', function(d) {
 	.attr('height', circleHeight)
 	.attr("x", xPosDonut);
 
+
 	var g = svg.append('g')
 	.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
 
+
 	var meter = g.append('g')
+
 	.attr('class', 'progress-meter');
+
+	//Donut Beschriftung
+	meter.append("text")
+	.attr("x", 110)
+	.attr("y", -45)
+	.attr("dy", "0em")
+	.text("Wunscherfüllungsgrad")
+	.style("fill", "white");
+
+	//Donut Beschriftung
+	meter.append("text")
+	.attr("x", 110)
+	.attr("y", -45)
+	.attr("dy", "1.4em")
+	.text("gesamt in %")
+	.style("fill", "white");
 
 	meter.append('path')
 	.attr('class', 'background')
@@ -1206,6 +1241,22 @@ var g = svg.append('g')
 var meter = g.append('g')
 .attr('class', 'progress-meter');
 
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "0em")
+.text("Ihr Wunscherfüllungs-")
+.style("fill", "white");
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "1.4em")
+.text("grad in %")
+.style("fill", "white");
+
 meter.append('path')
 .attr('class', 'background')
 .attr('fill', backgroundColor)
@@ -1346,6 +1397,22 @@ var g = svg.append('g')
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "0em")
+.text("Wunscherfüllungsgrad")
+.style("fill", "white");
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "1.4em")
+.text("gesamt in %")
+.style("fill", "white");
 
 meter.append('path')
 .attr('class', 'background')
@@ -1911,6 +1978,22 @@ var g = svg.append('g')
 var meter = g.append('g')
 .attr('class', 'progress-meter');
 
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "0em")
+.text("Ihr Wunscherfüllungs-")
+.style("fill", "white");
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "1.4em")
+.text("grad in %")
+.style("fill", "white");
+
 meter.append('path')
 .attr('class', 'background')
 .attr('fill', backgroundColor)
@@ -2046,6 +2129,22 @@ var g = svg.append('g')
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "0em")
+.text("Wunscherfüllungsgrad")
+.style("fill", "white");
+
+//Donut Beschriftung
+meter.append("text")
+.attr("x", 110)
+.attr("y", -45)
+.attr("dy", "1.4em")
+.text("gesamt in %")
+.style("fill", "white");
 
 meter.append('path')
 .attr('class', 'background')
