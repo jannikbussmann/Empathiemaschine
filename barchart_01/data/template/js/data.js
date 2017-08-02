@@ -99,7 +99,8 @@ svg.append('g')
 var yAxis = d3.svg.axis()
 .scale(yScale)
 .orient('left')
-.tickSize(0,0);
+.tickSize(0,0)
+.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
 
 /*append y axis*/
 svg.append('g')
@@ -229,6 +230,7 @@ points.attr('cy', function(d) {
 			var circleradius = 60;
 			var border = 25;
 			var padding = 30;
+			var margin = 20;
 			var startPercent = 0;
 			var full = 1;
 
@@ -718,31 +720,38 @@ points.attr('cy', function(d) {
 		.selectAll("text")
 		.data(data).enter();
 
+		//Wochentage
+		text.insert("text")
+		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
+		.attr("y", 20)
+		.attr("dy", ".35em")
+		.text(function(d) { return d.Tag })
+		.style("fill", "white");
 
 		text.insert("text")
 		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-		.attr("y", topdown)
+		.attr("y", topdown + margin)
 		.attr("dy", ".35em")
 		.text(function(d) { return "F" })
 		.style("fill", "white");
 
 		text.insert("text")
 		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-		.attr("y", topdown)
+		.attr("y", topdown + margin)
 		.attr("dy", ".35em")
 		.text(function(d) { return "M" })
 		.style("fill", "white");
 
 		text.insert("text")
 		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-		.attr("y", topdown)
+		.attr("y", topdown + margin)
 		.attr("dy", ".35em")
 		.text(function(d) { return "S" })
 		.style("fill", "white");
 
 		text.insert("text")
 		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-		.attr("y", topdown)
+		.attr("y", topdown + margin)
 		.attr("dy", ".35em")
 		.text(function(d) { return "G" })
 		.style("fill", "white");
@@ -753,7 +762,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				//.delay(5000)
@@ -769,7 +778,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -784,7 +793,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -798,7 +807,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -813,7 +822,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -827,7 +836,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -842,7 +851,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -856,7 +865,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -876,7 +885,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -890,7 +899,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -905,7 +914,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -919,7 +928,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -934,7 +943,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -948,7 +957,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -963,7 +972,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -977,7 +986,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -995,7 +1004,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1009,7 +1018,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1024,7 +1033,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1038,7 +1047,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1053,7 +1062,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1067,7 +1076,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1082,7 +1091,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1096,7 +1105,7 @@ points.attr('cy', function(d) {
 			for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
 				d3.select(this).insert("circle")
 				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
+				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 				.attr("r",0)
 				.transition()
 				.attr("r",radius+1)
@@ -1414,30 +1423,40 @@ var text = two.select("svg")
 .data(data).enter();
 
 
+//Wochentage
+text.insert("text")
+.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
+.attr("y", 20)
+.attr("dy", ".35em")
+.text(function(d) { return d.Tag })
+.style("fill", "white");
+
+
+
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "F" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "M" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "S" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "G" })
 .style("fill", "white");
@@ -1448,7 +1467,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1462,7 +1481,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1477,7 +1496,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1491,7 +1510,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1506,7 +1525,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1520,7 +1539,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1535,7 +1554,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1549,7 +1568,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1569,7 +1588,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1583,7 +1602,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1598,7 +1617,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1612,7 +1631,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1627,7 +1646,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1641,7 +1660,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1656,7 +1675,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1670,7 +1689,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1688,7 +1707,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1702,7 +1721,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1717,7 +1736,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1731,7 +1750,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1746,7 +1765,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1760,7 +1779,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1775,7 +1794,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -1789,7 +1808,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2094,31 +2113,38 @@ var text = three.select("svg")
 .selectAll("text")
 .data(data).enter();
 
+//Wochentage
+text.insert("text")
+.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5 + 50})
+.attr("y", 20)
+.attr("dy", ".35em")
+.text(function(d) { return d.Tag })
+.style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "F" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "M" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "S" })
 .style("fill", "white");
 
 text.append("text")
 .attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-.attr("y", topdown)
+.attr("y", topdown + margin)
 .attr("dy", ".35em")
 .text(function(d) { return "G" })
 .style("fill", "white");
@@ -2129,7 +2155,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2143,7 +2169,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2158,7 +2184,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2172,7 +2198,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2187,7 +2213,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2201,7 +2227,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2216,7 +2242,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2230,7 +2256,7 @@ passend.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_gedeckt/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis})
+		.attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2250,7 +2276,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2264,7 +2290,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2279,7 +2305,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2293,7 +2319,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2308,7 +2334,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2322,7 +2348,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2337,7 +2363,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2351,7 +2377,7 @@ mitarbeiterüberschuss.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeiterüberschuss/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2369,7 +2395,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2383,7 +2409,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Frühschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2398,7 +2424,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2412,7 +2438,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Mittelschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2427,7 +2453,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+ paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2441,7 +2467,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Spätschicht_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Spätschicht_gedeckt/2*kreisZuKreis)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2456,7 +2482,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
@@ -2470,7 +2496,7 @@ mitarbeitermangel.each(function(a,i) {
 	for (var x = 1; x <= a.Geteilt_Mitarbeitermangel/2; x++) {
 		d3.select(this).append("circle")
 		.attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test))})
+		.attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Geteilt_gedeckt/2*kreisZuKreis-test)) + margin})
 		.attr("r",0)
 		.transition()
 		.attr("r",radius+1)
