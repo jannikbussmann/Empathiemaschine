@@ -482,6 +482,7 @@ pointsIndividual.attr('cy', function(d) {
 
 			var xPosDonut = 900;
 			var marginDonut = 180;
+			var marginDonutBeschriftung = 45;
 
 			/*
 			--------------------------------
@@ -591,6 +592,8 @@ pointsIndividual.attr('cy', function(d) {
 				//console.log(passend+"+"+unpassend+"+"+gesamt);
 
 				//console.log(prozent);
+				//
+
 
 				var endPercent = (prozent/100);
 				//console.log(endPercent);
@@ -615,7 +618,7 @@ pointsIndividual.attr('cy', function(d) {
 				.attr("y", marginDonut);
 
 				var g = svg.append('g')
-				.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+				.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 				var meter = g.append('g')
 				.attr('class', 'progress-meter');
@@ -623,7 +626,7 @@ pointsIndividual.attr('cy', function(d) {
 				//Donut Beschriftung
 				meter.append("text")
 				.attr("x", 110)
-				.attr("y", -45)
+				.attr("y", -45 - marginDonutBeschriftung)
 				.attr("dy", "0em")
 				.text("Ihr Wunscherfüllungs-")
 				.style("fill", "white");
@@ -631,7 +634,7 @@ pointsIndividual.attr('cy', function(d) {
 				//Donut Beschriftung
 				meter.append("text")
 				.attr("x", 110)
-				.attr("y", -45)
+				.attr("y", -45 - marginDonutBeschriftung)
 				.attr("dy", "1.4em")
 				.text("grad in %")
 				.style("fill", "white");
@@ -765,7 +768,7 @@ pointsIndividual.attr('cy', function(d) {
 			.attr("Y", marginDonut);
 
 			var g = svg.append('g')
-			.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+			.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2) + marginDonutBeschriftung + ')'); //Dieser Scheint einer zu viel zu sein
 
 			var meter = g.append('g')
 			.attr('class', 'progress-meter');
@@ -894,7 +897,7 @@ pointsIndividual.attr('cy', function(d) {
 
 
 	var g = svg.append('g')
-	.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+	.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 
 	var meter = g.append('g')
@@ -904,7 +907,7 @@ pointsIndividual.attr('cy', function(d) {
 	//Donut Beschriftung
 	meter.append("text")
 	.attr("x", 110)
-	.attr("y", -45)
+	.attr("y", -45 - marginDonutBeschriftung)
 	.attr("dy", "0em")
 	.text("Wunscherfüllungsgrad")
 	.style("fill", "white");
@@ -912,7 +915,7 @@ pointsIndividual.attr('cy', function(d) {
 	//Donut Beschriftung
 	meter.append("text")
 	.attr("x", 110)
-	.attr("y", -45)
+	.attr("y", -45 - marginDonutBeschriftung)
 	.attr("dy", "1.4em")
 	.text("gesamt in %")
 	.style("fill", "white");
@@ -1476,7 +1479,7 @@ var svg = two.append('svg')
 .attr("y", marginDonut);
 
 var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
@@ -1484,7 +1487,7 @@ var meter = g.append('g')
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "0em")
 .text("Ihr Wunscherfüllungs-")
 .style("fill", "white");
@@ -1492,7 +1495,7 @@ meter.append("text")
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
 .text("grad in %")
 .style("fill", "white");
@@ -1633,7 +1636,7 @@ var svg = two.append('svg')
 .attr("x", xPosDonut);
 
 var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
@@ -1641,7 +1644,7 @@ var meter = g.append('g')
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "0em")
 .text("Wunscherfüllungsgrad")
 .style("fill", "white");
@@ -1649,7 +1652,7 @@ meter.append("text")
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
 .text("gesamt in %")
 .style("fill", "white");
@@ -2213,7 +2216,7 @@ var svg = three.append('svg')
 .attr("y", marginDonut);
 
 var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
@@ -2221,7 +2224,7 @@ var meter = g.append('g')
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "0em")
 .text("Ihr Wunscherfüllungs-")
 .style("fill", "white");
@@ -2229,7 +2232,7 @@ meter.append("text")
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
 .text("grad in %")
 .style("fill", "white");
@@ -2365,7 +2368,7 @@ var svg = three.append('svg')
 .attr("x", xPosDonut);
 
 var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
 var meter = g.append('g')
 .attr('class', 'progress-meter');
@@ -2373,7 +2376,7 @@ var meter = g.append('g')
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45- marginDonutBeschriftung)
 .attr("dy", "0em")
 .text("Wunscherfüllungsgrad")
 .style("fill", "white");
@@ -2381,7 +2384,7 @@ meter.append("text")
 //Donut Beschriftung
 meter.append("text")
 .attr("x", 110)
-.attr("y", -45)
+.attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
 .text("gesamt in %")
 .style("fill", "white");
