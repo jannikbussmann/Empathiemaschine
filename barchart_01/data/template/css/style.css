@@ -260,10 +260,22 @@ button {
     fill: #A0B1AB;
 }
 
+.datapointIndividual {
+    cursor: pointer;
+    fill: #00F19F;
+}
+
 .lineChart {
     fill: none;
     stroke-width: 3px;
     stroke: #A0B1AB;
+    width:1060px;
+}
+
+.lineChartIndividual {
+    fill: none;
+    stroke-width: 3px;
+    stroke: #00F19F;
     width:1060px;
 }
 

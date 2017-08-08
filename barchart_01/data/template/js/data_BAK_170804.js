@@ -112,333 +112,307 @@ var datasetIndividual = [
 	[52, (Math.floor(Math.random() * 50) + 50)]
 ];
 
-/*create svg element*/
-var svg = d3.select('.linechart')
-.append('svg')
-.attr('width', w)
-.attr('height', h)
-.attr('id', 'chart');
+var myData = "date	Allgemein	Individuell\n\
+1	63.4	62.7\n\
+2	58.0	59.9\n\
+3	53.3	59.1\n\
+4	55.7	58.8\n\
+5	64.2	58.7\n\
+6	58.8	57.0\n\
+7	57.9	56.7\n\
+8	61.8	56.8\n\
+9	69.3	56.7\n\
+10	71.2	60.1\n\
+11	68.7	61.1\n\
+12	61.8	61.5\n\
+13	63.0	64.3\n\
+14	66.9	67.1\n\
+15	61.7	100.0\n\
+16	61.8	61.6\n\
+17	62.8	61.1\n\
+18	60.8	59.2\n\
+19	62.1	58.9\n\
+20	65.1	57.2\n\
+21	55.6	56.4\n\
+22	54.4	60.7\n";
 
-/*x scale*/
-var xScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-	return d[0];
-})])
-.range([padding, w - padding]);
+/*20111001	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111002	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111003	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111004	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111005	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111006	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111007	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111008	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111009	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111010	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111011	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111012	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111013	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111014	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111015	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111016	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111017	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111018	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111019	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111020	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111021	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n\
+20111022	(Math.floor(Math.random() * 50) + 50)	(Math.floor(Math.random() * 50) + 50)\n";*/
 
-/*y scale*/
-var yScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-	return d[1];
-})])
-.range([h - padding, padding]);
+var margin = {
+        top: 20,
+        right: 80,
+        bottom: 30,
+        left: 50
+      },
+      width = 1060 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
-/*x axis*/
-var xAxis = d3.svg.axis()
-.scale(xScale)
-.orient('bottom')
-.ticks(20)
-.tickSize(0,0)
-//.tickPadding(padding);
+    //var parseDate = d3.time.format("%Y%m%d").parse;
 
-/*append x axis*/
-svg.append('g')
-.attr({
-	'class': 'xaxis',
-	//'transform': 'translate(0,' + (h - padding) + ')'
-	'transform': 'translate(0,' + 0 + ')'
-})
-.call(xAxis);
+    var x = d3.scale.linear()
+      .range([0, width]);
 
-/*y axis*/
-var yAxis = d3.svg.axis()
-.scale(yScale)
-.orient('left')
-.tickSize(0,0)
-.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+    var y = d3.scale.linear()
+      .range([height, 0]);
 
-/*append y axis*/
-svg.append('g')
-.attr({
-	'class': 'yaxis',
-	'transform': 'translate(' + padding + ',0)'
-})
-.call(yAxis);
+    var color = d3.scale.category10();
 
+		var color = d3.scale.ordinal()
+	  .domain(["Algemein", "Individuell"])
+	  .range(["#A0B1AB", "#00F19F"]);
 
-/*define line*/
-var lines = d3.svg.line()
-.x(function(d) {
-	return xScale(d[0])
-})
-.y(function(d) {
-	return yScale(d[1])
-})
-.interpolate('monotone');
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("bottom");
 
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left");
 
-/*append line*/
-var path = svg.append('path')
-.attr({
-	'd': lines(dataset),
-	'fill': 'none',
-	'class': 'lineChart'
-});
+    var line = d3.svg.line()
+      .interpolate("monotone")
+      .x(function(d) {
+        return x(d.date);
+      })
+      .y(function(d) {
+        return y(d.temperature);
+      });
 
-/*get length*/
-var length = svg.select('.lineChart').node().getTotalLength();
+    var svg = d3.select(".linechart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-/*animate line chart*/
-svg.select('.lineChart')
-.attr("stroke-dasharray", length + " " + length)
-.attr("stroke-dashoffset", length)
-.transition()
-.ease('linear')
-.delay(function(d) {
-	return dataset.length * 100;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
+    var data = d3.tsv.parse(myData);
 
-/*add points*/
-var points = svg.selectAll('circle')
-.data(dataset)
-.enter()
-.append('circle');
+    color.domain(d3.keys(data[0]).filter(function(key) {
+      return key !== "date";
+    }));
 
-/*point attributes*/
-points.attr('cy', function(d) {
-	return yScale(d[1])})
-	.style('opacity', 0)
-	.transition()
-	.duration(1000)
-	.ease('elastic')
-	.delay(function(d, i) {
-		return i * 100;
-	})
-	.attr({
-		'cx': function(d) {
-			return xScale(d[0]);
-		},
-		'cy': function(d) {
-			return yScale(d[1]);
-		},
-		'r': 5,
-		'class': 'datapoint',
-		'id': function(d, i) {
-			return i;
-		}
-	})
+    data.forEach(function(d) {
+			//return d.date = parseDate(d.date);
+      return d.date;
+    });
 
+    var cities = color.domain().map(function(name) {
+      return {
+        name: name,
+        values: data.map(function(d) {
+          return {
+            date: d.date,
+            temperature: +d[name]
+          };
+        })
+      };
+    });
 
-	.style('opacity', 1);
+    x.domain(d3.extent(data, function(d) {
+      return d.date;
+    }));
 
-//	LINES INDIVIDUAL
+    y.domain([
+      d3.min(cities, function(c) {
+        return d3.min(c.values, function(v) {
+          return v.temperature;
+        });
+      }),
+      d3.max(cities, function(c) {
+        return d3.max(c.values, function(v) {
+          return v.temperature;
+        });
+      })
+    ]);
 
-//function drawIndividualLines (){
+    var legend = svg.selectAll('g')
+      .data(cities)
+      .enter()
+      .append('g')
+      .attr('class', 'legend');
 
-/*x scale*/
-var xScaleIndividual = d3.scale.linear()
-.domain([0, d3.max(datasetIndividual, function(d) {
-	return d[0];
-})])
-.range([padding, w - padding]);
+    legend.append('rect')
+      .attr('x', width - 20)
+      .attr('y', function(d, i) {
+        return i * 20;
+      })
+      .attr('width', 10)
+      .attr('height', 10)
+      .style('fill', function(d) {
+        return color(d.name);
+      });
 
-/*y scale*/
-var yScaleIndividual = d3.scale.linear()
-.domain([0, d3.max(datasetIndividual, function(d) {
-	return d[1];
-})])
-.range([h - padding, padding]);
+    legend.append('text')
+      .attr('x', width - 8)
+      .attr('y', function(d, i) {
+        return (i * 20) + 9;
+      })
+      .text(function(d) {
+        return d.name;
+      });
 
-/*define line*/
-var linesIndividual = d3.svg.line()
-.x(function(d) {
-	return xScaleIndividual(d[0])
-})
-.y(function(d) {
-	return yScaleIndividual(d[1])
-})
-.interpolate('monotone');
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-/*append line*/
-var pathIndividual = svg.append('path')
-.attr({
-	'd': linesIndividual(datasetIndividual),
-	'fill': 'none',
-	'class': 'lineChartIndividual'
-});
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Temperature (ºF)");
 
-/*get length*/
-var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
+    var city = svg.selectAll(".city")
+      .data(cities)
+      .enter().append("g")
+      .attr("class", "city");
 
-/*animate line chart*/
-svg.select('.lineChartIndividual')
-.attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
-.attr("stroke-dashoffset", lengthIndividual)
-.transition()
-.ease('linear')
-.delay(function(d) {
-	return datasetIndividual.length * 200;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
+    city.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) {
+        return line(d.values);
+      })
+      .style("stroke", function(d) {
+        return color(d.name);
+      });
 
-/*add points*/
-var pointsIndividual = svg.selectAll('circleIndividual')
-.data(datasetIndividual)
-.enter()
-.append('circle');
+    city.append("text")
+      .datum(function(d) {
+        return {
+          name: d.name,
+          value: d.values[d.values.length - 1]
+        };
+      })
+      .attr("transform", function(d) {
+        return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")";
+      })
+      .attr("x", 3)
+      .attr("dy", ".35em")
+      .text(function(d) {
+        return d.name;
+      });
 
-/*point attributes*/
-pointsIndividual.attr('cy', function(d) {
-	return yScale(d[1])})
-	.style('opacity', 0)
-	.transition()
-	.duration(1000)
-	.ease('elastic')
-	.delay(function(d, i) {
-		return i * 200;
-	})
-	.attr({
-		'cx': function(d) {
-			return xScale(d[0]);
-		},
-		'cy': function(d) {
-			return yScale(d[1]);
-		},
-		'r': 5,
-		'class': 'datapointIndividual',
-		'id': function(d, i) {
-			return i;
-		}
-	})
-
-
-	.style('opacity', 1);
-//};
-
-
-	//drawIndividualLines();
-
-	var mouseG = svg.append("g")
-		.attr("class", "mouse-over-effects");
-
-	mouseG.append("path") // this is the white vertical line to follow mouse
-		.attr("class", "mouse-line")
-		.style("stroke", "white")
-		.style("stroke-width", "1px")
-		.style("opacity", "0");
-
-	var lines = document.getElementsByClassName('lineChart');
-
-	var mousePerLine = mouseG.selectAll('.mouse-per-line')
-		.data(dataset)
-		.enter()
-		.append("g")
-		.attr("class", "mouse-per-line");
-
-	mousePerLine.append("circle")
-		.attr("r", 7)
-		.style("stroke", "#fff")
-		.style("fill", "none")
-		.style("stroke-width", "1px")
-		.style("opacity", "0");
-
-	mousePerLine.append("text")
-		.attr("transform", "translate(10,3)");
-
-	mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-		.attr('width', w) // can't catch mouse events on a g element
-		.attr('height', h)
-		.attr('fill', 'none')
-		.attr('pointer-events', 'all')
-		.on('mouseout', function() { // on mouse out hide line, circles and text
-			d3.select(".mouse-line")
-				.style("opacity", "0");
-			d3.selectAll(".mouse-per-line circle")
-				.style("opacity", "0");
-			d3.selectAll(".mouse-per-line text")
-				.style("opacity", "0");
-		})
-		.on('mouseover', function() { // on mouse in show line, circles and text
-			d3.select(".mouse-line")
-				.style("opacity", "1");
-			d3.selectAll(".mouse-per-line circle")
-				.style("opacity", "1");
-			d3.selectAll(".mouse-per-line text")
-				.style("opacity", "1");
-		})
-		.on('mousemove', function() { // mouse moving over canvas
-			var mouse = d3.mouse(this);
-			d3.select(".mouse-line")
-				.attr("d", function() {
-					var d = "M" + mouse[0] + "," + height;
-					d += " " + mouse[0] + "," + 0;
-					return d;
-				});
-
-			d3.selectAll(".mouse-per-line")
-				.attr("transform", function(d, i) {
-					//console.log(w/mouse[0])
-					//var xDate = xScale.invert(mouse[0]),
-							//bisect = d3.bisector(function(d) { return d.date; }).right;
-					//		idx = bisect(d.values, xDate);
-
-					var beginning = 0,
-							end = length,
-							endIndividual = lengthIndividual,
-							target = null
-							console.log(end);
-
-					while (true){
-						target = Math.floor((beginning + end) / 2);
-						pos = lines[i].getPointAtLength(target);console.log(pos);
-						//pos = svg.select('.lineChart').node().getPointAtLength(target);
-						if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-								break;
-						}
-						if (pos.x > mouse[0])      end = target;
-						else if (pos.x < mouse[0]) beginning = target;
-						else break; //position found
-					}
-
-					d3.select(this).select('text')
-						.text(yScale.invert(pos.y).toFixed(2))
-						.attr("fill", "#fff");
-
-					return "translate(" + mouse[0] + "," + pos.y +")";
-				});
-		});
+			city.selectAll("circle")
+    .data(function(d){return d.values})
+    .enter()
+    .append("circle")
+    .attr("r", 3)
+    .attr("cx", function(d) { return x(d.date); })
+    .attr("cy", function(d) { return y(d.temperature); })
+    .style("fill", function(d,i,j) { return color(cities[j].name); });
 
 
-/* Vertical Line following mouse coordinates
+    var mouseG = svg.append("g")
+      .attr("class", "mouse-over-effects");
 
-	var vertical = d3.select(".linechart")
-	.append("div")
-	.attr("class", "remove")
-	.style("position", "absolute")
-	.style("z-index", "19")
-	.style("width", "1px")
-	.style("height", "380px")
-	.style("top", "10px")
-	.style("bottom", "30px")
-	.style("right", "0px")
-	.style("background", "#fff");
+    mouseG.append("path") // this is the black vertical line to follow mouse
+      .attr("class", "mouse-line")
+      .style("stroke", "black")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
 
-	d3.select(".linechart")
-	.on("mousemove", function(){
-		mousex = d3.mouse(this);
-		mousex = mousex[0] + 5;
-		vertical.style("left", mousex + "px" )})
-		.on("mouseover", function(){
-			mousex = d3.mouse(this);
-			mousex = mousex[0] + 5;
-			vertical.style("left", mousex + "px")});
-*/
+    var lines = document.getElementsByClassName('line');
 
+    var mousePerLine = mouseG.selectAll('.mouse-per-line')
+      .data(cities)
+      .enter()
+      .append("g")
+      .attr("class", "mouse-per-line");
 
+    mousePerLine.append("circle")
+      .attr("r", 7)
+      .style("stroke", function(d) {
+        return color(d.name);
+      })
+      .style("fill", "none")
+      .style("stroke-width", "1px")
+      .style("opacity", "0");
 
+    mousePerLine.append("text")
+      .attr("transform", "translate(10,3)");
+
+    mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+      .attr('width', width) // can't catch mouse events on a g element
+      .attr('height', height)
+      .attr('fill', 'none')
+      .attr('pointer-events', 'all')
+      .on('mouseout', function() { // on mouse out hide line, circles and text
+        d3.select(".mouse-line")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "0");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "0");
+      })
+      .on('mouseover', function() { // on mouse in show line, circles and text
+        d3.select(".mouse-line")
+          .style("opacity", "1");
+        d3.selectAll(".mouse-per-line circle")
+          .style("opacity", "1");
+        d3.selectAll(".mouse-per-line text")
+          .style("opacity", "1");
+      })
+      .on('mousemove', function() { // mouse moving over canvas
+        var mouse = d3.mouse(this);
+        d3.select(".mouse-line")
+          .attr("d", function() {
+            var d = "M" + mouse[0] + "," + height;
+            d += " " + mouse[0] + "," + 0;
+            return d;
+          });
+
+        d3.selectAll(".mouse-per-line")
+          .attr("transform", function(d, i) {
+            console.log(width/mouse[0])
+            var xDate = x.invert(mouse[0]),
+                bisect = d3.bisector(function(d) { return d.date; }).right;
+                idx = bisect(d.values, xDate);
+
+            var beginning = 0,
+                end = lines[i].getTotalLength(),
+                target = null;
+
+            while (true){
+              target = Math.floor((beginning + end) / 2);
+              pos = lines[i].getPointAtLength(target);
+              if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+                  break;
+              }
+              if (pos.x > mouse[0])      end = target;
+              else if (pos.x < mouse[0]) beginning = target;
+              else break; //position found
+            }
+
+            d3.select(this).select('text')
+              .text(y.invert(pos.y).toFixed(2));
+
+            return "translate(" + mouse[0] + "," + pos.y +")";
+          });
+      });
 
 
 			/*
