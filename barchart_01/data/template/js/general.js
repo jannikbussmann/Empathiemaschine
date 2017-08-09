@@ -9,6 +9,8 @@ $(".allCharts").scroll(function() {
     }
 });
 
+/* Swap classes */
+
 var swapped = false;
 
 $( ".swap" ).click(function() {

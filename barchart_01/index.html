@@ -4,24 +4,6 @@
 	<link href="data/template/css/bootstrap.min.css" rel="stylesheet">
 	<link href="data/template/css/style.css" rel="stylesheet">
 	<script src="https://d3js.org/d3.v3.js"></script>
-	<style>
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #FFF;
-      shape-rendering: crispEdges;
-    }
-
-    .x.axis path {
-      display: none;
-    }
-
-    .line {
-      fill: none;
-      stroke: #A0B1AB;
-      stroke-width: 1.5px;
-    }
-  </style>
 </head>
 
 <body>
@@ -40,7 +22,10 @@
 	<div class="row">
 		<div class="container-fluid ">
 			<div class="col-md-12 section">
-				<h2>Entwicklung des Wunscherfüllungsgrads</h2>
+				<h2 class="col-md-5">Entwicklung des Wunscherfüllungsgrads</h2>
+				<div class="col-md-5">
+					  <div class="legend-1"></div>
+				</div>
 			</div>
 			<div class="col-md-12">
 				<div class="linechart"></div>
@@ -53,7 +38,10 @@
 	<div class="row">
 		<div class="container-fluid">
 			<div class="col-md-12 section" id="section2">
-				<h2>Verhältnis: Wunschprofil zu Diensten</h2>
+				<h2 class="col-md-5">Verhältnis: Wunschprofil zu Diensten</h2>
+				<div class="col-md-5">
+					  <div class="legend-2"></div>
+				</div>
 				<div class="buttons">
 					<button class="addWeek" type="button">Add Week</button>
 					<button class="swap" type="button">Swap Shifts</button>

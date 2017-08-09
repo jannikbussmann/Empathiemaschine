@@ -1,415 +1,407 @@
 var w = 1060,
-h = 400,
-padding = 25;
+  h = 400,
+  padding = 25;
 
 var dataset = [
-	[1, (Math.floor(Math.random() * 50) + 50)],
-	[2, (Math.floor(Math.random() * 50) + 50)],
-	[3, (Math.floor(Math.random() * 50) + 50)],
-	[4, (Math.floor(Math.random() * 50) + 50)],
-	[5, (Math.floor(Math.random() * 50) + 50)],
-	[6, (Math.floor(Math.random() * 50) + 50)],
-	[7, (Math.floor(Math.random() * 50) + 50)],
-	[8, (Math.floor(Math.random() * 50) + 50)],
-	[9, (Math.floor(Math.random() * 50) + 50)],
-	[10, (Math.floor(Math.random() * 50) + 50)],
-	[11, (Math.floor(Math.random() * 50) + 50)],
-	[12, (Math.floor(Math.random() * 50) + 50)],
-	[13, (Math.floor(Math.random() * 50) + 50)],
-	[14, (Math.floor(Math.random() * 50) + 50)],
-	[15, (Math.floor(Math.random() * 50) + 50)],
-	[16, (Math.floor(Math.random() * 50) + 50)],
-	[17, (Math.floor(Math.random() * 50) + 50)],
-	[18, (Math.floor(Math.random() * 50) + 50)],
-	[19, (Math.floor(Math.random() * 50) + 50)],
-	[20, (Math.floor(Math.random() * 50) + 50)],
-	[21, (Math.floor(Math.random() * 50) + 50)],
-	[22, (Math.floor(Math.random() * 50) + 50)],
-	[23, (Math.floor(Math.random() * 50) + 50)],
-	[24, (Math.floor(Math.random() * 50) + 50)],
-	[25, (Math.floor(Math.random() * 50) + 50)],
-	[26, (Math.floor(Math.random() * 50) + 50)],
-	[27, (Math.floor(Math.random() * 50) + 50)],
-	[28, (Math.floor(Math.random() * 50) + 50)],
-	[29, (Math.floor(Math.random() * 50) + 50)],
-	[30, (Math.floor(Math.random() * 50) + 50)],
-	[31, (Math.floor(Math.random() * 50) + 50)],
-	[32, (Math.floor(Math.random() * 50) + 50)],
-	[33, (Math.floor(Math.random() * 50) + 50)],
-	[34, (Math.floor(Math.random() * 50) + 50)],
-	[35, (Math.floor(Math.random() * 50) + 50)],
-	[36, (Math.floor(Math.random() * 50) + 50)],
-	[37, (Math.floor(Math.random() * 50) + 50)],
-	[38, (Math.floor(Math.random() * 50) + 50)],
-	[39, (Math.floor(Math.random() * 50) + 50)],
-	[40, (Math.floor(Math.random() * 50) + 50)],
-	[41, (Math.floor(Math.random() * 50) + 50)],
-	[42, (Math.floor(Math.random() * 50) + 50)],
-	[43, (Math.floor(Math.random() * 50) + 50)],
-	[44, (Math.floor(Math.random() * 50) + 50)],
-	[45, (Math.floor(Math.random() * 50) + 50)],
-	[46, (Math.floor(Math.random() * 50) + 50)],
-	[47, (Math.floor(Math.random() * 50) + 50)],
-	[48, (Math.floor(Math.random() * 50) + 50)],
-	[49, (Math.floor(Math.random() * 50) + 50)],
-	[50, (Math.floor(Math.random() * 50) + 50)],
-	[51, (Math.floor(Math.random() * 50) + 50)],
-	[52, (Math.floor(Math.random() * 50) + 50)]
+  [1, (Math.round(Math.random() * 50) + 50)],
+  [2, (Math.round(Math.random() * 50) + 50)],
+  [3, (Math.round(Math.random() * 50) + 50)],
+  [4, (Math.round(Math.random() * 50) + 50)],
+  [5, (Math.round(Math.random() * 50) + 50)],
+  [6, (Math.round(Math.random() * 50) + 50)],
+  [7, (Math.round(Math.random() * 50) + 50)],
+  [8, (Math.round(Math.random() * 50) + 50)],
+  [9, (Math.round(Math.random() * 50) + 50)],
+  [10, (Math.round(Math.random() * 50) + 50)],
+  [11, (Math.round(Math.random() * 50) + 50)],
+  [12, (Math.round(Math.random() * 50) + 50)],
+  [13, (Math.round(Math.random() * 50) + 50)],
+  [14, (Math.round(Math.random() * 50) + 50)],
+  [15, (Math.round(Math.random() * 50) + 50)],
+  [16, (Math.round(Math.random() * 50) + 50)],
+  [17, (Math.round(Math.random() * 50) + 50)],
+  [18, (Math.round(Math.random() * 50) + 50)],
+  [19, (Math.round(Math.random() * 50) + 50)],
+  [20, (Math.round(Math.random() * 50) + 50)],
+  [21, (Math.round(Math.random() * 50) + 50)],
+  [22, (Math.round(Math.random() * 50) + 50)],
+  [23, (Math.round(Math.random() * 50) + 50)],
+  [24, (Math.round(Math.random() * 50) + 50)],
+  [25, (Math.round(Math.random() * 50) + 50)],
+  [26, (Math.round(Math.random() * 50) + 50)],
+  [27, (Math.round(Math.random() * 50) + 50)],
+  [28, (Math.round(Math.random() * 50) + 50)],
+  [29, (Math.round(Math.random() * 50) + 50)],
+  [30, (Math.round(Math.random() * 50) + 50)],
+  [31, (Math.round(Math.random() * 50) + 50)],
+  [32, (Math.round(Math.random() * 50) + 50)],
+  [33, (Math.round(Math.random() * 50) + 50)],
+  [34, (Math.round(Math.random() * 50) + 50)],
+  [35, (Math.round(Math.random() * 50) + 50)],
+  [36, (Math.round(Math.random() * 50) + 50)],
+  [37, (Math.round(Math.random() * 50) + 50)],
+  [38, (Math.round(Math.random() * 50) + 50)],
+  [39, (Math.round(Math.random() * 50) + 50)],
+  [40, (Math.round(Math.random() * 50) + 50)],
+  [41, (Math.round(Math.random() * 50) + 50)],
+  [42, (Math.round(Math.random() * 50) + 50)],
+  [43, (Math.round(Math.random() * 50) + 50)],
+  [44, (Math.round(Math.random() * 50) + 50)],
+  [45, (Math.round(Math.random() * 50) + 50)],
+  [46, (Math.round(Math.random() * 50) + 50)],
+  [47, (Math.round(Math.random() * 50) + 50)],
+  [48, (Math.round(Math.random() * 50) + 50)],
+  [49, (Math.round(Math.random() * 50) + 50)],
+  [50, (Math.round(Math.random() * 50) + 50)],
+  [51, (Math.round(Math.random() * 50) + 50)],
+  [52, (Math.round(Math.random() * 50) + 50)]
 ];
 
 var datasetIndividual = [
-	[1, (Math.floor(Math.random() * 50) + 50)],
-	[2, (Math.floor(Math.random() * 50) + 50)],
-	[3, (Math.floor(Math.random() * 50) + 50)],
-	[4, (Math.floor(Math.random() * 50) + 50)],
-	[5, (Math.floor(Math.random() * 50) + 50)],
-	[6, (Math.floor(Math.random() * 50) + 50)],
-	[7, (Math.floor(Math.random() * 50) + 50)],
-	[8, (Math.floor(Math.random() * 50) + 50)],
-	[9, (Math.floor(Math.random() * 50) + 50)],
-	[10, (Math.floor(Math.random() * 50) + 50)],
-	[11, (Math.floor(Math.random() * 50) + 50)],
-	[12, (Math.floor(Math.random() * 50) + 50)],
-	[13, (Math.floor(Math.random() * 50) + 50)],
-	[14, (Math.floor(Math.random() * 50) + 50)],
-	[15, (Math.floor(Math.random() * 50) + 50)],
-	[16, (Math.floor(Math.random() * 50) + 50)],
-	[17, (Math.floor(Math.random() * 50) + 50)],
-	[18, (Math.floor(Math.random() * 50) + 50)],
-	[19, (Math.floor(Math.random() * 50) + 50)],
-	[20, (Math.floor(Math.random() * 50) + 50)],
-	[21, (Math.floor(Math.random() * 50) + 50)],
-	[22, (Math.floor(Math.random() * 50) + 50)],
-	[23, (Math.floor(Math.random() * 50) + 50)],
-	[24, (Math.floor(Math.random() * 50) + 50)],
-	[25, (Math.floor(Math.random() * 50) + 50)],
-	[26, (Math.floor(Math.random() * 50) + 50)],
-	[27, (Math.floor(Math.random() * 50) + 50)],
-	[28, (Math.floor(Math.random() * 50) + 50)],
-	[29, (Math.floor(Math.random() * 50) + 50)],
-	[30, (Math.floor(Math.random() * 50) + 50)],
-	[31, (Math.floor(Math.random() * 50) + 50)],
-	[32, (Math.floor(Math.random() * 50) + 50)],
-	[33, (Math.floor(Math.random() * 50) + 50)],
-	[34, (Math.floor(Math.random() * 50) + 50)],
-	[35, (Math.floor(Math.random() * 50) + 50)],
-	[36, (Math.floor(Math.random() * 50) + 50)],
-	[37, (Math.floor(Math.random() * 50) + 50)],
-	[38, (Math.floor(Math.random() * 50) + 50)],
-	[39, (Math.floor(Math.random() * 50) + 50)],
-	[40, (Math.floor(Math.random() * 50) + 50)],
-	[41, (Math.floor(Math.random() * 50) + 50)],
-	[42, (Math.floor(Math.random() * 50) + 50)],
-	[43, (Math.floor(Math.random() * 50) + 50)],
-	[44, (Math.floor(Math.random() * 50) + 50)],
-	[45, (Math.floor(Math.random() * 50) + 50)],
-	[46, (Math.floor(Math.random() * 50) + 50)],
-	[47, (Math.floor(Math.random() * 50) + 50)],
-	[48, (Math.floor(Math.random() * 50) + 50)],
-	[49, (Math.floor(Math.random() * 50) + 50)],
-	[50, (Math.floor(Math.random() * 50) + 50)],
-	[51, (Math.floor(Math.random() * 50) + 50)],
-	[52, (Math.floor(Math.random() * 50) + 50)]
+  [1, (Math.round(Math.random() * 50) + 50)],
+  [2, (Math.round(Math.random() * 50) + 50)],
+  [3, (Math.round(Math.random() * 50) + 50)],
+  [4, (Math.round(Math.random() * 50) + 50)],
+  [5, (Math.round(Math.random() * 50) + 50)],
+  [6, (Math.round(Math.random() * 50) + 50)],
+  [7, (Math.round(Math.random() * 50) + 50)],
+  [8, (Math.round(Math.random() * 50) + 50)],
+  [9, (Math.round(Math.random() * 50) + 50)],
+  [10, (Math.round(Math.random() * 50) + 50)],
+  [11, (Math.round(Math.random() * 50) + 50)],
+  [12, (Math.round(Math.random() * 50) + 50)],
+  [13, (Math.round(Math.random() * 50) + 50)],
+  [14, (Math.round(Math.random() * 50) + 50)],
+  [15, (Math.round(Math.random() * 50) + 50)],
+  [16, (Math.round(Math.random() * 50) + 50)],
+  [17, (Math.round(Math.random() * 50) + 50)],
+  [18, (Math.round(Math.random() * 50) + 50)],
+  [19, (Math.round(Math.random() * 50) + 50)],
+  [20, (Math.round(Math.random() * 50) + 50)],
+  [21, (Math.round(Math.random() * 50) + 50)],
+  [22, (Math.round(Math.random() * 50) + 50)],
+  [23, (Math.round(Math.random() * 50) + 50)],
+  [24, (Math.round(Math.random() * 50) + 50)],
+  [25, (Math.round(Math.random() * 50) + 50)],
+  [26, (Math.round(Math.random() * 50) + 50)],
+  [27, (Math.round(Math.random() * 50) + 50)],
+  [28, (Math.round(Math.random() * 50) + 50)],
+  [29, (Math.round(Math.random() * 50) + 50)],
+  [30, (Math.round(Math.random() * 50) + 50)],
+  [31, (Math.round(Math.random() * 50) + 50)],
+  [32, (Math.round(Math.random() * 50) + 50)],
+  [33, (Math.round(Math.random() * 50) + 50)],
+  [34, (Math.round(Math.random() * 50) + 50)],
+  [35, (Math.round(Math.random() * 50) + 50)],
+  [36, (Math.round(Math.random() * 50) + 50)],
+  [37, (Math.round(Math.random() * 50) + 50)],
+  [38, (Math.round(Math.random() * 50) + 50)],
+  [39, (Math.round(Math.random() * 50) + 50)],
+  [40, (Math.round(Math.random() * 50) + 50)],
+  [41, (Math.round(Math.random() * 50) + 50)],
+  [42, (Math.round(Math.random() * 50) + 50)],
+  [43, (Math.round(Math.random() * 50) + 50)],
+  [44, (Math.round(Math.random() * 50) + 50)],
+  [45, (Math.round(Math.random() * 50) + 50)],
+  [46, (Math.round(Math.random() * 50) + 50)],
+  [47, (Math.round(Math.random() * 50) + 50)],
+  [48, (Math.round(Math.random() * 50) + 50)],
+  [49, (Math.round(Math.random() * 50) + 50)],
+  [50, (Math.round(Math.random() * 50) + 50)],
+  [51, (Math.round(Math.random() * 50) + 50)],
+  [52, (Math.round(Math.random() * 50) + 50)]
 ];
 
 /*create svg element*/
 var svg = d3.select('.linechart')
-.append('svg')
-.attr('width', w)
-.attr('height', h)
-.attr('id', 'chart');
+  .append('svg')
+  .attr('width', w)
+  .attr('height', h)
+  .attr('id', 'chart');
 
 /*x scale*/
 var xScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-	return d[0];
-})])
-.range([padding, w - padding]);
+  .domain([0, d3.max(dataset, function(d) {
+    return d[0];
+  })])
+  .range([padding, w - padding]);
 
 /*y scale*/
 var yScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-	return d[1];
-})])
-.range([h - padding, padding]);
+  .domain([0, d3.max(dataset, function(d) {
+    return d[1];
+  })])
+  .range([h - padding, padding]);
 
 /*x axis*/
 var xAxis = d3.svg.axis()
-.scale(xScale)
-.orient('bottom')
-.ticks(20)
-.tickSize(0,0)
-//.tickPadding(padding);
+  .scale(xScale)
+  .orient('bottom')
+  .ticks(20)
+  .tickSize(0, 0)
+  //.tickPadding(padding);
 
 /*append x axis*/
 svg.append('g')
-.attr({
-	'class': 'xaxis',
-	//'transform': 'translate(0,' + (h - padding) + ')'
-	'transform': 'translate(0,' + 0 + ')'
-})
-.call(xAxis);
+  .attr({
+    'class': 'xaxis',
+    //'transform': 'translate(0,' + (h - padding) + ')'
+    'transform': 'translate(0,' + 0 + ')'
+  })
+  .call(xAxis);
 
 /*y axis*/
 var yAxis = d3.svg.axis()
-.scale(yScale)
-.orient('left')
-.tickSize(0,0)
-.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+  .scale(yScale)
+  .orient('left')
+  .tickSize(0, 0)
+  .tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
 
 /*append y axis*/
 svg.append('g')
-.attr({
-	'class': 'yaxis',
-	'transform': 'translate(' + padding + ',0)'
-})
-.call(yAxis);
+  .attr({
+    'class': 'yaxis',
+    'transform': 'translate(' + padding + ',0)'
+  })
+  .call(yAxis);
 
 
 /*define line*/
 var lines = d3.svg.line()
-.x(function(d) {
-	return xScale(d[0])
-})
-.y(function(d) {
-	return yScale(d[1])
-})
-.interpolate('monotone');
+  .x(function(d) {
+    return xScale(d[0])
+  })
+  .y(function(d) {
+    return yScale(d[1])
+  })
+  .interpolate('monotone');
 
 
 /*append line*/
 var path = svg.append('path')
-.attr({
-	'd': lines(dataset),
-	'fill': 'none',
-	'class': 'lineChart'
-});
+  .attr({
+    'd': lines(dataset),
+    'fill': 'none',
+    'class': 'lineChart'
+  });
 
 /*get length*/
 var length = svg.select('.lineChart').node().getTotalLength();
 
 /*animate line chart*/
 svg.select('.lineChart')
-.attr("stroke-dasharray", length + " " + length)
-.attr("stroke-dashoffset", length)
-.transition()
-.ease('linear')
-.delay(function(d) {
-	return dataset.length * 100;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
+  .attr("stroke-dasharray", length + " " + length)
+  .attr("stroke-dashoffset", length)
+  .transition()
+  .ease('linear')
+  .delay(function(d) {
+    return dataset.length * 100;
+  })
+  .duration(3000)
+  .attr("stroke-dashoffset", 0);
 
 /*add points*/
 var points = svg.selectAll('circle')
-.data(dataset)
-.enter()
-.append('circle');
+  .data(dataset)
+  .enter()
+  .append('circle');
 
 /*point attributes*/
 points.attr('cy', function(d) {
-	return yScale(d[1])})
-	.style('opacity', 0)
-	.transition()
-	.duration(1000)
-	.ease('elastic')
-	.delay(function(d, i) {
-		return i * 100;
-	})
-	.attr({
-		'cx': function(d) {
-			return xScale(d[0]);
-		},
-		'cy': function(d) {
-			return yScale(d[1]);
-		},
-		'r': 5,
-		'class': 'datapoint',
-		'id': function(d, i) {
-			return i;
-		}
-	})
+    return yScale(d[1])
+  })
+  .style('opacity', 0)
+  .transition()
+  .duration(1000)
+  .ease('elastic')
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .attr({
+    'cx': function(d) {
+      return xScale(d[0]);
+    },
+    'cy': function(d) {
+      return yScale(d[1]);
+    },
+    'r': 5,
+    'class': 'datapoint',
+    'id': function(d, i) {
+      return i;
+    }
+  })
 
 
-	.style('opacity', 1);
+.style('opacity', 1);
 
 //	LINES INDIVIDUAL
-
-//function drawIndividualLines (){
-
-/*x scale*/
-var xScaleIndividual = d3.scale.linear()
-.domain([0, d3.max(datasetIndividual, function(d) {
-	return d[0];
-})])
-.range([padding, w - padding]);
-
-/*y scale*/
-var yScaleIndividual = d3.scale.linear()
-.domain([0, d3.max(datasetIndividual, function(d) {
-	return d[1];
-})])
-.range([h - padding, padding]);
+function drawIndividualLines (){
 
 /*define line*/
 var linesIndividual = d3.svg.line()
-.x(function(d) {
-	return xScaleIndividual(d[0])
-})
-.y(function(d) {
-	return yScaleIndividual(d[1])
-})
-.interpolate('monotone');
+  .x(function(d) {
+    return xScale(d[0])
+  })
+  .y(function(d) {
+    return yScale(d[1])
+  })
+  .interpolate('monotone');
 
 /*append line*/
 var pathIndividual = svg.append('path')
-.attr({
-	'd': linesIndividual(datasetIndividual),
-	'fill': 'none',
-	'class': 'lineChartIndividual'
-});
+  .attr({
+    //'d': linesIndividual(datasetIndividual),
+    'd': linesIndividual(datasetIndividual),
+    'fill': 'none',
+    'class': 'lineChartIndividual'
+  });
 
 /*get length*/
 var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
 
 /*animate line chart*/
 svg.select('.lineChartIndividual')
-.attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
-.attr("stroke-dashoffset", lengthIndividual)
-.transition()
-.ease('linear')
-.delay(function(d) {
-	return datasetIndividual.length * 200;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
+  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
+  .attr("stroke-dashoffset", lengthIndividual)
+  .transition()
+  .ease('linear')
+  .delay(function(d) {
+    return datasetIndividual.length * 100;
+  })
+  .duration(3000)
+  .attr("stroke-dashoffset", 0);
 
 /*add points*/
 var pointsIndividual = svg.selectAll('circleIndividual')
-.data(datasetIndividual)
-.enter()
-.append('circle');
+  .data(datasetIndividual)
+  .enter()
+  .append('circle');
 
 /*point attributes*/
 pointsIndividual.attr('cy', function(d) {
-	return yScale(d[1])})
-	.style('opacity', 0)
-	.transition()
-	.duration(1000)
-	.ease('elastic')
-	.delay(function(d, i) {
-		return i * 200;
-	})
-	.attr({
-		'cx': function(d) {
-			return xScale(d[0]);
-		},
-		'cy': function(d) {
-			return yScale(d[1]);
-		},
-		'r': 5,
-		'class': 'datapointIndividual',
-		'id': function(d, i) {
-			return i;
-		}
-	})
+    return yScale(d[1])
+  })
+  .style('opacity', 0)
+  .transition()
+  .duration(1000)
+  .ease('elastic')
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .attr({
+    'cx': function(d) {
+      return xScale(d[0]);
+    },
+    'cy': function(d) {
+      return yScale(d[1]);
+    },
+    'r': 5,
+    'class': 'datapointIndividual',
+    'id': function(d, i) {
+      return i;
+    }
+  })
 
 
-	.style('opacity', 1);
-//};
+.style('opacity', 1);
+};
 
 
-	//drawIndividualLines();
+$(".individual").click(function() {
+  drawIndividualLines();
+});
 
-	var mouseG = svg.append("g")
-		.attr("class", "mouse-over-effects");
+var mouseG = svg.append("g")
+  .attr("class", "mouse-over-effects");
 
-	mouseG.append("path") // this is the white vertical line to follow mouse
-		.attr("class", "mouse-line")
-		.style("stroke", "white")
-		.style("stroke-width", "1px")
-		.style("opacity", "0");
+mouseG.append("path") // this is the white vertical line to follow mouse
+  .attr("class", "mouse-line")
+  .style("stroke", "white")
+  .style("stroke-width", "1px")
+  .style("opacity", "0");
 
-	var lines = document.getElementsByClassName('lineChart');
+var lines = document.getElementsByClassName('lineChart');
 
-	var mousePerLine = mouseG.selectAll('.mouse-per-line')
-		.data(dataset)
-		.enter()
-		.append("g")
-		.attr("class", "mouse-per-line");
+var mousePerLine = mouseG.selectAll('.mouse-per-line')
+  .data(dataset)
+  .enter()
+  .append("g")
+  .attr("class", "mouse-per-line");
 
-	mousePerLine.append("circle")
-		.attr("r", 7)
-		.style("stroke", "#fff")
-		.style("fill", "none")
-		.style("stroke-width", "1px")
-		.style("opacity", "0");
+mousePerLine.append("circle")
+  .attr("r", 7)
+  .style("stroke", "#fff")
+  .style("fill", "none")
+  .style("stroke-width", "1px")
+  .style("opacity", "0");
 
-	mousePerLine.append("text")
-		.attr("transform", "translate(10,3)");
+mousePerLine.append("text")
+  .attr("transform", "translate(10,3)");
 
-	mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-		.attr('width', w) // can't catch mouse events on a g element
-		.attr('height', h)
-		.attr('fill', 'none')
-		.attr('pointer-events', 'all')
-		.on('mouseout', function() { // on mouse out hide line, circles and text
-			d3.select(".mouse-line")
-				.style("opacity", "0");
-			d3.selectAll(".mouse-per-line circle")
-				.style("opacity", "0");
-			d3.selectAll(".mouse-per-line text")
-				.style("opacity", "0");
-		})
-		.on('mouseover', function() { // on mouse in show line, circles and text
-			d3.select(".mouse-line")
-				.style("opacity", "1");
-			d3.selectAll(".mouse-per-line circle")
-				.style("opacity", "1");
-			d3.selectAll(".mouse-per-line text")
-				.style("opacity", "1");
-		})
-		.on('mousemove', function() { // mouse moving over canvas
-			var mouse = d3.mouse(this);
-			d3.select(".mouse-line")
-				.attr("d", function() {
-					var d = "M" + mouse[0] + "," + height;
-					d += " " + mouse[0] + "," + 0;
-					return d;
-				});
+mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+  .attr('width', w) // can't catch mouse events on a g element
+  .attr('height', h)
+  .attr('fill', 'none')
+  .attr('pointer-events', 'all')
+  .on('mouseout', function() { // on mouse out hide line, circles and text
+    d3.select(".mouse-line")
+      .style("opacity", "0");
+    d3.selectAll(".mouse-per-line circle")
+      .style("opacity", "0");
+    d3.selectAll(".mouse-per-line text")
+      .style("opacity", "0");
+  })
+  .on('mouseover', function() { // on mouse in show line, circles and text
+    d3.select(".mouse-line")
+      .style("opacity", "1");
+    d3.selectAll(".mouse-per-line circle")
+      .style("opacity", "1");
+    d3.selectAll(".mouse-per-line text")
+      .style("opacity", "1");
+  })
+  .on('mousemove', function() { // mouse moving over canvas
+    var mouse = d3.mouse(this);
+    d3.select(".mouse-line")
+      .attr("d", function() {
+        var d = "M" + mouse[0] + "," + height;
+        d += " " + mouse[0] + "," + 0;
+        return d;
+      });
 
-			d3.selectAll(".mouse-per-line")
-				.attr("transform", function(d, i) {
-					//console.log(w/mouse[0])
-					//var xDate = xScale.invert(mouse[0]),
-							//bisect = d3.bisector(function(d) { return d.date; }).right;
-					//		idx = bisect(d.values, xDate);
+    d3.selectAll(".mouse-per-line")
+      .attr("transform", function(d, i) {
+        //console.log(w/mouse[0])
+        //var xDate = xScale.invert(mouse[0]),
+        //bisect = d3.bisector(function(d) { return d.date; }).right;
+        //		idx = bisect(d.values, xDate);
 
-					var beginning = 0,
-							end = length,
-							endIndividual = lengthIndividual,
-							target = null
-							console.log(end);
+        var beginning = 0,
+          end = length,
+          target = null
+        console.log(end);
 
-					while (true){
-						target = Math.floor((beginning + end) / 2);
-						pos = lines[i].getPointAtLength(target);console.log(pos);
-						//pos = svg.select('.lineChart').node().getPointAtLength(target);
-						if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-								break;
-						}
-						if (pos.x > mouse[0])      end = target;
-						else if (pos.x < mouse[0]) beginning = target;
-						else break; //position found
-					}
+        while (true) {
+          target = Math.floor((beginning + end) / 2);
+          pos = lines[i].getPointAtLength(target);
+          console.log(pos);
+          //pos = svg.select('.lineChart').node().getPointAtLength(target);
+          //pos = svg.select('.datapoint').node().getPointAtLength(target);
+          if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+            break;
+          }
+          if (pos.x > mouse[0]) end = target;
+          else if (pos.x < mouse[0]) beginning = target;
+          else break; //position found
+        }
 
-					d3.select(this).select('text')
-						.text(yScale.invert(pos.y).toFixed(2))
-						.attr("fill", "#fff");
+        d3.select(this).select('text')
+          .text(yScale.invert(pos.y).toFixed(2))
+          .attr("fill", "#fff");
 
-					return "translate(" + mouse[0] + "," + pos.y +")";
-				});
-		});
+        return "translate(" + mouse[0] + "," + pos.y + ")";
+      });
+  });
+
 
 
 /* Vertical Line following mouse coordinates
@@ -917,7 +909,7 @@ pointsIndividual.attr('cy', function(d) {
 	.attr("x", 110)
 	.attr("y", -45 - marginDonutBeschriftung)
 	.attr("dy", "1.4em")
-	.text("gesamt in %")
+	.text("aller Fahrer in %")
 	.style("fill", "white");
 
 	meter.append('path')
@@ -1654,7 +1646,7 @@ meter.append("text")
 .attr("x", 110)
 .attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
-.text("gesamt in %")
+.text("aller Fahrer in %")
 .style("fill", "white");
 
 meter.append('path')
@@ -2386,7 +2378,7 @@ meter.append("text")
 .attr("x", 110)
 .attr("y", -45 - marginDonutBeschriftung)
 .attr("dy", "1.4em")
-.text("gesamt in %")
+.text("aller Fahrer in %")
 .style("fill", "white");
 
 meter.append('path')
