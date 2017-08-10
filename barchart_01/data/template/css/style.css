@@ -74,7 +74,10 @@ button {
   bottom: 20px;
 }
 
-
+.legend-1, .legend-2, .legend-3 {
+  color: #ffffff;
+  font-size: 13px;
+}
 .subhead {
   font-size: 18px;
 }
@@ -177,9 +180,18 @@ button {
   transform: translate(-117px, 0px);
 }
 
+circle.deficit {
+	stroke: #A0B1AB;
+	fill : none;
+}
+
 .csurplus circle{
 	fill:#4F5855;
   transform: translate(-117px, 0px);
+}
+
+circle.surplus{
+	fill:#4F5855;
 }
 
 .cmoved circle {
@@ -188,6 +200,23 @@ button {
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
+}
+
+circle.cmatch {
+  fill:#A0B1AB;
+}
+
+circle.cmoved {
+  fill:#4F5855;
+  stroke: #A0B1AB;
+}
+
+circle.individualMatch {
+  fill: #00F19F;
+}
+
+circle.individualMismatch {
+  fill: #EF8A7A;
 }
 
 .allCharts text {

@@ -434,6 +434,7 @@ legend.append("text")
 .text("aller Fahrer pro Woche")
 .style("fill", "white");
 
+
 function drawIndividualLegend(){
 legend.append('circle')
 .attr('class', 'datapointIndividual')
@@ -456,7 +457,197 @@ legend.append("text")
 .attr("dy", "1.4em")
 .text("pro Woche")
 .style("fill", "white");
+
+legend2 = d3.select("#legend-2")
+.attr('hidden', true);
+
+legend3 = d3.select("#legend-3")
+.attr('hidden', null);
+
+
 };
+
+
+
+// LEGEND-2
+
+var legend2 = d3.select(".legend-2")
+.append('svg')
+.attr('width', 800)
+.attr('height', 45)
+.attr('id', 'legend-2')
+.attr('hidden', null);
+
+legend2.append('circle')
+.attr('class', 'datapoint deficit')
+.attr('r', '4')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Benötigte Dienste")
+.style("fill", "white");
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("früh (F) | mittel (M) | spät (S) | geteilt (G)")
+.style("fill", "white");
+
+
+legend2.append('circle')
+.attr('class', 'surplus')
+.attr('r', '4')
+.attr("cx", 280)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 295)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Wunschprofilüberschuss")
+.style("fill", "white");
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 295)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("je Dienst")
+.style("fill", "white");
+
+
+legend2.append('circle')
+.attr('class', 'cmatch')
+.attr('r', '4')
+.attr("cx", 470)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 485)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Übereinstimmung mit")
+.style("fill", "white");
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 485)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofil")
+.style("fill", "white");
+
+
+// LEGEND-3
+
+var legend3 = d3.select(".legend-3")
+.append('svg')
+.attr('width', 800)
+.attr('height', 45)
+.attr('id', 'legend-3')
+.attr('hidden', true);
+
+legend3.append('circle')
+.attr('class', 'datapoint cmoved')
+.attr('r', '4')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Umverteilter")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofilüberschuss")
+.style("fill", "white");
+
+
+legend3.append('circle')
+.attr('class', 'cmatch')
+.attr('r', '4')
+.attr("cx", 200)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 215)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Übereinstimmung mit")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 215)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofil")
+.style("fill", "white");
+
+
+legend3.append('circle')
+.attr('class', 'individualMatch')
+.attr('r', '4')
+.attr("cx", 370)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 385)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Ihre Einplanung")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 385)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("gemäß Wunschprofil")
+.style("fill", "white");
+
+
+
+legend3.append('circle')
+.attr('class', 'individualMismatch')
+.attr('r', '4')
+.attr("cx", 530)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 545)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Ihre Einplanung")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 545)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("gemäß Wunschprofil")
+.style("fill", "white");
+
 
 /*
 --------------------------------
