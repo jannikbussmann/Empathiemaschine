@@ -436,33 +436,33 @@ legend.append("text")
 
 
 function drawIndividualLegend(){
-legend.append('circle')
-.attr('class', 'datapointIndividual')
-.attr('r', '5')
-.attr("cx", 230)
-.attr("cy", 25);
+  legend.append('circle')
+  .attr('class', 'datapointIndividual')
+  .attr('r', '5')
+  .attr("cx", 230)
+  .attr("cy", 25);
 
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 245)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Ihr ø Wunscherfüllungsgrad")
-.style("fill", "white");
+  legend.append("text")
+  .attr("class", "calendarWeek")
+  .attr("x", 245)
+  .attr("y", 20)
+  .attr("dy", "0em")
+  .text("Ihr ø Wunscherfüllungsgrad")
+  .style("fill", "white");
 
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 245)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("pro Woche")
-.style("fill", "white");
+  legend.append("text")
+  .attr("class", "calendarWeek")
+  .attr("x", 245)
+  .attr("y", 20)
+  .attr("dy", "1.4em")
+  .text("pro Woche")
+  .style("fill", "white");
 
-legend2 = d3.select("#legend-2")
-.attr('hidden', true);
+  legend2 = d3.select("#legend-2")
+  .attr('hidden', true);
 
-legend3 = d3.select("#legend-3")
-.attr('hidden', null);
+  legend3 = d3.select("#legend-3")
+  .attr('hidden', null);
 
 
 };
@@ -547,804 +547,804 @@ legend2.append("text")
 .text("Wunschprofil")
 .style("fill", "white");
 
-	d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
-
-
-
-// LEGEND-3
-
-var legend3 = d3.select(".legend-3")
-.append('svg')
-.attr('width', 800)
-.attr('height', 45)
-.attr('id', 'legend-3')
-.attr('hidden', true);
-
-legend3.append('circle')
-.attr('class', 'datapoint cmoved')
-.attr('r', '4')
-.attr("cx", 10)
-.attr("cy", 25);
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Umverteilter")
-.style("fill", "white");
-
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("Wunschprofilüberschuss")
-.style("fill", "white");
-
-					//console.log(prozent);
-
-					var endPercent = (prozent/100);
-					//console.log(endPercent);
-					var count = Math.abs((endPercent - startPercent) / 0.01);
-					var countTwo = Math.abs((full - startPercent) / 0.01);
-
-					var step = endPercent < startPercent ? -0.01 : 0.01;
-					var stepTwo = full < startPercent ? -0.01 : 0.01;
-					var arc = d3.svg.arc()
-					.startAngle(0)
-					.innerRadius(circleradius)
-					.outerRadius(circleradius - border);
-
-					var parent = chart.selectAll("parent")
-					.data(data)
-					.enter().append("svg");
-
-					var svg = chart.append('svg')
-					.attr('width', boxSize)
-					.attr('height', circleHeight)
-					.attr("x", xPosDonut)
-					.attr("y", marginDonut);
-
-					var g = svg.append('g')
-					.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
-
-					var meter = g.append('g')
-					.attr('class', 'progress-meter');
-
-					meter.append('path')
-					.attr('class', 'background')
-					.attr('fill', backgroundColor)
-					.attr('fill-opacity', 1)
-					.attr('d', arc.endAngle(twoPi));
-
-					var middle = meter.append('path')
-					.attr('class', 'middle')
-					.attr('fill', red)
-					.attr('fill-opacity', 1);
-
-					var foreground = meter.append('path')
-					.attr('class', 'foreground')
-					.attr('fill', green)
-					.attr('fill-opacity', 1);
-
-					var numberText = meter.append('text')
-					.attr('fill', white)
-					.attr("text-anchor", "middle")
-					.attr('dx', '115')
-					.attr('dy', '.35em');
-
-		function drawIndividualValue (){
-
-					function updateProgress(progress) {
-						// middle.attr('d', arc.endAngle(twoPi * progressTwo));
-						foreground.attr('d', arc.endAngle(twoPi * progress));
-						numberText.text(formatPercent(progress));
-					}
-
-					function updateProgressTwo(progressTwo) {
-						middle.attr('d', arc.endAngle(twoPi * progressTwo));
-						// foreground.attr('d', arc.endAngle(twoPi * progress));
-						//numberText.text(formatPercent(progress));
-					}
-
-					var progress = startPercent;
-					var progressTwo = startPercent;
-
-					(
-						function loops() {
-							updateProgress(progress);
-							updateProgressTwo(progressTwo);
-
-							if (countTwo > 0) {
-								countTwo--;
-								// progress += step;
-								progressTwo += stepTwo;
-								setTimeout(loops, 10);
-							}
-
-							if (count > 0) {
-								count--;
-								progress += step;
-								// progressTwo += stepTwo;
-								// setTimeout(loops, 10);
-							}
-						})
-						();
-				};
-
-				$( ".individual" ).click(function() {
-					drawIndividualValue();
-				});
-      )
-			};
-
-			function drawDonut (){
-
-				var passend =
-					(d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-					+
-					d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-					+
-					d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-					+
-					d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-				);
-
-				var unpassend =
-					(d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-					+
-					d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-					+
-					d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-					+
-					d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-					+
-					d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-					+
-					d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-					+
-					d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-					+
-					d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
-				);
-
-				var gesamt = passend + unpassend;
-
-				var prozent = (passend*100)/gesamt;
-
-				//console.log(passend+"+"+unpassend+"+"+gesamt);
-
-				//console.log(prozent);
-
-				var endPercent = (prozent/100);
-				//console.log(endPercent);
-				var count = Math.abs((endPercent - startPercent) / 0.01);
-				var countTwo = Math.abs((full - startPercent) / 0.01);
-
-				var step = endPercent < startPercent ? -0.01 : 0.01;
-				var stepTwo = full < startPercent ? -0.01 : 0.01;
-				var arc = d3.svg.arc()
-				.startAngle(0)
-				.innerRadius(circleradius)
-				.outerRadius(circleradius - border);
-
-				var parent = chart.selectAll("parent")
-				.data(data)
-				.enter().append("svg");
-
-				var svg = chart.append('svg')
-				.attr('width', boxSize)
-				.attr('height', circleHeight)
-				.attr("x", xPosDonut)
-				.attr("Y", marginDonut);
-
-				var g = svg.append('g')
-				.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
-
-				var meter = g.append('g')
-				.attr('class', 'progress-meter');
-
-				meter.append('path')
-				.attr('class', 'background')
-				.attr('fill', backgroundColor)
-				.attr('fill-opacity', 1)
-				.attr('d', arc.endAngle(twoPi));
-
-				var middle = meter.append('path')
-				.attr('class', 'middle')
-				.attr('fill', red)
-				.attr('fill-opacity', 1);
-
-				var foreground = meter.append('path')
-				.attr('class', 'foreground')
-				.attr('fill', green)
-				.attr('fill-opacity', 1);
-
-				var numberText = meter.append('text')
-				.attr('fill', white)
-				.attr("text-anchor", "middle")
-				.attr('dx', '115')
-				.attr('dy', '.35em');
-
-				function updateProgress(progress) {
-					// middle.attr('d', arc.endAngle(twoPi * progressTwo));
-					foreground.attr('d', arc.endAngle(twoPi * progress));
-					numberText.text(formatPercent(progress));
-				}
-
-				function updateProgressTwo(progressTwo) {
-					middle.attr('d', arc.endAngle(twoPi * progressTwo));
-					// foreground.attr('d', arc.endAngle(twoPi * progress));
-					//numberText.text(formatPercent(progress));
-				}
-
-				var progress = startPercent;
-				var progressTwo = startPercent;
-
-				(
-					function loops() {
-						updateProgress(progress);
-						updateProgressTwo(progressTwo);
-
-						if (countTwo > 0) {
-							countTwo--;
-							// progress += step;
-							progressTwo += stepTwo;
-							setTimeout(loops, 10);
-						}
-
-						if (count > 0) {
-							count--;
-							progress += step;
-							// progressTwo += stepTwo;
-							// setTimeout(loops, 10);
-						}
-					})
-					();
-			};
-
-			drawDonut();
-
-			drawIndividualDonut();
-
-
-
-
-			var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-			+
-			d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-			+
-			d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-			+
-			d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-		);
-
-		var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-		+
-		d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-		+
-		d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-		+
-		d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-		+
-		d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-		+
-		d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-		+
-		d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-		+
-		d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
-		);
-
-		var gesamt = passend + unpassend;
-
-		var prozent = (passend*100)/gesamt;
-
-		//console.log(passend+"+"+unpassend+"+"+gesamt);
-
-		//console.log(prozent);
-
-
-		var endPercent = (prozent/100);
-		//console.log(endPercent);
-		var count = Math.abs((endPercent - startPercent) / 0.01);
-		var countTwo = Math.abs((full - startPercent) / 0.01);
-
-		var step = endPercent < startPercent ? -0.01 : 0.01;
-		var stepTwo = full < startPercent ? -0.01 : 0.01;
-		var arc = d3.svg.arc()
-		.startAngle(0)
-		.innerRadius(circleradius)
-		.outerRadius(circleradius - border);
-
-		var parent = chart.selectAll("parent")
-		.data(data)
-		.enter().append("svg");
-
-		var svg = chart.append('svg')
-		.attr('width', boxSize)
-		.attr('height', circleHeight)
-		.attr("x", xPosDonut);
-
-		var g = svg.append('g')
-		.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
-
-		var meter = g.append('g')
-		.attr('class', 'progress-meter');
-
-		meter.append('path')
-		.attr('class', 'background')
-		.attr('fill', backgroundColor)
-		.attr('fill-opacity', 1)
-		.attr('d', arc.endAngle(twoPi));
-
-		var middle = meter.append('path')
-		.attr('class', 'middle')
-		.attr('fill', steelFalse)
-		.attr('fill-opacity', 1);
-
-		var foreground = meter.append('path')
-		.attr('class', 'foreground')
-		.attr('fill', steel)
-		.attr('fill-opacity', 1);
-
-		var numberText = meter.append('text')
-		.attr('fill', white)
-		.attr("text-anchor", "middle")
-		.attr('dx', '115')
-		.attr('dy', '.35em');
-
-		function updateProgress(progress) {
-			// middle.attr('d', arc.endAngle(twoPi * progressTwo));
-			foreground.attr('d', arc.endAngle(twoPi * progress));
-			numberText.text(formatPercent(progress));
-		}
-
-		function updateProgressTwo(progressTwo) {
-			middle.attr('d', arc.endAngle(twoPi * progressTwo));
-			// foreground.attr('d', arc.endAngle(twoPi * progress));
-			//numberText.text(formatPercent(progress));
-		}
-
-		var progress = startPercent;
-		var progressTwo = startPercent;
-
-		(
-			function loops() {
-				updateProgress(progress);
-				updateProgressTwo(progressTwo);
-
-				if (countTwo > 0) {
-					countTwo--;
-					// progress += step;
-					progressTwo += stepTwo;
-					setTimeout(loops, 10);
-				}
-
-				if (count > 0) {
-					count--;
-					progress += step;
-					// progressTwo += stepTwo;
-					// setTimeout(loops, 10);
-				}
-			})
-			();
-
-		// Schichtvisualisierung //
-
-		var passend = chart.selectAll("passend")
-		.data(data)
-		.enter().insert("svg")
-		.attr("class", "cmatch");
-
-		var mitarbeiterüberschuss = chart.selectAll("überschuss")
-		.data(data)
-		.enter().insert("svg")
-		.attr("class", "csurplus");
-
-		var mitarbeitermangel = chart.selectAll("mangel")
-		.data(data)
-		.enter().insert("svg")
-		.attr("class", "cdeficit");
-
-		var text = chart.select("svg")
-		.selectAll("text")
-		.data(data).enter();
-
-
-		text.insert("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "F" })
-		.style("fill", "white");
-
-		text.insert("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "M" })
-		.style("fill", "white");
-
-		text.insert("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "S" })
-		.style("fill", "white");
-
-		text.insert("text")
-		.attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
-		.attr("y", topdown)
-		.attr("dy", ".35em")
-		.text(function(d) { return "G" })
-		.style("fill", "white");
-
-
-		passend.each(function(d,i) {
-
-			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				//.delay(5000)
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius)
-
-
-			}
-			for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius)
-
-			}
-
-			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius)
-
-			}
-			for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			})
-
-
-		mitarbeiterüberschuss.each(function(d,i) {
-
-			for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-			}
-
-
-			for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			})
-
-		mitarbeitermangel.each(function(d,i) {
-			for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-
-			for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-			for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
-				d3.select(this).insert("circle")
-				.attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
-				.attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
-				.attr("r",0)
-				.transition()
-				.attr("r",radius+1)
-				.delay(cDelay * i)
-				.duration(450)
-				.transition()
-				.duration(750)
-				.attr("r",radius);
-
-			}
-		})
-	})
-	//an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
+d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
+
+
+
+  // LEGEND-3
+
+  var legend3 = d3.select(".legend-3")
+  .append('svg')
+  .attr('width', 800)
+  .attr('height', 45)
+  .attr('id', 'legend-3')
+  .attr('hidden', true);
+
+  legend3.append('circle')
+  .attr('class', 'datapoint cmoved')
+  .attr('r', '4')
+  .attr("cx", 10)
+  .attr("cy", 25);
+
+  legend3.append("text")
+  .attr("class", "calendarWeek")
+  .attr("x", 25)
+  .attr("y", 20)
+  .attr("dy", "0em")
+  .text("Umverteilter")
+  .style("fill", "white");
+
+
+  legend3.append("text")
+  .attr("class", "calendarWeek")
+  .attr("x", 25)
+  .attr("y", 20)
+  .attr("dy", "1.4em")
+  .text("Wunschprofilüberschuss")
+  .style("fill", "white");
+
+  //console.log(prozent);
+
+  var endPercent = (prozent/100);
+  //console.log(endPercent);
+  var count = Math.abs((endPercent - startPercent) / 0.01);
+  var countTwo = Math.abs((full - startPercent) / 0.01);
+
+  var step = endPercent < startPercent ? -0.01 : 0.01;
+  var stepTwo = full < startPercent ? -0.01 : 0.01;
+  var arc = d3.svg.arc()
+  .startAngle(0)
+  .innerRadius(circleradius)
+  .outerRadius(circleradius - border);
+
+  var parent = chart.selectAll("parent")
+  .data(data)
+  .enter().append("svg");
+
+  var svg = chart.append('svg')
+  .attr('width', boxSize)
+  .attr('height', circleHeight)
+  .attr("x", xPosDonut)
+  .attr("y", marginDonut);
+
+  var g = svg.append('g')
+  .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+  var meter = g.append('g')
+  .attr('class', 'progress-meter');
+
+  meter.append('path')
+  .attr('class', 'background')
+  .attr('fill', backgroundColor)
+  .attr('fill-opacity', 1)
+  .attr('d', arc.endAngle(twoPi));
+
+  var middle = meter.append('path')
+  .attr('class', 'middle')
+  .attr('fill', red)
+  .attr('fill-opacity', 1);
+
+  var foreground = meter.append('path')
+  .attr('class', 'foreground')
+  .attr('fill', green)
+  .attr('fill-opacity', 1);
+
+  var numberText = meter.append('text')
+  .attr('fill', white)
+  .attr("text-anchor", "middle")
+  .attr('dx', '115')
+  .attr('dy', '.35em');
+
+  function drawIndividualValue (){
+
+    function updateProgress(progress) {
+      // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      foreground.attr('d', arc.endAngle(twoPi * progress));
+      numberText.text(formatPercent(progress));
+    }
+
+    function updateProgressTwo(progressTwo) {
+      middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      // foreground.attr('d', arc.endAngle(twoPi * progress));
+      //numberText.text(formatPercent(progress));
+    }
+
+    var progress = startPercent;
+    var progressTwo = startPercent;
+
+    (
+      function loops() {
+        updateProgress(progress);
+        updateProgressTwo(progressTwo);
+
+        if (countTwo > 0) {
+          countTwo--;
+          // progress += step;
+          progressTwo += stepTwo;
+          setTimeout(loops, 10);
+        }
+
+        if (count > 0) {
+          count--;
+          progress += step;
+          // progressTwo += stepTwo;
+          // setTimeout(loops, 10);
+        }
+      })
+      ();
+    };
+
+    $( ".individual" ).click(function() {
+      drawIndividualValue();
+    });
+
+  };
+
+  function drawDonut (){
+
+    var passend =
+    (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Geteilt_gedeckt;})
+  );
+
+  var unpassend =
+  (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
+);
+
+var gesamt = passend + unpassend;
+
+var prozent = (passend*100)/gesamt;
+
+//console.log(passend+"+"+unpassend+"+"+gesamt);
+
+//console.log(prozent);
+
+var endPercent = (prozent/100);
+//console.log(endPercent);
+var count = Math.abs((endPercent - startPercent) / 0.01);
+var countTwo = Math.abs((full - startPercent) / 0.01);
+
+var step = endPercent < startPercent ? -0.01 : 0.01;
+var stepTwo = full < startPercent ? -0.01 : 0.01;
+var arc = d3.svg.arc()
+.startAngle(0)
+.innerRadius(circleradius)
+.outerRadius(circleradius - border);
+
+var parent = chart.selectAll("parent")
+.data(data)
+.enter().append("svg");
+
+var svg = chart.append('svg')
+.attr('width', boxSize)
+.attr('height', circleHeight)
+.attr("x", xPosDonut)
+.attr("Y", marginDonut);
+
+var g = svg.append('g')
+.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+var meter = g.append('g')
+.attr('class', 'progress-meter');
+
+meter.append('path')
+.attr('class', 'background')
+.attr('fill', backgroundColor)
+.attr('fill-opacity', 1)
+.attr('d', arc.endAngle(twoPi));
+
+var middle = meter.append('path')
+.attr('class', 'middle')
+.attr('fill', red)
+.attr('fill-opacity', 1);
+
+var foreground = meter.append('path')
+.attr('class', 'foreground')
+.attr('fill', green)
+.attr('fill-opacity', 1);
+
+var numberText = meter.append('text')
+.attr('fill', white)
+.attr("text-anchor", "middle")
+.attr('dx', '115')
+.attr('dy', '.35em');
+
+function updateProgress(progress) {
+  // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+  foreground.attr('d', arc.endAngle(twoPi * progress));
+  numberText.text(formatPercent(progress));
+}
+
+function updateProgressTwo(progressTwo) {
+  middle.attr('d', arc.endAngle(twoPi * progressTwo));
+  // foreground.attr('d', arc.endAngle(twoPi * progress));
+  //numberText.text(formatPercent(progress));
+}
+
+var progress = startPercent;
+var progressTwo = startPercent;
+
+(
+  function loops() {
+    updateProgress(progress);
+    updateProgressTwo(progressTwo);
+
+    if (countTwo > 0) {
+      countTwo--;
+      // progress += step;
+      progressTwo += stepTwo;
+      setTimeout(loops, 10);
+    }
+
+    if (count > 0) {
+      count--;
+      progress += step;
+      // progressTwo += stepTwo;
+      // setTimeout(loops, 10);
+    }
+  })
+  ();
+};
+
+drawDonut();
+
+drawIndividualDonut();
+
+
+
+
+var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
++
+d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
++
+d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
++
+d3.sum(data, function(d){return d.Geteilt_gedeckt;})
+);
+
+var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
++
+d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
++
+d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
++
+d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
++
+d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
++
+d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
++
+d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
++
+d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
+);
+
+var gesamt = passend + unpassend;
+
+var prozent = (passend*100)/gesamt;
+
+//console.log(passend+"+"+unpassend+"+"+gesamt);
+
+//console.log(prozent);
+
+
+var endPercent = (prozent/100);
+//console.log(endPercent);
+var count = Math.abs((endPercent - startPercent) / 0.01);
+var countTwo = Math.abs((full - startPercent) / 0.01);
+
+var step = endPercent < startPercent ? -0.01 : 0.01;
+var stepTwo = full < startPercent ? -0.01 : 0.01;
+var arc = d3.svg.arc()
+.startAngle(0)
+.innerRadius(circleradius)
+.outerRadius(circleradius - border);
+
+var parent = chart.selectAll("parent")
+.data(data)
+.enter().append("svg");
+
+var svg = chart.append('svg')
+.attr('width', boxSize)
+.attr('height', circleHeight)
+.attr("x", xPosDonut);
+
+var g = svg.append('g')
+.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+
+var meter = g.append('g')
+.attr('class', 'progress-meter');
+
+meter.append('path')
+.attr('class', 'background')
+.attr('fill', backgroundColor)
+.attr('fill-opacity', 1)
+.attr('d', arc.endAngle(twoPi));
+
+var middle = meter.append('path')
+.attr('class', 'middle')
+.attr('fill', steelFalse)
+.attr('fill-opacity', 1);
+
+var foreground = meter.append('path')
+.attr('class', 'foreground')
+.attr('fill', steel)
+.attr('fill-opacity', 1);
+
+var numberText = meter.append('text')
+.attr('fill', white)
+.attr("text-anchor", "middle")
+.attr('dx', '115')
+.attr('dy', '.35em');
+
+function updateProgress(progress) {
+  // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+  foreground.attr('d', arc.endAngle(twoPi * progress));
+  numberText.text(formatPercent(progress));
+}
+
+function updateProgressTwo(progressTwo) {
+  middle.attr('d', arc.endAngle(twoPi * progressTwo));
+  // foreground.attr('d', arc.endAngle(twoPi * progress));
+  //numberText.text(formatPercent(progress));
+}
+
+var progress = startPercent;
+var progressTwo = startPercent;
+
+(
+  function loops() {
+    updateProgress(progress);
+    updateProgressTwo(progressTwo);
+
+    if (countTwo > 0) {
+      countTwo--;
+      // progress += step;
+      progressTwo += stepTwo;
+      setTimeout(loops, 10);
+    }
+
+    if (count > 0) {
+      count--;
+      progress += step;
+      // progressTwo += stepTwo;
+      // setTimeout(loops, 10);
+    }
+  })
+  ();
+
+  // Schichtvisualisierung //
+
+  var passend = chart.selectAll("passend")
+  .data(data)
+  .enter().insert("svg")
+  .attr("class", "cmatch");
+
+  var mitarbeiterüberschuss = chart.selectAll("überschuss")
+  .data(data)
+  .enter().insert("svg")
+  .attr("class", "csurplus");
+
+  var mitarbeitermangel = chart.selectAll("mangel")
+  .data(data)
+  .enter().insert("svg")
+  .attr("class", "cdeficit");
+
+  var text = chart.select("svg")
+  .selectAll("text")
+  .data(data).enter();
+
+
+  text.insert("text")
+  .attr("x", function(d,i){return d.Tagnummer * paddingTag + 5})
+  .attr("y", topdown)
+  .attr("dy", ".35em")
+  .text(function(d) { return "F" })
+  .style("fill", "white");
+
+  text.insert("text")
+  .attr("x", function(d,i){return d.Tagnummer * paddingTag + 35})
+  .attr("y", topdown)
+  .attr("dy", ".35em")
+  .text(function(d) { return "M" })
+  .style("fill", "white");
+
+  text.insert("text")
+  .attr("x", function(d,i){return d.Tagnummer * paddingTag + 65})
+  .attr("y", topdown)
+  .attr("dy", ".35em")
+  .text(function(d) { return "S" })
+  .style("fill", "white");
+
+  text.insert("text")
+  .attr("x", function(d,i){return d.Tagnummer * paddingTag + 95})
+  .attr("y", topdown)
+  .attr("dy", ".35em")
+  .text(function(d) { return "G" })
+  .style("fill", "white");
+
+
+  passend.each(function(d,i) {
+
+    for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      //.delay(5000)
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius)
+
+
+    }
+    for (var x = 1; x <= d.Frühschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius)
+
+    }
+
+    for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius)
+
+    }
+    for (var x = 1; x <= d.Mittelschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Spätschicht_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Geteilt_gedeckt/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+  })
+
+
+  mitarbeiterüberschuss.each(function(d,i) {
+
+    for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Frühschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+    }
+
+
+    for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Mittelschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Spätschicht_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Geteilt_Mitarbeiterüberschuss/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+  })
+
+  mitarbeitermangel.each(function(d,i) {
+    for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Frühschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Mittelschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+ paddingSpät})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Spätschicht_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte + paddingSpät})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Spätschicht_gedeckt/2*kreisZuKreis))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+
+    for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+    for (var x = 1; x <= d.Geteilt_Mitarbeitermangel/2; x++) {
+      d3.select(this).insert("circle")
+      .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingGeteilt})
+      .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Geteilt_gedeckt/2*kreisZuKreis-test))})
+      .attr("r",0)
+      .transition()
+      .attr("r",radius+1)
+      .delay(cDelay * i)
+      .duration(450)
+      .transition()
+      .duration(750)
+      .attr("r",radius);
+
+    }
+  })
+})
+//an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
 });
 >>>>>>> Stashed changes
 
@@ -1719,221 +1719,221 @@ $( ".addWeek" ).click(function() {
 
 d3.csv("data/template/csv/mitarbeiter.csv", function(error, data){
 
-var gesamtM = d3.sum(data, function(d){return d.SchichtGesamt;})
-var unerwünschtM = d3.sum(data, function(d){return d.SchichtUnerwünscht;})
+  var gesamtM = d3.sum(data, function(d){return d.SchichtGesamt;})
+  var unerwünschtM = d3.sum(data, function(d){return d.SchichtUnerwünscht;})
 
 
-var calculatePercentM = ((unerwünschtM*100)/gesamtM);
-var prozentM = 100-calculatePercentM;
+  var calculatePercentM = ((unerwünschtM*100)/gesamtM);
+  var prozentM = 100-calculatePercentM;
 
-//console.log(prozentM);
+  //console.log(prozentM);
 
 });
 
 d3.csv("data/template/csv/mitarbeiter.csv", function(error, data){
 
-	function drawIndividualDonut (){
+  function drawIndividualDonut (){
 
-		var gesamt = d3.sum(data, function(d){return d.SchichtGesamt;})
-		var unerwünschtM = d3.sum(data, function(d){return d.SchichtUnerwünscht;})
->>>>>>> Stashed changes
+    var gesamt = d3.sum(data, function(d){return d.SchichtGesamt;})
+    var unerwünschtM = d3.sum(data, function(d){return d.SchichtUnerwünscht;})
+    >>>>>>> Stashed changes
 
 
-		var calculatePercentM = ((unerwünschtM*100)/gesamt);
-		var prozent = 100-calculatePercentM;
+    var calculatePercentM = ((unerwünschtM*100)/gesamt);
+    var prozent = 100-calculatePercentM;
 
-	//console.log(passend+"+"+unpassend+"+"+gesamt);
+    //console.log(passend+"+"+unpassend+"+"+gesamt);
 
-	//console.log(prozent);
+    //console.log(prozent);
 
-	var endPercent = (prozent/100);
-	//console.log(endPercent);
-	var count = Math.abs((endPercent - startPercent) / 0.01);
-	var countTwo = Math.abs((full - startPercent) / 0.01);
+    var endPercent = (prozent/100);
+    //console.log(endPercent);
+    var count = Math.abs((endPercent - startPercent) / 0.01);
+    var countTwo = Math.abs((full - startPercent) / 0.01);
 
-	var step = endPercent < startPercent ? -0.01 : 0.01;
-	var stepTwo = full < startPercent ? -0.01 : 0.01;
-	var arc = d3.svg.arc()
-	.startAngle(0)
-	.innerRadius(circleradius)
-	.outerRadius(circleradius - border);
+    var step = endPercent < startPercent ? -0.01 : 0.01;
+    var stepTwo = full < startPercent ? -0.01 : 0.01;
+    var arc = d3.svg.arc()
+    .startAngle(0)
+    .innerRadius(circleradius)
+    .outerRadius(circleradius - border);
 
-<<<<<<< Updated upstream
-var parent = chart.selectAll("parent")
-.data(data)
-.enter().append("svg");
+    <<<<<<< Updated upstream
+    var parent = chart.selectAll("parent")
+    .data(data)
+    .enter().append("svg");
 
-var svg = chart.append('svg')
-.attr('width', boxSize)
-.attr('height', circleHeight)
-.attr("x", xPosDonut)
-.attr("Y", marginDonut);
+    var svg = chart.append('svg')
+    .attr('width', boxSize)
+    .attr('height', circleHeight)
+    .attr("x", xPosDonut)
+    .attr("Y", marginDonut);
 
-var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2) + marginDonutBeschriftung + ')'); //Dieser Scheint einer zu viel zu sein
-=======
-	var parent = two.selectAll("parent")
-	.data(data)
-	.enter().append("svg");
+    var g = svg.append('g')
+    .attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2) + marginDonutBeschriftung + ')'); //Dieser Scheint einer zu viel zu sein
+    =======
+    var parent = two.selectAll("parent")
+    .data(data)
+    .enter().append("svg");
 
-	var svg = two.append('svg')
-	.attr('width', boxSize)
-	.attr('height', circleHeight)
-	.attr("x", xPosDonut)
-	.attr("y", marginDonut);
+    var svg = two.append('svg')
+    .attr('width', boxSize)
+    .attr('height', circleHeight)
+    .attr("x", xPosDonut)
+    .attr("y", marginDonut);
 
-	var g = svg.append('g')
-	.attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
->>>>>>> Stashed changes
+    var g = svg.append('g')
+    .attr('transform', 'translate(' + boxSize / 2 + ',' + boxSize / 2 + ')');
+    >>>>>>> Stashed changes
 
-	var meter = g.append('g')
-	.attr('class', 'progress-meter');
+    var meter = g.append('g')
+    .attr('class', 'progress-meter');
 
-	meter.append('path')
-	.attr('class', 'background')
-	.attr('fill', backgroundColor)
-	.attr('fill-opacity', 1)
-	.attr('d', arc.endAngle(twoPi));
+    meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', backgroundColor)
+    .attr('fill-opacity', 1)
+    .attr('d', arc.endAngle(twoPi));
 
-	var middle = meter.append('path')
-	.attr('class', 'middle')
-	.attr('fill', red)
-	.attr('fill-opacity', 1);
+    var middle = meter.append('path')
+    .attr('class', 'middle')
+    .attr('fill', red)
+    .attr('fill-opacity', 1);
 
-	var foreground = meter.append('path')
-	.attr('class', 'foreground')
-	.attr('fill', green)
-	.attr('fill-opacity', 1);
+    var foreground = meter.append('path')
+    .attr('class', 'foreground')
+    .attr('fill', green)
+    .attr('fill-opacity', 1);
 
-	var numberText = meter.append('text')
-	.attr('fill', white)
-	.attr("text-anchor", "middle")
-	.attr('dx', '115')
-	.attr('dy', '.35em');
+    var numberText = meter.append('text')
+    .attr('fill', white)
+    .attr("text-anchor", "middle")
+    .attr('dx', '115')
+    .attr('dy', '.35em');
 
-<<<<<<< Updated upstream
-function updateProgress(progress) {
-  // middle.attr('d', arc.endAngle(twoPi * progressTwo));
-  foreground.attr('d', arc.endAngle(twoPi * progress));
-  numberText.text(formatPercent(progress));
-}
-
-function updateProgressTwo(progressTwo) {
-  middle.attr('d', arc.endAngle(twoPi * progressTwo));
-  // foreground.attr('d', arc.endAngle(twoPi * progress));
-  //numberText.text(formatPercent(progress));
-}
-
-var progress = startPercent;
-var progressTwo = startPercent;
-
-(
-  function loops() {
-    updateProgress(progress);
-    updateProgressTwo(progressTwo);
-
-    if (countTwo > 0) {
-      countTwo--;
-      // progress += step;
-      progressTwo += stepTwo;
-      setTimeout(loops, 10);
+    <<<<<<< Updated upstream
+    function updateProgress(progress) {
+      // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      foreground.attr('d', arc.endAngle(twoPi * progress));
+      numberText.text(formatPercent(progress));
     }
 
-    if (count > 0) {
-      count--;
-      progress += step;
-      // progressTwo += stepTwo;
-      // setTimeout(loops, 10);
+    function updateProgressTwo(progressTwo) {
+      middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      // foreground.attr('d', arc.endAngle(twoPi * progress));
+      //numberText.text(formatPercent(progress));
     }
-  })
-  ();
-};
-=======
-	function drawIndividualValue (){
 
-		function updateProgress(progress) {
-			// middle.attr('d', arc.endAngle(twoPi * progressTwo));
-			foreground.attr('d', arc.endAngle(twoPi * progress));
-			numberText.text(formatPercent(progress));
-		}
+    var progress = startPercent;
+    var progressTwo = startPercent;
 
-		function updateProgressTwo(progressTwo) {
-			middle.attr('d', arc.endAngle(twoPi * progressTwo));
-			// foreground.attr('d', arc.endAngle(twoPi * progress));
-			//numberText.text(formatPercent(progress));
-		}
+    (
+      function loops() {
+        updateProgress(progress);
+        updateProgressTwo(progressTwo);
 
-		var progress = startPercent;
-		var progressTwo = startPercent;
+        if (countTwo > 0) {
+          countTwo--;
+          // progress += step;
+          progressTwo += stepTwo;
+          setTimeout(loops, 10);
+        }
 
-		(
-			function loops() {
-				updateProgress(progress);
-				updateProgressTwo(progressTwo);
+        if (count > 0) {
+          count--;
+          progress += step;
+          // progressTwo += stepTwo;
+          // setTimeout(loops, 10);
+        }
+      })
+      ();
+    };
+    =======
+    function drawIndividualValue (){
 
-				if (countTwo > 0) {
-					countTwo--;
-					// progress += step;
-					progressTwo += stepTwo;
-					setTimeout(loops, 10);
-				}
+      function updateProgress(progress) {
+        // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+        foreground.attr('d', arc.endAngle(twoPi * progress));
+        numberText.text(formatPercent(progress));
+      }
 
-				if (count > 0) {
-					count--;
-					progress += step;
-					// progressTwo += stepTwo;
-					// setTimeout(loops, 10);
-				}
-			})
-			();
-		};
+      function updateProgressTwo(progressTwo) {
+        middle.attr('d', arc.endAngle(twoPi * progressTwo));
+        // foreground.attr('d', arc.endAngle(twoPi * progress));
+        //numberText.text(formatPercent(progress));
+      }
 
-		$( ".individual" ).click(function() {
-			drawIndividualValue();
-		});
+      var progress = startPercent;
+      var progressTwo = startPercent;
 
-	};
+      (
+        function loops() {
+          updateProgress(progress);
+          updateProgressTwo(progressTwo);
 
-	drawIndividualDonut();
-});
+          if (countTwo > 0) {
+            countTwo--;
+            // progress += step;
+            progressTwo += stepTwo;
+            setTimeout(loops, 10);
+          }
 
-d3.csv("data/template/csv/week2.csv", function(error, data){
+          if (count > 0) {
+            count--;
+            progress += step;
+            // progressTwo += stepTwo;
+            // setTimeout(loops, 10);
+          }
+        })
+        ();
+      };
+
+      $( ".individual" ).click(function() {
+        drawIndividualValue();
+      });
+
+    };
+
+    drawIndividualDonut();
+  });
+
+  d3.csv("data/template/csv/week2.csv", function(error, data){
 
 
 
->>>>>>> Stashed changes
+    >>>>>>> Stashed changes
 
-drawDonut();
+    drawDonut();
 
-drawIndividualDonut();
-
-
+    drawIndividualDonut();
 
 
-var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-+
-d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-+
-d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-+
-d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-);
 
-var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-+
-d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-+
-d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-+
-d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-+
-d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-+
-d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-+
-d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-+
-d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
+
+    var passend =  (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
+    +
+    d3.sum(data, function(d){return d.Geteilt_gedeckt;})
+  );
+
+  var unpassend =   (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
+  +
+  d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
+  +
+  d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
 );
 
 var gesamt = passend + unpassend;
