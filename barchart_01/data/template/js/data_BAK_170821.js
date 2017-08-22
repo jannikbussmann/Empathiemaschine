@@ -385,10 +385,9 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
 
     while (true) {
       target = Math.floor((beginning + end) / 2);
-      pos = linesForMouse[i].getPointAtLength(target);
-      console.log(pos);
-      //pos = svg.select('.lineChart').node().getPointAtLength(target);
-      //pos = svg.select('.datapoint').node().getPointAtLength(target);
+      //pos = linesForMouse[i].getPointAtLength(target);
+      pos = svg.select('.lineChart').node().getPointAtLength(target);
+      //console.log(pos);
       if ((target === end || target === beginning) && pos.x !== mouse[0]) {
         break;
       }
@@ -645,7 +644,7 @@ legend3.append("text")
 .attr("x", 545)
 .attr("y", 20)
 .attr("dy", "1.4em")
-.text("gemäß Wunschprofil")
+.text("entgg. Wunschprofil")
 .style("fill", "white");
 
 
