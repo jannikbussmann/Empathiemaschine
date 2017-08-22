@@ -9,7 +9,7 @@ var paddingTag = 130;
 var kreisZuKreis = 12;
 
 var test = 5;
-//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh) 
+//Abstand zum zweiten Teil der jweiligen Schichtart (Bsp. 1. Teil früh zu 2. Teil früh)
 //Auf der X-Achse
 var zweiteHälfte = 12;
 
@@ -324,7 +324,7 @@ d3.csv("week2.csv", function(error, data){
 
 		}
 
-	})	
+	})
 
 	mitarbeiterüberschuss.each(function(d,i) {
 
@@ -537,7 +537,7 @@ d3.csv("week3.csv", function(error, data){
 
 		}
 
-	})	
+	})
 
 	mitarbeiterüberschuss.each(function(d,i) {
 

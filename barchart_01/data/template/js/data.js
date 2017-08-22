@@ -538,7 +538,7 @@ legend2.append("text")
 .text("Übereinstimmung mit")
 .style("fill", "white");
 
-<<<<<<< Updated upstream
+
 legend2.append("text")
 .attr("class", "calendarWeek")
 .attr("x", 485)
@@ -546,9 +546,9 @@ legend2.append("text")
 .attr("dy", "1.4em")
 .text("Wunschprofil")
 .style("fill", "white");
-=======
+
 	d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
->>>>>>> Stashed changes
+
 
 
 // LEGEND-3
@@ -574,7 +574,7 @@ legend3.append("text")
 .text("Umverteilter")
 .style("fill", "white");
 
-<<<<<<< Updated upstream
+
 legend3.append("text")
 .attr("class", "calendarWeek")
 .attr("x", 25)
@@ -582,7 +582,7 @@ legend3.append("text")
 .attr("dy", "1.4em")
 .text("Wunschprofilüberschuss")
 .style("fill", "white");
-=======
+
 					//console.log(prozent);
 
 					var endPercent = (prozent/100);
@@ -677,7 +677,7 @@ legend3.append("text")
 				$( ".individual" ).click(function() {
 					drawIndividualValue();
 				});
-
+      )
 			};
 
 			function drawDonut (){
