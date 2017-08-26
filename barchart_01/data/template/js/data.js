@@ -546,6 +546,7 @@ legend2.append("text")
 .attr("dy", "0em")
 .text("Übereinstimmung mit")
 .style("fill", "white");
+<<<<<<< HEAD
 
 legend2.append("text")
 .attr("class", "calendarWeek")
@@ -579,6 +580,41 @@ legend3.append("text")
 .text("Umverteilter")
 .style("fill", "white");
 
+=======
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 485)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofil")
+.style("fill", "white");
+
+
+// LEGEND-3
+
+var legend3 = d3.select(".legend-3")
+.append('svg')
+.attr('width', 800)
+.attr('height', 45)
+.attr('id', 'legend-3')
+.attr('hidden', true);
+
+legend3.append('circle')
+.attr('class', 'datapoint cmoved')
+.attr('r', '4')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Umverteilter")
+.style("fill", "white");
+
+>>>>>>> origin/master
 legend3.append("text")
 .attr("class", "calendarWeek")
 .attr("x", 25)
