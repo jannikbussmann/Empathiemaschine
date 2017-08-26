@@ -27,6 +27,10 @@ $( ".swap" ).click(function() {
 });
 */
 
+
+/* individual classes  */
+
+
 /* Swap classes */
 var swapped = false;
 
@@ -35,10 +39,14 @@ function swapShifts(){
   if ( swapped == false ) {
     $('.csurplus').addClass('cmoved');
     $('.cdeficit').addClass('csurplus');
+    $('.passend').addClass('fillPassend');
+    $('.unpassend').addClass('fillUnpassend');
     swapped = true;
 } else {
     $('.csurplus.cmoved').removeClass('cmoved');
     $('.cdeficit.csurplus').removeClass('csurplus');
+    $('.csurplus.fillPassend').removeClass('fillPassend');
+    $('.cdeficit.fillUnpassend').removeClass('fillUnpassend');
     swapped = false;
 }
 };

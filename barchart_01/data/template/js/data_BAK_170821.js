@@ -2,10 +2,6 @@ var w = 1060,
 h = 400,
 padding = 25;
 
-var percentArray = [];
-
-//console.log(percentArray);
-//function drawLineDiagram(){
 var dataset = [
   [1, (Math.round(Math.random() * 50) + 50)],
   [2, (Math.round(Math.random() * 50) + 50)],
@@ -169,10 +165,6 @@ svg.append('g')
 })
 .call(yAxis);
 
-function drawLineDiagram(){
-
-d3.selectAll("path").remove();
-d3.selectAll("points").remove();
 
 /*define line*/
 var lines = d3.svg.line()
@@ -389,7 +381,7 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
     var beginning = 0,
     end = length,
     target = null
-    //console.log(end);
+    console.log(end);
 
     while (true) {
       target = Math.floor((beginning + end) / 2);
@@ -411,8 +403,6 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
     return "translate(" + mouse[0] + "," + pos.y + ")";
   });
 });
-};
-
 
 // LEGEND
 
@@ -811,9 +801,6 @@ $( ".addWeek" ).click(function() {
   //console.log(prozent);
   //
 
-  percentArray.push(Math.round(prozent));
-
-  console.log(percentArray);
 
   var endPercent = (prozent/100);
   //console.log(endPercent);
@@ -1272,7 +1259,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
       .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       //.delay(5000)
       .attr("r",radius+1)
@@ -1289,7 +1275,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
       .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1305,7 +1290,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
       .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1320,7 +1304,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
       .attr("cy", function(d,i){return topdown-(x + 1)*kreisZuKreis + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1399,7 +1382,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1414,7 +1396,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1430,7 +1411,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1445,7 +1425,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1522,7 +1501,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1537,7 +1515,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Frühschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1553,7 +1530,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag+paddingMitte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1568,7 +1544,6 @@ var progressTwo = startPercent;
       .attr("cx", function(d,i){return d.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
       .attr("cy", function(d,i){return topdown-((x + 1)*kreisZuKreis+(d.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
       .attr("r",0)
-      .attr("class",d.Mittelschicht_Status)
       .transition()
       .attr("r",radius+1)
       .delay(cDelay * i)
@@ -1638,8 +1613,6 @@ var progressTwo = startPercent;
     }
   })
 })
-
-drawLineDiagram();
 //an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
 });
 
@@ -1651,9 +1624,7 @@ var two = d3.select(".two").append("svg")
 .attr("height",height);
 
 
-d3.csv("data/template/csv/week2.csv", function(error, data){
-
-
+d3.csv("data/template/csv/week5.csv", function(error, data){
 
   function drawIndividualDonut (){
     var passend =
@@ -1850,10 +1821,6 @@ var prozent = (passend*100)/gesamt;
 
 //console.log(prozent);
 
-percentArray.push(Math.round(prozent));
-
-//console.log(percentArray);
-
 var endPercent = (prozent/100);
 //console.log(endPercent);
 var count = Math.abs((endPercent - startPercent) / 0.01);
@@ -2035,7 +2002,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2050,7 +2016,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2066,7 +2031,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2081,7 +2045,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2160,7 +2123,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2175,7 +2137,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2191,7 +2152,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2206,7 +2166,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2283,7 +2242,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2298,7 +2256,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2405,8 +2362,6 @@ var three = d3.select(".three").append("svg")
 .attr("height",height);
 
 d3.csv("data/template/csv/week1.csv", function(error, data){
-
-
 
   function drawIndividualDonut (){
     var passend =
@@ -2590,7 +2545,6 @@ d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
 d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
 );
 
-
 var gesamt = passend + unpassend;
 
 var prozent = (passend*100)/gesamt;
@@ -2601,12 +2555,6 @@ var prozent = (passend*100)/gesamt;
 
 var endPercent = (prozent/100);
 //console.log(endPercent);
-
-percentArray.push(Math.round(prozent));
-
-//console.log(percentArray);
-
-
 var count = Math.abs((endPercent - startPercent) / 0.01);
 var countTwo = Math.abs((full - startPercent) / 0.01);
 
@@ -2787,7 +2735,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2802,7 +2749,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2818,7 +2764,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2833,7 +2778,6 @@ passend.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
     .attr("cy", function(a,i){return topdown-(x + 1)*kreisZuKreis + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2912,7 +2856,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2927,7 +2870,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2943,7 +2885,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -2958,7 +2899,6 @@ mitarbeiterüberschuss.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis-test)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -3035,7 +2975,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -3050,7 +2989,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Frühschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Frühschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -3066,7 +3004,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag+paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)
@@ -3081,7 +3018,6 @@ mitarbeitermangel.each(function(a,i) {
     .attr("cx", function(a,i){return a.Tagnummer * paddingTag + zweiteHälfte +paddingMitte})
     .attr("cy", function(a,i){return topdown-((x + 1)*kreisZuKreis+(a.Mittelschicht_gedeckt/2*kreisZuKreis)) + margin})
     .attr("r",0)
-    .attr("class",a.Mittelschicht_Status)
     .transition()
     .attr("r",radius+1)
     .delay(cDelay * i)

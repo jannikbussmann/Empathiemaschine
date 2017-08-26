@@ -1,8 +1,8 @@
-Tagnummer,Tag,Frühschicht_gedeckt,Frühschicht_Mitarbeitermangel,Frühschicht_Mitarbeiterüberschuss,Mittelschicht_gedeckt,Mittelschicht_Mitarbeitermangel,Mittelschicht_Mitarbeiterüberschuss,Spätschicht_gedeckt,Spätschicht_Mitarbeitermangel,Spätschicht_Mitarbeiterüberschuss,Geteilt_gedeckt,Geteilt_Mitarbeitermangel,Geteilt_Mitarbeiterüberschuss
-1,Mo,20,2,0,33,0,14,13,0,1,33,20,0
-2,Di,20,2,0,33,0,14,13,0,1,33,20,0
-3,Mi,20,2,0,33,0,14,13,0,1,33,20,0
-4,Do,20,2,0,33,0,14,13,0,1,33,20,0
-5,Fr,20,2,0,33,0,14,13,0,1,33,20,0
-6,Sa,20,0,2,25,0,8,10,5,0,20,11,0
-7,So,20,0,2,25,0,8,10,5,0,20,11,0
+Tagnummer,Tag,Frühschicht_gedeckt,Frühschicht_Mitarbeitermangel,Frühschicht_Mitarbeiterüberschuss,Frühschicht_Status,Mittelschicht_gedeckt,Mittelschicht_Mitarbeitermangel,Mittelschicht_Mitarbeiterüberschuss,Mittelschicht_Status,Spätschicht_gedeckt,Spätschicht_Mitarbeitermangel,Spätschicht_Mitarbeiterüberschuss,Geteilt_gedeckt,Geteilt_Mitarbeitermangel,Geteilt_Mitarbeiterüberschuss,
+1,Mo,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
+2,Di,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
+3,Mi,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
+4,Do,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
+5,Fr,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
+6,Sa,20,0,2,passend,25,0,8,irrelevant,10,5,0,20,11,0
+7,So,20,0,2,passend,25,0,8,irrelevant,10,5,0,20,11,0

@@ -9,6 +9,7 @@
 </head>
 
 <body>
+		<div id="wrap">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -16,58 +17,72 @@
 					<img alt="Brand" src="data/template/css/img/logo_empathiemaschine.svg">
 				</a>
 			</div>
-
+			<span class="pull-right ti-help-alt" data-toggle="modal" data-target="#myModal"></span>
 			<h1 class="pull-right">Allgemeine Übersicht</h1>
+
 		</div>
 	</nav>
 
-	<div class="row">
-		<div class="container-fluid ">
-			<div class="col-md-12 section">
-				<h2 class="col-md-5">Entwicklung des Wunscherfüllungsgrads</h2>
-				<div class="col-md-5">
-					  <div class="legend-1"></div>
+		<div class="row">
+			<div class="container-fluid ">
+				<div class="col-md-12 section">
+					<h2 class="col-md-5">Entwicklung des Wunscherfüllungsgrads</h2>
+					<div class="col-md-5">
+						<div class="legend-1"></div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="linechart"></div>
+					<!--div class="ct-chart ct-golden-section"></div-->
+
 				</div>
 			</div>
-			<div class="col-md-12">
-				<div class="linechart"></div>
-				<!--div class="ct-chart ct-golden-section"></div-->
-
-			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="container-fluid">
-			<div class="col-md-12 section" id="section2">
-				<h2 class="col-md-5">Verhältnis: Wunschprofil zu Diensten</h2>
-				<div class="col-md-5">
-					  <div class="legend-2"></div>
+		<div class="row">
+			<div class="container-fluid">
+				<div class="col-md-12 section" id="section2">
+					<h2 class="col-md-5">Verhältnis: Wunschprofil zu Diensten</h2>
+					<div class="col-md-5">
+						<div class="legend-2"></div>
 						<div class="legend-3"></div>
+					</div>
+					<div class="buttons">
+						<button class="addWeek" type="button">Add Week</button>
+						<!--button class="swap" type="button">Swap Shifts</button-->
+						<button class="individual" type="button">Show Individual</button>
+
+					</div>
 				</div>
-				<div class="buttons">
-					<button class="addWeek" type="button">Add Week</button>
-					<!--button class="swap" type="button">Swap Shifts</button-->
-					<button class="individual" type="button">Show Individual</button>
+			</div>
+
+			<div class="container-fluid">
+				<div class="col-md-12">
+					<div class="allCharts">
+
+						<div class="one"></div>
+
+						<div class="two"></div>
+
+						<div class="three"></div>
+					</div>
 				</div>
 			</div>
 		</div>
-
-		<div class="container-fluid">
-			<div class="col-md-12">
-				<div class="allCharts">
-
-				<div class="one"></div>
-
-					<div class="two"></div>
-
-					<div class="three"></div>
-				</div>
+</div>
+		<!-- Help -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="container-fluid">
+					<div class="text-center">
+						<div class="ti-close close" data-dismiss="modal" aria-label="Close"></div>
+						<br><br>
+						<h1>Hilfe</h1>
+						<h2>Hier soll eine Art erklärung rein.</h2>
+						<h4>Kurze Beschreibung des Konzepts, Bedeutung der Visualisierung, usw.</h4>
+						<h4><kbd>esc</kbd> or click anyway to close</h4>
+					</div>
 			</div>
 		</div>
-	</div>
-
-
 
 
 
