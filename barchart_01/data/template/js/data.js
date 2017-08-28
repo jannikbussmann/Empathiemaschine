@@ -116,301 +116,6 @@ var datasetIndividual = [
   [52, (Math.round(Math.random() * 50) + 50)]
 ];
 
-/*create svg element*/
-var svg = d3.select('.linechart')
-.append('svg')
-.attr('width', w)
-.attr('height', h)
-.attr('id', 'chart');
-
-/*x scale*/
-var xScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-  return d[0];
-})])
-.range([padding, w - padding]);
-
-/*y scale*/
-var yScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
-  return d[1];
-})])
-.range([h - padding, padding]);
-
-/*x axis*/
-var xAxis = d3.svg.axis()
-.scale(xScale)
-.orient('bottom')
-.ticks(20)
-.tickSize(0, 0)
-//.tickPadding(padding);
-
-/*append x axis*/
-svg.append('g')
-.attr({
-  'class': 'xaxis',
-  //'transform': 'translate(0,' + (h - padding) + ')'
-  'transform': 'translate(0,' + 0 + ')'
-})
-.call(xAxis);
-
-/*y axis*/
-var yAxis = d3.svg.axis()
-.scale(yScale)
-.orient('left')
-.tickSize(0, 0)
-.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
-
-/*append y axis*/
-svg.append('g')
-.attr({
-  'class': 'yaxis',
-  'transform': 'translate(' + padding + ',0)'
-})
-.call(yAxis);
-
-
-//d3.selectAll("path").remove();
-//d3.selectAll("points").remove();
-
-/*define line*/
-var lines = d3.svg.line()
-.x(function(d) {
-  return xScale(d[0])
-})
-.y(function(d) {
-  return yScale(d[1])
-})
-.interpolate('monotone');
-
-
-/*append line*/
-var path = svg.append('path')
-.attr({
-  'd': lines(dataset),
-  'fill': 'none',
-  'class': 'lineChart'
-});
-
-/*get length*/
-var length = svg.select('.lineChart').node().getTotalLength();
-
-/*animate line chart*/
-svg.select('.lineChart')
-.attr("stroke-dasharray", length + " " + length)
-.attr("stroke-dashoffset", length)
-.transition()
-.ease('linear')
-.delay(function(d) {
-  return dataset.length * 100;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
-
-/*add points*/
-var points = svg.selectAll('circle')
-.data(dataset)
-.enter()
-.append('circle');
-
-/*point attributes*/
-points.attr('cy', function(d) {
-  return yScale(d[1])
-})
-.style('opacity', 0)
-.transition()
-.duration(1000)
-.ease('elastic')
-.delay(function(d, i) {
-  return i * 100;
-})
-.attr({
-  'cx': function(d) {
-    return xScale(d[0]);
-  },
-  'cy': function(d) {
-    return yScale(d[1]);
-  },
-  'r': 5,
-  'class': 'datapoint',
-  'id': function(d, i) {
-    return i;
-  }
-})
-
-
-.style('opacity', 1);
-
-//	LINES INDIVIDUAL
-function drawIndividualLines (){
-
-  /*define line*/
-  var linesIndividual = d3.svg.line()
-  .x(function(d) {
-    return xScale(d[0])
-  })
-  .y(function(d) {
-    return yScale(d[1])
-  })
-  .interpolate('monotone');
-
-  /*append line*/
-  var pathIndividual = svg.append('path')
-  .attr({
-    //'d': linesIndividual(datasetIndividual),
-    'd': linesIndividual(datasetIndividual),
-    'fill': 'none',
-    'class': 'lineChartIndividual'
-  });
-
-  /*get length*/
-  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
-
-  /*animate line chart*/
-  svg.select('.lineChartIndividual')
-  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
-  .attr("stroke-dashoffset", lengthIndividual)
-  .transition()
-  .ease('linear')
-  .delay(function(d) {
-    return datasetIndividual.length * 100;
-  })
-  .duration(3000)
-  .attr("stroke-dashoffset", 0);
-
-  /*add points*/
-  var pointsIndividual = svg.selectAll('circleIndividual')
-  .data(datasetIndividual)
-  .enter()
-  .append('circle');
-
-  /*point attributes*/
-  pointsIndividual.attr('cy', function(d) {
-    return yScale(d[1])
-  })
-  .style('opacity', 0)
-  .transition()
-  .duration(1000)
-  .ease('elastic')
-  .delay(function(d, i) {
-    return i * 100;
-  })
-  .attr({
-    'cx': function(d) {
-      return xScale(d[0]);
-    },
-    'cy': function(d) {
-      return yScale(d[1]);
-    },
-    'r': 5,
-    'class': 'datapointIndividual',
-    'id': function(d, i) {
-      return i;
-    }
-  })
-
-
-  .style('opacity', 1);
-};
-
-
-$(".individual").click(function() {
-  drawIndividualLines();
-  drawIndividualLegend();
-  swapShifts();
-});
-
-var mouseG = svg.append("g")
-.attr("class", "mouse-over-effects");
-
-mouseG.append("path") // this is the white vertical line to follow mouse
-.attr("class", "mouse-line")
-.style("stroke", "white")
-.style("stroke-width", "1px")
-.style("opacity", "0");
-
-var linesForMouse = document.getElementsByClassName('lineChart');
-var linesIndividualForMouse = document.getElementsByClassName('lineChartIndividual');
-
-var mousePerLine = mouseG.selectAll('.mouse-per-line')
-.data(dataset)
-.enter()
-.append("g")
-.attr("class", "mouse-per-line");
-
-mousePerLine.append("circle")
-.attr("r", 7)
-.style("stroke", "#A0B1AB")
-.style("fill", "none")
-.style("stroke-width", "1px")
-.style("opacity", "0");
-
-mousePerLine.append("text")
-.attr("transform", "translate(10,3)");
-
-mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-.attr('width', w) // can't catch mouse events on a g element
-.attr('height', h)
-.attr('fill', 'none')
-.attr('pointer-events', 'all')
-.on('mouseout', function() { // on mouse out hide line, circles and text
-  d3.select(".mouse-line")
-  .style("opacity", "0");
-  d3.selectAll(".mouse-per-line circle")
-  .style("opacity", "0");
-  d3.selectAll(".mouse-per-line text")
-  .style("opacity", "0");
-})
-.on('mouseover', function() { // on mouse in show line, circles and text
-  d3.select(".mouse-line")
-  .style("opacity", "1");
-  d3.selectAll(".mouse-per-line circle")
-  .style("opacity", "1");
-  d3.selectAll(".mouse-per-line text")
-  .style("opacity", "1");
-})
-.on('mousemove', function() { // mouse moving over canvas
-  var mouse = d3.mouse(this);
-  d3.select(".mouse-line")
-  .attr("d", function() {
-    var d = "M" + mouse[0] + "," + height;
-    d += " " + mouse[0] + "," + 0;
-    return d;
-  });
-
-  d3.selectAll(".mouse-per-line")
-  .attr("transform", function(d, i) {
-    //console.log(w/mouse[0])
-    //var xDate = xScale.invert(mouse[0]),
-    //bisect = d3.bisector(function(d) { return d.date; }).right;
-    //		idx = bisect(d.values, xDate);
-
-    var beginning = 0,
-    end = length,
-    target = null
-    //console.log(end);
-
-    while (true) {
-      target = Math.floor((beginning + end) / 2);
-      //pos = linesForMouse[i].getPointAtLength(target);
-      pos = svg.select('.lineChart').node().getPointAtLength(target);
-      //console.log(pos);
-      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-        break;
-      }
-      if (pos.x > mouse[0]) end = target;
-      else if (pos.x < mouse[0]) beginning = target;
-      else break; //position found
-    }
-
-    d3.select(this).select('text')
-    .text(yScale.invert(pos.y).toFixed(2))
-    .attr("fill", "#fff");
-
-    return "translate(" + mouse[0] + "," + pos.y + ")";
-  });
-});
-
 
 
 // LEGEND
@@ -821,16 +526,18 @@ $( ".addWeek" ).click(function() {
       //console.log(passend);
 
       var gesamt = 7;
-
+      var index = 0;
       var prozent = (passend*100)/gesamt;
 
       //console.log(passend+"+"+unpassend+"+"+gesamt);
 
       //console.log(prozent);
       //
+data.forEach(function(d) {
+  index++;
+});
 
-  percentArray.push(Math.round(prozent));
-
+percentArray.push(Math.round(prozent));
   console.log(percentArray);
 
   endPercent = (prozent/100);
@@ -3179,3 +2886,302 @@ mitarbeitermangel.each(function(a,i) {
   }
 })
 })
+
+
+
+
+
+/*create svg element*/
+var svg = d3.select('.linechart')
+.append('svg')
+.attr('width', w)
+.attr('height', h)
+.attr('id', 'chart');
+
+/*x scale*/
+var xScale = d3.scale.linear()
+.domain([0, d3.max(dataset, function(d) {
+  return d[0];
+})])
+.range([padding, w - padding]);
+
+/*y scale*/
+var yScale = d3.scale.linear()
+.domain([0, d3.max(dataset, function(d) {
+  return d[1];
+})])
+.range([h - padding, padding]);
+
+/*x axis*/
+var xAxis = d3.svg.axis()
+.scale(xScale)
+.orient('bottom')
+.ticks(20)
+.tickSize(0, 0)
+//.tickPadding(padding);
+
+/*append x axis*/
+svg.append('g')
+.attr({
+  'class': 'xaxis',
+  //'transform': 'translate(0,' + (h - padding) + ')'
+  'transform': 'translate(0,' + 0 + ')'
+})
+.call(xAxis);
+
+/*y axis*/
+var yAxis = d3.svg.axis()
+.scale(yScale)
+.orient('left')
+.tickSize(0, 0)
+.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+
+/*append y axis*/
+svg.append('g')
+.attr({
+  'class': 'yaxis',
+  'transform': 'translate(' + padding + ',0)'
+})
+.call(yAxis);
+
+
+//d3.selectAll("path").remove();
+//d3.selectAll("points").remove();
+
+/*define line*/
+var lines = d3.svg.line()
+.x(function(d) {
+  return xScale(d[0])
+})
+.y(function(d) {
+  return yScale(d[1])
+})
+.interpolate('monotone');
+
+
+/*append line*/
+var path = svg.append('path')
+.attr({
+  'd': lines(dataset),
+  'fill': 'none',
+  'class': 'lineChart'
+});
+
+/*get length*/
+var length = svg.select('.lineChart').node().getTotalLength();
+
+/*animate line chart*/
+svg.select('.lineChart')
+.attr("stroke-dasharray", length + " " + length)
+.attr("stroke-dashoffset", length)
+.transition()
+.ease('linear')
+.delay(function(d) {
+  return dataset.length * 100;
+})
+.duration(3000)
+.attr("stroke-dashoffset", 0);
+
+/*add points*/
+var points = svg.selectAll('circle')
+.data(dataset)
+.enter()
+.append('circle');
+
+/*point attributes*/
+points.attr('cy', function(d) {
+  return yScale(d[1])
+})
+.style('opacity', 0)
+.transition()
+.duration(1000)
+.ease('elastic')
+.delay(function(d, i) {
+  return i * 100;
+})
+.attr({
+  'cx': function(d) {
+    return xScale(d[0]);
+  },
+  'cy': function(d) {
+    return yScale(d[1]);
+  },
+  'r': 5,
+  'class': 'datapoint',
+  'id': function(d, i) {
+    return i;
+  }
+})
+
+
+.style('opacity', 1);
+
+//	LINES INDIVIDUAL
+function drawIndividualLines (){
+
+  /*define line*/
+  var linesIndividual = d3.svg.line()
+  .x(function(d) {
+    return xScale(d[0])
+  })
+  .y(function(d) {
+    return yScale(d[1])
+  })
+  .interpolate('monotone');
+
+  /*append line*/
+  var pathIndividual = svg.append('path')
+  .attr({
+    //'d': linesIndividual(datasetIndividual),
+    'd': linesIndividual(datasetIndividual),
+    'fill': 'none',
+    'class': 'lineChartIndividual'
+  });
+
+  /*get length*/
+  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
+
+  /*animate line chart*/
+  svg.select('.lineChartIndividual')
+  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
+  .attr("stroke-dashoffset", lengthIndividual)
+  .transition()
+  .ease('linear')
+  .delay(function(d) {
+    return datasetIndividual.length * 100;
+  })
+  .duration(3000)
+  .attr("stroke-dashoffset", 0);
+
+  /*add points*/
+  var pointsIndividual = svg.selectAll('circleIndividual')
+  .data(datasetIndividual)
+  .enter()
+  .append('circle');
+
+  /*point attributes*/
+  pointsIndividual.attr('cy', function(d) {
+    return yScale(d[1])
+  })
+  .style('opacity', 0)
+  .transition()
+  .duration(1000)
+  .ease('elastic')
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .attr({
+    'cx': function(d) {
+      return xScale(d[0]);
+    },
+    'cy': function(d) {
+      return yScale(d[1]);
+    },
+    'r': 5,
+    'class': 'datapointIndividual',
+    'id': function(d, i) {
+      return i;
+    }
+  })
+
+
+  .style('opacity', 1);
+};
+
+
+$(".individual").click(function() {
+  drawIndividualLines();
+  drawIndividualLegend();
+  swapShifts();
+});
+
+var mouseG = svg.append("g")
+.attr("class", "mouse-over-effects");
+
+mouseG.append("path") // this is the white vertical line to follow mouse
+.attr("class", "mouse-line")
+.style("stroke", "white")
+.style("stroke-width", "1px")
+.style("opacity", "0");
+
+var linesForMouse = document.getElementsByClassName('lineChart');
+var linesIndividualForMouse = document.getElementsByClassName('lineChartIndividual');
+
+var mousePerLine = mouseG.selectAll('.mouse-per-line')
+.data(dataset)
+.enter()
+.append("g")
+.attr("class", "mouse-per-line");
+
+mousePerLine.append("circle")
+.attr("r", 7)
+.style("stroke", "#A0B1AB")
+.style("fill", "none")
+.style("stroke-width", "1px")
+.style("opacity", "0");
+
+mousePerLine.append("text")
+.attr("transform", "translate(10,3)");
+
+mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+.attr('width', w) // can't catch mouse events on a g element
+.attr('height', h)
+.attr('fill', 'none')
+.attr('pointer-events', 'all')
+.on('mouseout', function() { // on mouse out hide line, circles and text
+  d3.select(".mouse-line")
+  .style("opacity", "0");
+  d3.selectAll(".mouse-per-line circle")
+  .style("opacity", "0");
+  d3.selectAll(".mouse-per-line text")
+  .style("opacity", "0");
+})
+.on('mouseover', function() { // on mouse in show line, circles and text
+  d3.select(".mouse-line")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line circle")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line text")
+  .style("opacity", "1");
+})
+.on('mousemove', function() { // mouse moving over canvas
+  var mouse = d3.mouse(this);
+  d3.select(".mouse-line")
+  .attr("d", function() {
+    var d = "M" + mouse[0] + "," + height;
+    d += " " + mouse[0] + "," + 0;
+    return d;
+  });
+
+  d3.selectAll(".mouse-per-line")
+  .attr("transform", function(d, i) {
+    //console.log(w/mouse[0])
+    //var xDate = xScale.invert(mouse[0]),
+    //bisect = d3.bisector(function(d) { return d.date; }).right;
+    //		idx = bisect(d.values, xDate);
+
+    var beginning = 0,
+    end = length,
+    target = null
+    //console.log(end);
+
+    while (true) {
+      target = Math.floor((beginning + end) / 2);
+      //pos = linesForMouse[i].getPointAtLength(target);
+      pos = svg.select('.lineChart').node().getPointAtLength(target);
+      //console.log(pos);
+      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+        break;
+      }
+      if (pos.x > mouse[0]) end = target;
+      else if (pos.x < mouse[0]) beginning = target;
+      else break; //position found
+    }
+
+    d3.select(this).select('text')
+    .text(yScale.invert(pos.y).toFixed(2))
+    .attr("fill", "#fff");
+
+    return "translate(" + mouse[0] + "," + pos.y + ")";
+  });
+});

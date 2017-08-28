@@ -45,8 +45,8 @@ function swapShifts(){
 } else {
     $('.csurplus.cmoved').removeClass('cmoved');
     $('.cdeficit.csurplus').removeClass('csurplus');
-    $('.csurplus.fillPassend').removeClass('fillPassend');
-    $('.cdeficit.fillUnpassend').removeClass('fillUnpassend');
+    $('.passend.fillPassend').removeClass('fillPassend');
+    $('.unpassend.fillUnpassend').removeClass('fillUnpassend');
     swapped = false;
 }
 };
