@@ -150,9 +150,10 @@ var svg = d3.select('.linechart')
 
 /*x scale*/
 var xScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
+/*.domain([0, d3.max(dataset, function(d) {
   return d[0];
-})])
+})])*/
+.domain([0, 52])
 .range([padding, w - padding]);
 
 /*y scale*/
@@ -1022,8 +1023,8 @@ var gesamt = passend + unpassend;
 
 var prozent = (passend*100)/gesamt;
 
-percentArray.push(Math.round(prozent));
-console.log(percentArray);
+dataset.push([counter,(Math.round(Math.random() * 50) + 50)]);
+console.log(dataset);
 
 //console.log(passend+"+"+unpassend+"+"+gesamt);
 

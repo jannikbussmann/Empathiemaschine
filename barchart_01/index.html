@@ -9,19 +9,19 @@
 </head>
 
 <body>
-		<div id="wrap">
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">
-					<img alt="Brand" src="data/template/css/img/logo_empathiemaschine.svg">
-				</a>
-			</div>
-			<span class="pull-right ti-help-alt" data-toggle="modal" data-target="#myModal"></span>
-			<h1 class="pull-right">Allgemeine Übersicht</h1>
+	<div id="wrap">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">
+						<img alt="Brand" src="data/template/css/img/logo_empathiemaschine.svg">
+					</a>
+				</div>
+				<span class="pull-right ti-help-alt" data-toggle="modal" data-target="#myModal"></span>
+				<h1 class="pull-right">Allgemeine Übersicht</h1>
 
-		</div>
-	</nav>
+			</div>
+		</nav>
 
 		<div class="row">
 			<div class="container-fluid ">
@@ -49,9 +49,7 @@
 					</div>
 					<div class="buttons">
 						<button class="addWeek" type="button">Add Week</button>
-						<!--button class="swap" type="button">Swap Shifts</button-->
 						<button class="individual" type="button">Show Individual</button>
-
 					</div>
 				</div>
 			</div>
@@ -69,38 +67,78 @@
 				</div>
 			</div>
 		</div>
-</div>
+	</div>
+
+	<!-- Settings -->
+	<span class="pull-right ti-settings" data-toggle="modal" data-target="#settings"></span>
+	<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="container-fluid">
+			<h2 class="h1" >Demo-Modus</h2><br />
+			<h2>Status</h2>
+			<div class="options__item">
+				<label class="option-title options__content" for="button-dropdown">Verbindung Internet</label>
+				<p>Aktiv</p>
+			</div>
+			<div class="options__item">
+				<label class="option-title options__content" for="button-dropdown">Verbindung Infrarot-Sensor</label>
+				<p>Aktiv</p>
+			</div>
+			<div class="options__item">
+				<label class="option-title options__content" for="button-dropdown">Verbindung NFC-Sensor</label>
+				<p>Aktiv</p>
+			</div>
+		<br />
+			<h2>Anpassungen</h2>
+			<div class="options__item">
+				<label class="option-title options__content" for="button-dropdown">Woche hinzufügen</label>
+				<button class="addWeek" type="button"><span class="ti-plus"></button>
+				</div>
+				<div class="options__item">
+					<label class="option-title options__content" for="button-dropdown">Allgemeine Ansicht fixieren</label>
+					<label class="switch"><input checked="true" type="checkbox" />
+						<div class="slider"></div>
+					</label>
+				</div>
+				<div class="options__item">
+					<label class="option-title options__content" for="button-dropdown">Individuelle Ansicht</label>
+					<label class="switch"><input type="checkbox" class="individual" />
+						<div class="slider"></div>
+					</label>
+				</div>
+			</div>
+		</div>
+
 		<!-- Help -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="container-fluid">
-					<div class="text-center">
-						<div class="ti-close close" data-dismiss="modal" aria-label="Close"></div>
-						<br><br>
-						<h2 class ="h1">Hilfe</h2>
-						<h2>Hier soll eine Art erklärung rein.</h2>
-						<h4>Kurze Beschreibung des Konzepts, Bedeutung der Visualisierung, usw.</h4>
-						<h4><kbd>esc</kbd> or click anyway to close</h4>
-					</div>
+				<div class="text-center">
+					<div class="ti-close close" data-dismiss="modal" aria-label="Close"></div>
+					<br><br>
+					<h2 class >Hilfe</h2>
+					<h2>Hier soll eine Art erklärung rein.</h2>
+					<h4>Kurze Beschreibung des Konzepts, Bedeutung der Visualisierung, usw.</h4>
+					<h4><kbd>esc</kbd> or click anyway to close</h4>
+				</div>
 			</div>
 		</div>
 
 
 
 
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="data/template/js/bootstrap.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<!-- Include all compiled plugins (below), or include individual files as needed -->
+		<script src="data/template/js/bootstrap.min.js"></script>
 
 
-	<!--script src="data/template/js/data.js"></script-->
-	<script src="data/template/js/data.js"></script>
-	<!--<script src="data/template/js/dataDonut.js"></script>-->
+		<!--script src="data/template/js/data.js"></script-->
+		<script src="data/template/js/data.js"></script>
+		<!--<script src="data/template/js/dataDonut.js"></script>-->
 
 
-	<!--script src="data/template/js/chartist.min.js"></script-->
-	<script src="data/template/js/general.js"></script>
+		<!--script src="data/template/js/chartist.min.js"></script-->
+		<script src="data/template/js/general.js"></script>
 
-</body>
+	</body>
 
-</html>
+	</html>
