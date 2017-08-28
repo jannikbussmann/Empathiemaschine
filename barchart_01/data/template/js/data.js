@@ -1,3 +1,28 @@
+var swapped = false;
+
+function swapShifts(){
+
+  if ( swapped == false ) {
+    $('.csurplus').addClass('cmoved');
+    $('.cdeficit').addClass('csurplus');
+    $('.passend').addClass('fillPassend');
+    $('.unpassend').addClass('fillUnpassend');
+    swapped = true;
+} else {
+    $('.csurplus.cmoved').removeClass('cmoved');
+    $('.cdeficit.csurplus').removeClass('csurplus');
+    $('.passend.fillPassend').removeClass('fillPassend');
+    $('.unpassend.fillUnpassend').removeClass('fillUnpassend');
+    swapped = false;
+}
+console.log(swapped);
+};
+
+$( ".swap" ).click(function() {
+  swapShifts();
+
+});
+
 var w = 1060,
 h = 400,
 padding = 25;
@@ -472,7 +497,6 @@ legend2 = d3.select("#legend-2")
 legend3 = d3.select("#legend-3")
 .attr('hidden', null);
 
-
 };
 
 
@@ -806,19 +830,16 @@ $( ".addWeek" ).click(function() {
 
   d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
-    var endPercent = 0;
-    var passend = 0;
+
+
+
+
+
 
   function drawIndividualDonut (){
-      data.forEach(function(d) {
-            if(d.Frühschicht_Status == "passend"){
-            passend++;
-          };
-      });
-      //console.log(passend);
-      var gesamt = 7;
-      var index = 0;
-      var prozent = (passend*100)/gesamt;
+
+
+
 
       //console.log(passend+"+"+unpassend+"+"+gesamt);
 
@@ -830,15 +851,13 @@ $( ".addWeek" ).click(function() {
       */
 
 
-  endPercent = (prozent/100);
   //console.log(endPercent);
-  var count = Math.abs((endPercent - startPercent) / 0.01);
-  var countTwo = Math.abs((full - startPercent) / 0.01);
 
-  var step = endPercent < startPercent ? -0.01 : 0.01;
-  var stepTwo = full < startPercent ? -0.01 : 0.01;
+
   var arc = d3.svg.arc()
+
   .startAngle(0)
+
   .innerRadius(circleradius)
   .outerRadius(circleradius - border);
 
@@ -858,27 +877,76 @@ $( ".addWeek" ).click(function() {
   var meter = g.append('g')
   .attr('class', 'progress-meter');
 
-  //Donut Beschriftung
-  meter.append("text")
-  .attr("x", 110)
-  .attr("y", -45 - marginDonutBeschriftung)
-  .attr("dy", "0em")
-  .text("Ihr Wunscherfüllungs-")
-  .style("fill", "white");
+  meter.append('path')
+  .attr('class', 'background')
+  .attr('fill', backgroundColor)
+  .attr('fill-opacity', 1)
+  .attr('d', arc.endAngle(twoPi));
 
-  //Donut Beschriftung
-  meter.append("text")
-  .attr("x", 110)
-  .attr("y", -45 - marginDonutBeschriftung)
-  .attr("dy", "1.4em")
-  .text("grad in %")
-  .style("fill", "white");
+function drawBackground(){
+  meter.selectAll("path").remove();
+  meter.selectAll("text").remove();
 
   meter.append('path')
   .attr('class', 'background')
   .attr('fill', backgroundColor)
   .attr('fill-opacity', 1)
   .attr('d', arc.endAngle(twoPi));
+
+};
+  //if ( swapped == false ) {
+  //var endPercent = 0;
+  var passend = 0;
+
+  function drawIndividualValue (){
+
+    data.forEach(function(d) {
+          if(d.Frühschicht_Status == "passend"){
+          passend++;
+        };
+    });
+
+    var gesamt = 7;
+    //var index = 0;
+
+    var prozent = (passend*100)/gesamt;
+endPercent = (prozent/100);
+
+    console.log(passend);
+
+    var count = Math.abs((endPercent - startPercent) / 0.01);
+    var countTwo = Math.abs((full - startPercent) / 0.01);
+
+    var step = endPercent < startPercent ? -0.01 : 0.01;
+    var stepTwo = full < startPercent ? -0.01 : 0.01;
+
+    meter.selectAll("path").remove();
+    meter.selectAll("text").remove();
+
+    meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', backgroundColor)
+    .attr('fill-opacity', 1)
+    .attr('d', arc.endAngle(twoPi));
+
+
+    //Donut Beschriftung
+    meter.append("text")
+    .attr("x", 110)
+    .attr("y", -45 - marginDonutBeschriftung)
+    .attr("dy", "0em")
+    .text("Ihr Wunscherfüllungs-")
+    .style("fill", "white");
+
+    //Donut Beschriftung
+    meter.append("text")
+    .attr("x", 110)
+    .attr("y", -45 - marginDonutBeschriftung)
+    .attr("dy", "1.4em")
+    .text("grad in %")
+    .style("fill", "white");
+
+  //meter.selectAll("path").remove();
 
   var middle = meter.append('path')
   .attr('class', 'middle')
@@ -896,7 +964,7 @@ $( ".addWeek" ).click(function() {
   .attr('dx', '115')
   .attr('dy', '.35em');
 
-  function drawIndividualValue (){
+
 
     var progress = 0;
     var progressTwo = 0;
@@ -944,14 +1012,18 @@ $( ".addWeek" ).click(function() {
     };
 
     $( ".individual" ).click(function() {
+      if(swapped ==true){
       drawIndividualValue();
+    }else {
+      drawBackground();
+    };
       //drawIndividualDonut();
 
       $("h1").text("Individuelle Übersicht");
     });
 
-  };
-
+  //};
+};
   function drawDonut (){
 
     var passend =

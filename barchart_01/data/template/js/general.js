@@ -32,7 +32,7 @@ $( ".swap" ).click(function() {
 
 
 /* Swap classes */
-var swapped = false;
+/*var swapped = false;
 
 function swapShifts(){
 
@@ -53,4 +53,4 @@ function swapShifts(){
 
 $( ".swap" ).click(function() {
   swapShifts();
-});
+});*/
