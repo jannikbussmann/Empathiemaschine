@@ -894,8 +894,7 @@ function drawBackground(){
   .attr('d', arc.endAngle(twoPi));
 
 };
-  //if ( swapped == false ) {
-  //var endPercent = 0;
+
   var passend = 0;
 
   function drawIndividualValue (){
@@ -907,10 +906,9 @@ function drawBackground(){
     });
 
     var gesamt = 7;
-    //var index = 0;
 
     var prozent = (passend*100)/gesamt;
-endPercent = (prozent/100);
+    endPercent = (prozent/100);
 
     console.log(passend);
 
