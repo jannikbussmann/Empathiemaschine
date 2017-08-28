@@ -4,5 +4,5 @@ Tagnummer,Tag,Frühschicht_gedeckt,Frühschicht_Mitarbeitermangel,Frühschicht_M
 3,Mi,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
 4,Do,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
 5,Fr,38,2,0,passend,33,0,14,irrelevant,13,0,1,33,20,0
-6,Sa,20,0,2,passend,25,0,8,unpassend,10,5,0,20,11,0
+6,Sa,20,0,2,passend,25,0,8,irrelevant,10,5,0,20,11,0
 7,So,20,0,2,passend,25,0,8,irrelevant,10,5,0,20,11,0

@@ -169,10 +169,9 @@ svg.append('g')
 })
 .call(yAxis);
 
-function drawLineDiagram(){
 
-d3.selectAll("path").remove();
-d3.selectAll("points").remove();
+//d3.selectAll("path").remove();
+//d3.selectAll("points").remove();
 
 /*define line*/
 var lines = d3.svg.line()
@@ -411,7 +410,7 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
     return "translate(" + mouse[0] + "," + pos.y + ")";
   });
 });
-};
+
 
 
 // LEGEND
@@ -546,7 +545,7 @@ legend2.append("text")
 .attr("dy", "0em")
 .text("Übereinstimmung mit")
 .style("fill", "white");
-<<<<<<< HEAD
+
 
 legend2.append("text")
 .attr("class", "calendarWeek")
@@ -580,7 +579,6 @@ legend3.append("text")
 .text("Umverteilter")
 .style("fill", "white");
 
-=======
 
 legend2.append("text")
 .attr("class", "calendarWeek")
@@ -614,7 +612,6 @@ legend3.append("text")
 .text("Umverteilter")
 .style("fill", "white");
 
->>>>>>> origin/master
 legend3.append("text")
 .attr("class", "calendarWeek")
 .attr("x", 25)
@@ -809,49 +806,34 @@ $( ".addWeek" ).click(function() {
 
   d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
-    function drawIndividualDonut (){
-      var passend =
-      (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-      +
-      d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-      +
-      d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-      +
-      d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-    );
+    var endPercent = 0;
+    var passend = 0;
 
-    var unpassend =
-    (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-    +
-    d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-    +
-    d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-    +
-    d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-    +
-    d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-    +
-    d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-    +
-    d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-    +
-    d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
-  );
+  function drawIndividualDonut (){
 
-  var gesamt = passend + unpassend;
 
-  var prozent = (passend*100)/gesamt;
+      data.forEach(function(d) {
+            if(d.Frühschicht_Status == "passend"){
+            passend++;
+          };
+      });
 
-  //console.log(passend+"+"+unpassend+"+"+gesamt);
+      //console.log(passend);
 
-  //console.log(prozent);
-  //
+      var gesamt = 7;
+
+      var prozent = (passend*100)/gesamt;
+
+      //console.log(passend+"+"+unpassend+"+"+gesamt);
+
+      //console.log(prozent);
+      //
 
   percentArray.push(Math.round(prozent));
 
   console.log(percentArray);
 
-  var endPercent = (prozent/100);
+  endPercent = (prozent/100);
   //console.log(endPercent);
   var count = Math.abs((endPercent - startPercent) / 0.01);
   var countTwo = Math.abs((full - startPercent) / 0.01);
@@ -919,6 +901,9 @@ $( ".addWeek" ).click(function() {
 
   function drawIndividualValue (){
 
+    var progress = 0;
+    var progressTwo = 0;
+
     function updateProgress(progress) {
       // middle.attr('d', arc.endAngle(twoPi * progressTwo));
       foreground.attr('d', arc.endAngle(twoPi * progress));
@@ -931,8 +916,8 @@ $( ".addWeek" ).click(function() {
       //numberText.text(formatPercent(progress));
     }
 
-    var progress = startPercent;
-    var progressTwo = startPercent;
+     progress = startPercent;
+     progressTwo = startPercent;
 
     (
       function loops() {
@@ -954,10 +939,15 @@ $( ".addWeek" ).click(function() {
         }
       })
       ();
+
+      //  drawIndividualDonut();
+
     };
 
     $( ".individual" ).click(function() {
       drawIndividualValue();
+      //drawIndividualDonut();
+
       $("h1").text("Individuelle Übersicht");
     });
 
@@ -1675,7 +1665,7 @@ var progressTwo = startPercent;
   })
 })
 
-drawLineDiagram();
+//drawLineDiagram();
 //an dieser stelle klammer für onClick funktion einbauen um button zu aktivieren!
 });
 
@@ -1795,6 +1785,8 @@ var numberText = meter.append('text')
 .attr('dy', '.35em');
 
 function drawIndividualValue (){
+
+  //drawIndividualDonut();
 
   function updateProgress(progress) {
     // middle.attr('d', arc.endAngle(twoPi * progressTwo));
