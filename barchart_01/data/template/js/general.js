@@ -9,6 +9,29 @@ $(".allCharts").scroll(function() {
     }
 });
 
+
+    function statusWifi() {
+        if(navigator.onLine) {
+            $('.statusWifi').html('Aktiv');
+        }
+        else {
+            $('.statusWifi').html("Inaktiv");
+        }
+
+
+                window.addEventListener("online", function(e) {
+                    $('.statusWifi').html('aktiv');
+                });
+                window.addEventListener("offline", function(e) {
+                    $('.statusWifi').html("inaktiv");
+                });
+
+
+    }
+
+    statusWifi();
+
+
 /* Swap classes
 var swapped = false;
 
