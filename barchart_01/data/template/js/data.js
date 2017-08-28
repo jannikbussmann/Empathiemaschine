@@ -810,16 +810,12 @@ $( ".addWeek" ).click(function() {
     var passend = 0;
 
   function drawIndividualDonut (){
-
-
       data.forEach(function(d) {
             if(d.Frühschicht_Status == "passend"){
             passend++;
           };
       });
-
       //console.log(passend);
-
       var gesamt = 7;
       var index = 0;
       var prozent = (passend*100)/gesamt;
@@ -828,12 +824,11 @@ $( ".addWeek" ).click(function() {
 
       //console.log(prozent);
       //
-data.forEach(function(d) {
-  index++;
-});
+      /*data.forEach(function(d) {
+        index++;
+      });
+      */
 
-percentArray.push(Math.round(prozent));
-  console.log(percentArray);
 
   endPercent = (prozent/100);
   //console.log(endPercent);
@@ -990,6 +985,9 @@ percentArray.push(Math.round(prozent));
 var gesamt = passend + unpassend;
 
 var prozent = (passend*100)/gesamt;
+
+percentArray.push(Math.round(prozent));
+console.log(percentArray);
 
 //console.log(passend+"+"+unpassend+"+"+gesamt);
 
