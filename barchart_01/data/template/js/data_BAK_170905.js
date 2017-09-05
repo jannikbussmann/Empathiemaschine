@@ -335,29 +335,16 @@ function drawIndividualLines (){
     }
   })
 
+
   .style('opacity', 1);
 };
 
-function deleteIndividualLines(){
-  svg.selectAll(".datapointIndividual").remove();
-  svg.selectAll(".lineChartIndividual").remove();
-  //meter.selectAll("text").remove();
-console.log("ok");
-};
 
 $(".individual").click(function() {
-
+  drawIndividualLines();
+  drawIndividualLegend();
   swapShifts();
-
-  if(swapped == true){
-    drawIndividualLines();
-    drawIndividualLegend();
-  }else {
-  deleteIndividualLines();
-};
-
 });
-
 
 var mouseG = svg.append("g")
 .attr("class", "mouse-over-effects");
