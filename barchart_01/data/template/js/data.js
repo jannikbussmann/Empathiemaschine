@@ -15,7 +15,7 @@ function swapShifts(){
     $('.unpassend.fillUnpassend').removeClass('fillUnpassend');
     swapped = false;
 }
-console.log(swapped);
+//console.log(swapped);
 };
 
 $( ".swap" ).click(function() {
@@ -864,13 +864,15 @@ function drawBackground(){
 
   var passend = 0;
 
+  data.forEach(function(d) {
+        if(d.Frühschicht_Status == "passend"){
+        passend++;
+      };
+  });
+
   function drawIndividualValue (){
 
-    data.forEach(function(d) {
-          if(d.Frühschicht_Status == "passend"){
-          passend++;
-        };
-    });
+
 
     var gesamt = 7;
 
@@ -1718,166 +1720,194 @@ var two = d3.select(".two").append("svg")
 
 d3.csv("data/template/csv/week2.csv", function(error, data){
 
-
-
   function drawIndividualDonut (){
-    var passend =
-    (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-  );
 
-  var unpassend =
-  (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
-);
 
-var gesamt = passend + unpassend;
 
-var prozent = (passend*100)/gesamt;
 
-//console.log(passend+"+"+unpassend+"+"+gesamt);
+      //console.log(passend+"+"+unpassend+"+"+gesamt);
 
-//console.log(prozent);
+      //console.log(prozent);
+      //
+      /*data.forEach(function(d) {
+        index++;
+      });
+      */
 
-var endPercent = (prozent/100);
-//console.log(endPercent);
-var count = Math.abs((endPercent - startPercent) / 0.01);
-var countTwo = Math.abs((full - startPercent) / 0.01);
 
-var step = endPercent < startPercent ? -0.01 : 0.01;
-var stepTwo = full < startPercent ? -0.01 : 0.01;
-var arc = d3.svg.arc()
-.startAngle(0)
-.innerRadius(circleradius)
-.outerRadius(circleradius - border);
+  //console.log(endPercent);
 
-var parent = two.selectAll("parent")
-.data(data)
-.enter().append("svg");
 
-var svg = two.append('svg')
-.attr('width', boxSize)
-.attr('height', circleHeight)
-.attr("x", xPosDonut)
-.attr("y", marginDonut);
+  var arc = d3.svg.arc()
 
-var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
+  .startAngle(0)
 
-var meter = g.append('g')
-.attr('class', 'progress-meter');
+  .innerRadius(circleradius)
+  .outerRadius(circleradius - border);
 
-//Donut Beschriftung
-meter.append("text")
-.attr("x", 110)
-.attr("y", -45 - marginDonutBeschriftung)
-.attr("dy", "0em")
-.text("Ihr Wunscherfüllungs-")
-.style("fill", "white");
+  var parent = two.selectAll("parent")
+  .data(data)
+  .enter().append("svg");
 
-//Donut Beschriftung
-meter.append("text")
-.attr("x", 110)
-.attr("y", -45 - marginDonutBeschriftung)
-.attr("dy", "1.4em")
-.text("grad in %")
-.style("fill", "white");
+  var svg = two.append('svg')
+  .attr('width', boxSize)
+  .attr('height', circleHeight)
+  .attr("x", xPosDonut)
+  .attr("y", marginDonut);
 
-meter.append('path')
-.attr('class', 'background')
-.attr('fill', backgroundColor)
-.attr('fill-opacity', 1)
-.attr('d', arc.endAngle(twoPi));
+  var g = svg.append('g')
+  .attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
-var middle = meter.append('path')
-.attr('class', 'middle')
-.attr('fill', red)
-.attr('fill-opacity', 1);
+  var meter = g.append('g')
+  .attr('class', 'progress-meter');
 
-var foreground = meter.append('path')
-.attr('class', 'foreground')
-.attr('fill', green)
-.attr('fill-opacity', 1);
+  meter.append('path')
+  .attr('class', 'background')
+  .attr('fill', backgroundColor)
+  .attr('fill-opacity', 1)
+  .attr('d', arc.endAngle(twoPi));
 
-var numberText = meter.append('text')
-.attr('fill', white)
-.attr("text-anchor", "middle")
-.attr('dx', '115')
-.attr('dy', '.35em');
+  function drawBackground(){
+  meter.selectAll("path").remove();
+  meter.selectAll("text").remove();
 
-function drawIndividualValue (){
+  meter.append('path')
+  .attr('class', 'background')
+  .attr('fill', backgroundColor)
+  .attr('fill-opacity', 1)
+  .attr('d', arc.endAngle(twoPi));
 
-  //drawIndividualDonut();
-
-  function updateProgress(progress) {
-    // middle.attr('d', arc.endAngle(twoPi * progressTwo));
-    foreground.attr('d', arc.endAngle(twoPi * progress));
-    numberText.text(formatPercent(progress));
-  }
-
-  function updateProgressTwo(progressTwo) {
-    middle.attr('d', arc.endAngle(twoPi * progressTwo));
-    // foreground.attr('d', arc.endAngle(twoPi * progress));
-    //numberText.text(formatPercent(progress));
-  }
-
-  var progress = startPercent;
-  var progressTwo = startPercent;
-
-  (
-    function loops() {
-      updateProgress(progress);
-      updateProgressTwo(progressTwo);
-
-      if (countTwo > 0) {
-        countTwo--;
-        // progress += step;
-        progressTwo += stepTwo;
-        setTimeout(loops, 10);
-      }
-
-      if (count > 0) {
-        count--;
-        progress += step;
-        // progressTwo += stepTwo;
-        // setTimeout(loops, 10);
-      }
-    })
-    ();
   };
 
-  $( ".individual" ).click(function() {
-    drawIndividualValue();
-    $("h1").text("Individuelle Übersicht");
+  var passend = 0;
+
+  data.forEach(function(d) {
+        if(d.Frühschicht_Status == "passend"){
+        passend++;
+      };
   });
 
-};
-
-drawIndividualDonut();
-});
-
-d3.csv("data/template/csv/week2.csv", function(error, data){
+  function drawIndividualValue (){
 
 
 
+    var gesamt = 7;
+
+    var prozent = (passend*100)/gesamt;
+    endPercent = (prozent/100);
+
+    console.log(passend);
+
+    var count = Math.abs((endPercent - startPercent) / 0.01);
+    var countTwo = Math.abs((full - startPercent) / 0.01);
+
+    var step = endPercent < startPercent ? -0.01 : 0.01;
+    var stepTwo = full < startPercent ? -0.01 : 0.01;
+
+    meter.selectAll("path").remove();
+    meter.selectAll("text").remove();
+
+    meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', backgroundColor)
+    .attr('fill-opacity', 1)
+    .attr('d', arc.endAngle(twoPi));
+
+
+    //Donut Beschriftung
+    meter.append("text")
+    .attr("x", 110)
+    .attr("y", -45 - marginDonutBeschriftung)
+    .attr("dy", "0em")
+    .text("Ihr Wunscherfüllungs-")
+    .style("fill", "white");
+
+    //Donut Beschriftung
+    meter.append("text")
+    .attr("x", 110)
+    .attr("y", -45 - marginDonutBeschriftung)
+    .attr("dy", "1.4em")
+    .text("grad in %")
+    .style("fill", "white");
+
+  //meter.selectAll("path").remove();
+
+  var middle = meter.append('path')
+  .attr('class', 'middle')
+  .attr('fill', red)
+  .attr('fill-opacity', 1);
+
+  var foreground = meter.append('path')
+  .attr('class', 'foreground')
+  .attr('fill', green)
+  .attr('fill-opacity', 1);
+
+  var numberText = meter.append('text')
+  .attr('fill', white)
+  .attr("text-anchor", "middle")
+  .attr('dx', '115')
+  .attr('dy', '.35em');
+
+
+
+    var progress = 0;
+    var progressTwo = 0;
+
+    progress = startPercent;
+    progressTwo = startPercent;
+
+    function updateProgress(progress) {
+      // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      foreground.attr('d', arc.endAngle(twoPi * progress));
+      numberText.text(formatPercent(progress));
+    }
+
+    function updateProgressTwo(progressTwo) {
+      middle.attr('d', arc.endAngle(twoPi * progressTwo));
+      // foreground.attr('d', arc.endAngle(twoPi * progress));
+      //numberText.text(formatPercent(progress));
+    }
+
+
+
+    (
+      function loops() {
+        updateProgress(progress);
+        updateProgressTwo(progressTwo);
+
+        if (countTwo > 0) {
+          countTwo--;
+          // progress += step;
+          progressTwo += stepTwo;
+          setTimeout(loops, 10);
+        }
+
+        if (count > 0) {
+          count--;
+          progress += step;
+          // progressTwo += stepTwo;
+          // setTimeout(loops, 10);
+        }
+      })
+      ();
+
+      //  drawIndividualDonut();
+
+    };
+
+    $( ".individual" ).click(function() {
+      if(swapped ==true){
+      drawIndividualValue();
+    }else {
+      drawBackground();
+    };
+      //drawIndividualDonut();
+
+      $("h1").text("Individuelle Übersicht");
+    });
+
+  //};
+  };
 
   function drawDonut (){
 
@@ -2025,6 +2055,7 @@ var progressTwo = startPercent;
 
 drawDonut();
 
+drawIndividualDonut();
 
 var passend = two.selectAll("passend")
 .data(data)
@@ -2474,158 +2505,194 @@ var three = d3.select(".three").append("svg")
 d3.csv("data/template/csv/week1.csv", function(error, data){
 
 
+    function drawIndividualDonut (){
 
-  function drawIndividualDonut (){
-    var passend =
-    (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Mittelschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Spätschicht_gedeckt;})
-    +
-    d3.sum(data, function(d){return d.Geteilt_gedeckt;})
-  );
 
-  var unpassend =
-  (d3.sum(data, function(d){return d.Frühschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Frühschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Mittelschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Spätschicht_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Spätschicht_Mitarbeiterüberschuss; })
-  +
-  d3.sum(data, function(d){return d.Geteilt_Mitarbeitermangel; })
-  +
-  d3.sum(data, function(d){return d.Geteilt_Mitarbeiterüberschuss; })
-);
 
-var gesamt = passend + unpassend;
 
-var prozent = (passend*100)/gesamt;
+        //console.log(passend+"+"+unpassend+"+"+gesamt);
 
-//console.log(passend+"+"+unpassend+"+"+gesamt);
+        //console.log(prozent);
+        //
+        /*data.forEach(function(d) {
+          index++;
+        });
+        */
 
-//console.log(prozent);
 
-var endPercent = (prozent/100);
-//console.log(endPercent);
-var count = Math.abs((endPercent - startPercent) / 0.01);
-var countTwo = Math.abs((full - startPercent) / 0.01);
+    //console.log(endPercent);
 
-var step = endPercent < startPercent ? -0.01 : 0.01;
-var stepTwo = full < startPercent ? -0.01 : 0.01;
-var arc = d3.svg.arc()
-.startAngle(0)
-.innerRadius(circleradius)
-.outerRadius(circleradius - border);
 
-var parent = three.selectAll("parent")
-.data(data)
-.enter().append("svg");
+    var arc = d3.svg.arc()
 
-var svg = three.append('svg')
-.attr('width', boxSize)
-.attr('height', circleHeight)
-.attr("x", xPosDonut)
-.attr("y", marginDonut);
+    .startAngle(0)
 
-var g = svg.append('g')
-.attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
+    .innerRadius(circleradius)
+    .outerRadius(circleradius - border);
 
-var meter = g.append('g')
-.attr('class', 'progress-meter');
+    var parent = three.selectAll("parent")
+    .data(data)
+    .enter().append("svg");
 
-//Donut Beschriftung
-meter.append("text")
-.attr("x", 110)
-.attr("y", -45 - marginDonutBeschriftung)
-.attr("dy", "0em")
-.text("Ihr Wunscherfüllungs-")
-.style("fill", "white");
+    var svg = three.append('svg')
+    .attr('width', boxSize)
+    .attr('height', circleHeight)
+    .attr("x", xPosDonut)
+    .attr("y", marginDonut);
 
-//Donut Beschriftung
-meter.append("text")
-.attr("x", 110)
-.attr("y", -45 - marginDonutBeschriftung)
-.attr("dy", "1.4em")
-.text("grad in %")
-.style("fill", "white");
+    var g = svg.append('g')
+    .attr('transform', 'translate(' + boxSize / 2 + ',' + (boxSize / 2 + marginDonutBeschriftung) + ')');
 
-meter.append('path')
-.attr('class', 'background')
-.attr('fill', backgroundColor)
-.attr('fill-opacity', 1)
-.attr('d', arc.endAngle(twoPi));
+    var meter = g.append('g')
+    .attr('class', 'progress-meter');
 
-var middle = meter.append('path')
-.attr('class', 'middle')
-.attr('fill', red)
-.attr('fill-opacity', 1);
+    meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', backgroundColor)
+    .attr('fill-opacity', 1)
+    .attr('d', arc.endAngle(twoPi));
 
-var foreground = meter.append('path')
-.attr('class', 'foreground')
-.attr('fill', green)
-.attr('fill-opacity', 1);
+    function drawBackground(){
+    meter.selectAll("path").remove();
+    meter.selectAll("text").remove();
 
-var numberText = meter.append('text')
-.attr('fill', white)
-.attr("text-anchor", "middle")
-.attr('dx', '115')
-.attr('dy', '.35em');
+    meter.append('path')
+    .attr('class', 'background')
+    .attr('fill', backgroundColor)
+    .attr('fill-opacity', 1)
+    .attr('d', arc.endAngle(twoPi));
 
-function drawIndividualValue (){
+    };
 
-  function updateProgress(progress) {
-    // middle.attr('d', arc.endAngle(twoPi * progressTwo));
-    foreground.attr('d', arc.endAngle(twoPi * progress));
-    numberText.text(formatPercent(progress));
-  }
+    var passend = 0;
 
-  function updateProgressTwo(progressTwo) {
-    middle.attr('d', arc.endAngle(twoPi * progressTwo));
-    // foreground.attr('d', arc.endAngle(twoPi * progress));
-    //numberText.text(formatPercent(progress));
-  }
+    data.forEach(function(d) {
+          if(d.Frühschicht_Status == "passend"){
+          passend++;
+        };
+    });
 
-  var progress = startPercent;
-  var progressTwo = startPercent;
+    function drawIndividualValue (){
 
-  (
-    function loops() {
-      updateProgress(progress);
-      updateProgressTwo(progressTwo);
 
-      if (countTwo > 0) {
-        countTwo--;
-        // progress += step;
-        progressTwo += stepTwo;
-        setTimeout(loops, 10);
+
+      var gesamt = 7;
+
+      var prozent = (passend*100)/gesamt;
+      endPercent = (prozent/100);
+
+      console.log(passend);
+
+      var count = Math.abs((endPercent - startPercent) / 0.01);
+      var countTwo = Math.abs((full - startPercent) / 0.01);
+
+      var step = endPercent < startPercent ? -0.01 : 0.01;
+      var stepTwo = full < startPercent ? -0.01 : 0.01;
+
+      meter.selectAll("path").remove();
+      meter.selectAll("text").remove();
+
+      meter.append('path')
+      .attr('class', 'background')
+      .attr('fill', backgroundColor)
+      .attr('fill-opacity', 1)
+      .attr('d', arc.endAngle(twoPi));
+
+
+      //Donut Beschriftung
+      meter.append("text")
+      .attr("x", 110)
+      .attr("y", -45 - marginDonutBeschriftung)
+      .attr("dy", "0em")
+      .text("Ihr Wunscherfüllungs-")
+      .style("fill", "white");
+
+      //Donut Beschriftung
+      meter.append("text")
+      .attr("x", 110)
+      .attr("y", -45 - marginDonutBeschriftung)
+      .attr("dy", "1.4em")
+      .text("grad in %")
+      .style("fill", "white");
+
+    //meter.selectAll("path").remove();
+
+    var middle = meter.append('path')
+    .attr('class', 'middle')
+    .attr('fill', red)
+    .attr('fill-opacity', 1);
+
+    var foreground = meter.append('path')
+    .attr('class', 'foreground')
+    .attr('fill', green)
+    .attr('fill-opacity', 1);
+
+    var numberText = meter.append('text')
+    .attr('fill', white)
+    .attr("text-anchor", "middle")
+    .attr('dx', '115')
+    .attr('dy', '.35em');
+
+
+
+      var progress = 0;
+      var progressTwo = 0;
+
+      progress = startPercent;
+      progressTwo = startPercent;
+
+      function updateProgress(progress) {
+        // middle.attr('d', arc.endAngle(twoPi * progressTwo));
+        foreground.attr('d', arc.endAngle(twoPi * progress));
+        numberText.text(formatPercent(progress));
       }
 
-      if (count > 0) {
-        count--;
-        progress += step;
-        // progressTwo += stepTwo;
-        // setTimeout(loops, 10);
+      function updateProgressTwo(progressTwo) {
+        middle.attr('d', arc.endAngle(twoPi * progressTwo));
+        // foreground.attr('d', arc.endAngle(twoPi * progress));
+        //numberText.text(formatPercent(progress));
       }
-    })
-    ();
-  };
 
-  $( ".individual" ).click(function() {
-    drawIndividualValue();
-    $("h1").text("Individuelle Übersicht");
-    /*$("h1").fadeOut(function() {
-    $(this).text("Individuelle Übersicht").fadeIn();
-  });*/
-});
 
-};
+
+      (
+        function loops() {
+          updateProgress(progress);
+          updateProgressTwo(progressTwo);
+
+          if (countTwo > 0) {
+            countTwo--;
+            // progress += step;
+            progressTwo += stepTwo;
+            setTimeout(loops, 10);
+          }
+
+          if (count > 0) {
+            count--;
+            progress += step;
+            // progressTwo += stepTwo;
+            // setTimeout(loops, 10);
+          }
+        })
+        ();
+
+        //  drawIndividualDonut();
+
+      };
+
+      $( ".individual" ).click(function() {
+        if(swapped ==true){
+        drawIndividualValue();
+      }else {
+        drawBackground();
+      };
+        //drawIndividualDonut();
+
+        $("h1").text("Individuelle Übersicht");
+      });
+
+    //};
+    };
 
 function drawDonut (){
 
