@@ -34,7 +34,7 @@ var percentArray = [];
 var dataset = [
   [1, (Math.round(Math.random() * 50) + 50)],
   [2, (Math.round(Math.random() * 50) + 50)],
-  [3, (Math.round(Math.random() * 50) + 50)],
+  /*[3, (Math.round(Math.random() * 50) + 50)],
   [4, (Math.round(Math.random() * 50) + 50)],
   [5, (Math.round(Math.random() * 50) + 50)],
   [6, (Math.round(Math.random() * 50) + 50)],
@@ -83,7 +83,7 @@ var dataset = [
   [49, (Math.round(Math.random() * 50) + 50)],
   [50, (Math.round(Math.random() * 50) + 50)],
   [51, (Math.round(Math.random() * 50) + 50)],
-  [52, (Math.round(Math.random() * 50) + 50)]
+  [52, (Math.round(Math.random() * 50) + 50)]*/
 ];
 
 var datasetIndividual = [
@@ -140,6 +140,10 @@ var datasetIndividual = [
   [51, (Math.round(Math.random() * 50) + 50)],
   [52, (Math.round(Math.random() * 50) + 50)]
 ];
+
+function updateLineChart(){
+
+//d3.select('.linechart').remove();
 
 /*create svg element*/
 var svg = d3.select('.linechart')
@@ -211,6 +215,10 @@ var lines = d3.svg.line()
 
 
 /*append line*/
+
+
+
+
 var path = svg.append('path')
 .attr({
   'd': lines(dataset),
@@ -266,97 +274,6 @@ points.attr('cy', function(d) {
 
 
 .style('opacity', 1);
-
-//	LINES INDIVIDUAL
-function drawIndividualLines (){
-
-  /*define line*/
-  var linesIndividual = d3.svg.line()
-  .x(function(d) {
-    return xScale(d[0])
-  })
-  .y(function(d) {
-    return yScale(d[1])
-  })
-  .interpolate('monotone');
-
-  /*append line*/
-  var pathIndividual = svg.append('path')
-  .attr({
-    //'d': linesIndividual(datasetIndividual),
-    'd': linesIndividual(datasetIndividual),
-    'fill': 'none',
-    'class': 'lineChartIndividual'
-  });
-
-  /*get length*/
-  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
-
-  /*animate line chart*/
-  svg.select('.lineChartIndividual')
-  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
-  .attr("stroke-dashoffset", lengthIndividual)
-  .transition()
-  .ease('linear')
-  .delay(function(d) {
-    return datasetIndividual.length * 100;
-  })
-  .duration(3000)
-  .attr("stroke-dashoffset", 0);
-
-  /*add points*/
-  var pointsIndividual = svg.selectAll('circleIndividual')
-  .data(datasetIndividual)
-  .enter()
-  .append('circle');
-
-  /*point attributes*/
-  pointsIndividual.attr('cy', function(d) {
-    return yScale(d[1])
-  })
-  .style('opacity', 0)
-  .transition()
-  .duration(1000)
-  .ease('elastic')
-  .delay(function(d, i) {
-    return i * 100;
-  })
-  .attr({
-    'cx': function(d) {
-      return xScale(d[0]);
-    },
-    'cy': function(d) {
-      return yScale(d[1]);
-    },
-    'r': 5,
-    'class': 'datapointIndividual',
-    'id': function(d, i) {
-      return i;
-    }
-  })
-
-  .style('opacity', 1);
-};
-
-function deleteIndividualLines(){
-  svg.selectAll(".datapointIndividual").remove();
-  svg.selectAll(".lineChartIndividual").remove();
-  //meter.selectAll("text").remove();
-console.log("ok");
-};
-
-$(".individual").click(function() {
-
-  swapShifts();
-
-  if(swapped == true){
-    drawIndividualLines();
-    drawIndividualLegend();
-  }else {
-  deleteIndividualLines();
-};
-
-});
 
 
 var mouseG = svg.append("g")
@@ -449,6 +366,109 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
     return "translate(" + mouse[0] + "," + pos.y + ")";
   });
 });
+
+//	LINES INDIVIDUAL
+function drawIndividualLines (){
+
+  /*define line*/
+  var linesIndividual = d3.svg.line()
+  .x(function(d) {
+    return xScale(d[0])
+  })
+  .y(function(d) {
+    return yScale(d[1])
+  })
+  .interpolate('monotone');
+
+  /*append line*/
+  var pathIndividual = svg.append('path')
+  .attr({
+    //'d': linesIndividual(datasetIndividual),
+    'd': linesIndividual(datasetIndividual),
+    'fill': 'none',
+    'class': 'lineChartIndividual'
+  });
+
+  /*get length*/
+  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
+
+  /*animate line chart*/
+  svg.select('.lineChartIndividual')
+  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
+  .attr("stroke-dashoffset", lengthIndividual)
+  .transition()
+  .ease('linear')
+  .delay(function(d) {
+    return datasetIndividual.length * 100;
+  })
+  .duration(3000)
+  .attr("stroke-dashoffset", 0);
+
+  /*add points*/
+  var pointsIndividual = svg.selectAll('circleIndividual')
+  .data(datasetIndividual)
+  .enter()
+  .append('circle');
+
+  /*point attributes*/
+  pointsIndividual.attr('cy', function(d) {
+    return yScale(d[1])
+  })
+  .style('opacity', 0)
+  .transition()
+  .duration(1000)
+  .ease('elastic')
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .attr({
+    'cx': function(d) {
+      return xScale(d[0]);
+    },
+    'cy': function(d) {
+      return yScale(d[1]);
+    },
+    'r': 5,
+    'class': 'datapointIndividual',
+    'id': function(d, i) {
+      return i;
+    }
+  })
+
+  .style('opacity', 1);
+};
+
+function deleteIndividualLines(){
+  svg.selectAll(".datapointIndividual").remove();
+  svg.selectAll(".lineChartIndividual").remove();
+  //meter.selectAll("text").remove();
+  //console.log("ok");
+};
+
+$(".individual").click(function() {
+
+  swapShifts();
+
+  if(swapped == true){
+    drawIndividualLines();
+    drawIndividualLegend();
+  }else {
+  deleteIndividualLines();
+};
+
+});
+
+
+
+
+
+};
+
+function deleteLineChart(){
+  d3.select('#chart').remove();
+};
+
+updateLineChart();
 
 
 
@@ -779,6 +799,7 @@ var cDelay = 750;
 
 // Counter zum Hochzählen der Wochen und der neuen Wochen-CSV Dateien
 var counter = 2;
+var counterGesamt = 2;
 /*var counterTwo = 1;
 var counterThree = 2;*/
 
@@ -790,8 +811,14 @@ var paddingGeteilt = paddingSchichtart + paddingSchichtart + paddingSchichtart;
 
 $( ".addWeek" ).click(function() {
   //window.location.reload();
+  //deleteLineChart();
+
+  updateLineChart();
+  deleteLineChart();
+  //deleteIndividualLines();
 
   counter += 1;
+  counterGesamt += 1;
 
   if (counter > 6) {
     counter = 1
@@ -1038,7 +1065,7 @@ var gesamt = passend + unpassend;
 
 var prozent = (passend*100)/gesamt;
 
-dataset.push([counter,(Math.round(Math.random() * 50) + 50)]);
+dataset.push([(counterGesamt),Math.round(prozent)]);
 console.log(dataset);
 
 //console.log(passend+"+"+unpassend+"+"+gesamt);
@@ -1305,7 +1332,7 @@ var progressTwo = startPercent;
   .attr("x", 120)
   .attr("y", 10)
   .attr("dy", ".35em")
-  .text("KW" + counter )
+  .text("KW" + counterGesamt )
   .style("fill", "white");
 
   //Wochentage
