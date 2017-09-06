@@ -157,7 +157,8 @@ var svg = d3.select('.linechart')
 var xScale = d3.scale.linear()
 /*.domain([0, d3.max(dataset, function(d) {
   return d[0];
-})])*/
+})])
+.domain([1, 52])*/
 .domain([1, (dataset.length+1)])
 .range([padding, w - padding]);
 
