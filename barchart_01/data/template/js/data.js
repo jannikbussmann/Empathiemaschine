@@ -312,6 +312,24 @@ mousePerLine.append("circle")
 mousePerLine.append("text")
 .attr("transform", "translate(10,3)");
 
+
+var mousePerLineIndividual = mouseG.selectAll('.mouse-per-line-individual')
+.data(datasetIndividual)
+.enter()
+.append("g")
+.attr("class", "mouse-per-line-individual");
+
+mousePerLineIndividual.append("circle")
+.attr("r", 7)
+.style("stroke", "#A0B1AB")
+.style("fill", "none")
+.style("stroke-width", "1px")
+.style("opacity", "0");
+
+mousePerLineIndividual.append("text")
+.attr("transform", "translate(10,3)");
+
+
 mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
 .attr('width', w) // can't catch mouse events on a g element
 .attr('height', h)
@@ -324,6 +342,10 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
   .style("opacity", "0");
   d3.selectAll(".mouse-per-line text")
   .style("opacity", "0");
+  d3.selectAll(".mouse-per-line-individual circle")
+  .style("opacity", "0");
+  d3.selectAll(".mouse-per-line-individual text")
+  .style("opacity", "0");
 })
 .on('mouseover', function() { // on mouse in show line, circles and text
   d3.select(".mouse-line")
@@ -331,6 +353,10 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
   d3.selectAll(".mouse-per-line circle")
   .style("opacity", "1");
   d3.selectAll(".mouse-per-line text")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line-individual circle")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line-individual text")
   .style("opacity", "1");
 })
 .on('mousemove', function() { // mouse moving over canvas
@@ -356,6 +382,40 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
 
     while (true) {
       target = Math.floor((beginning + end) / 2);
+      //console.log(target);
+      //pos = linesForMouse[i].getPointAtLength(target);
+      pos = svg.select('.lineChart').node().getPointAtLength(target);
+      //console.log(pos);
+      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+        break;
+      }
+      if (pos.x > mouse[0]) end = target;
+      else if (pos.x < mouse[0]) beginning = target;
+      else break; //position found
+    }
+
+    d3.select(this).select('text')
+    .text(yScale.invert(pos.y).toFixed(2))
+    .attr("fill", "#fff");
+
+    return "translate(" + mouse[0] + "," + pos.y + ")";
+    //console.log(pos.y);
+  });
+
+  d3.selectAll(".mouse-per-line-individual")
+  .attr("transform", function(d, i) {
+    //console.log(w/mouse[0])
+    //var xDate = xScale.invert(mouse[0]),
+    //bisect = d3.bisector(function(d) { return d.date; }).right;
+    //		idx = bisect(d.values, xDate);
+    //console.log("test");
+    var beginning = 0,
+    end = length,
+    target = null
+    //console.log(end);
+
+    while (true) {
+      target = Math.floor((beginning + end) / 2);
       //pos = linesForMouse[i].getPointAtLength(target);
       pos = svg.select('.lineChart').node().getPointAtLength(target);
       //console.log(pos);
@@ -373,6 +433,9 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
 
     return "translate(" + mouse[0] + "," + pos.y + ")";
   });
+
+
+
 });
 
 //	LINES INDIVIDUAL
