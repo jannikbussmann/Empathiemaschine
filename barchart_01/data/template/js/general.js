@@ -55,9 +55,11 @@ $('#individual').click(function () {
         drawIndividualLegend();
         swapShifts();
     } else {
-        //drawIndividualLines();
-        drawIndividualLegend();
+        deleteIndividualLines();
+        //drawIndividualLegend();
         swapShifts();
+
+        //Hier muss die
     }
 });
 

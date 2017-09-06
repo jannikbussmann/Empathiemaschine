@@ -1093,7 +1093,7 @@ function drawBackground(){
 
     };
 
-    $( ".individual" ).click(function() {
+    $( "#individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -2004,7 +2004,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 
     };
 
-    $( ".individual" ).click(function() {
+    $( "#individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -2790,7 +2790,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 
       };
 
-      $( ".individual" ).click(function() {
+      $( "#individual" ).click(function() {
         if(swapped ==true){
         drawIndividualValue();
       }else {

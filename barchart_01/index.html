@@ -28,7 +28,7 @@
 			var var1offLabel = "Stopped";
 			var var1onState = null; // Set to null to allow raw value to be displayed.
 			var var1offState = null; // Set to null to allow raw value to be displayed.
-			var refresh1 = 1000;
+			var refresh1 = 3000;
 			// Variable 2
 			var varKey2 = "RFID-SCAN";
 			var var2onLabel = "Open!";
@@ -305,12 +305,12 @@
 				<p class="statusWifi">Aktiv</p>
 			</div>
 			<div class="options__item">
-				<label class="option-title options__content" for="button-dropdown">Verbindung Infrarot-Sensor</label>
-				<p>Aktiv</p>
+				<label class="option-title options__content" for="button-dropdown">Aktueller Infrarot-Sensorwert</label>
+				<input type="text" class="form-control" value="---" readonly id="var-val-1" />
 			</div>
 			<div class="options__item">
-				<label class="option-title options__content" for="button-dropdown">Verbindung NFC-Sensor</label>
-				<p>Aktiv</p>
+				<label class="option-title options__content" for="button-dropdown">Aktueller NFC-Sensorwer</label>
+				<input type="text" class="form-control" value="---" readonly id="var-val-2" />
 			</div>
 		<br />
 			<h2>Anpassungen</h2>
