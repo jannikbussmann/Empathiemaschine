@@ -445,16 +445,27 @@ function deleteIndividualLines(){
   //console.log("ok");
 };
 
+
 $(".individual").click(function() {
 
-  swapShifts();
+  //swapShifts();
 
   if(swapped == true){
     drawIndividualLines();
     drawIndividualLegend();
-  }else {
-  deleteIndividualLines();
+  }
+  else{
+    deleteIndividualLines();
+  };
+
+});
+
 };
+//var updater = updateLineChart();
+
+$(".individual").click(function() {
+
+  swapShifts();
 
 });
 
@@ -462,7 +473,7 @@ $(".individual").click(function() {
 
 
 
-};
+
 
 function deleteLineChart(){
   d3.select('#chart').remove();
@@ -839,26 +850,7 @@ $( ".addWeek" ).click(function() {
 
 
 
-
-
-
-
   function drawIndividualDonut (){
-
-
-
-
-      //console.log(passend+"+"+unpassend+"+"+gesamt);
-
-      //console.log(prozent);
-      //
-      /*data.forEach(function(d) {
-        index++;
-      });
-      */
-
-
-  //console.log(endPercent);
 
 
   var arc = d3.svg.arc()
@@ -1761,22 +1753,6 @@ var two = d3.select(".two").append("svg")
 d3.csv("data/template/csv/week2.csv", function(error, data){
 
   function drawIndividualDonut (){
-
-
-
-
-      //console.log(passend+"+"+unpassend+"+"+gesamt);
-
-      //console.log(prozent);
-      //
-      /*data.forEach(function(d) {
-        index++;
-      });
-      */
-
-
-  //console.log(endPercent);
-
 
   var arc = d3.svg.arc()
 
