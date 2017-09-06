@@ -1072,7 +1072,7 @@ var individualPushValue = (setPushValue*100)/7 ;
 
 dataset.push([(counterGesamt),Math.round(prozent)]);
 
-datasetIndividual.push([(counterGesamt),Math.round(individualPushValue)]);
+datasetIndividual.push([(counterGesamt-1),Math.round(individualPushValue)]);
 
 //console.log(datasetIndividual);
 //console.log(dataset);
