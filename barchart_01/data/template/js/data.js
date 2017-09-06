@@ -87,8 +87,8 @@ var dataset = [
 ];
 
 var datasetIndividual = [
-  [1, (Math.round(Math.random() * 50) + 50)],
-  [2, (Math.round(Math.random() * 50) + 50)],
+  [1, 60]
+  /*[2, (Math.round(Math.random() * 50) + 50)],
   [3, (Math.round(Math.random() * 50) + 50)],
   [4, (Math.round(Math.random() * 50) + 50)],
   [5, (Math.round(Math.random() * 50) + 50)],
@@ -138,7 +138,7 @@ var datasetIndividual = [
   [49, (Math.round(Math.random() * 50) + 50)],
   [50, (Math.round(Math.random() * 50) + 50)],
   [51, (Math.round(Math.random() * 50) + 50)],
-  [52, (Math.round(Math.random() * 50) + 50)]
+  [52, (Math.round(Math.random() * 50) + 50)]*/
 ];
 
 function updateLineChart(){
@@ -851,6 +851,13 @@ $( ".addWeek" ).click(function() {
   d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
 
+var setPushValue = 0;
+
+data.forEach(function(d) {
+      if(d.Frühschicht_Status == "passend"){
+      setPushValue++;
+    };
+});
 
   function drawIndividualDonut (){
 
@@ -896,13 +903,9 @@ function drawBackground(){
 
 };
 
-  var passend = 0;
+  var passend = setPushValue;
 
-  data.forEach(function(d) {
-        if(d.Frühschicht_Status == "passend"){
-        passend++;
-      };
-  });
+
 
   function drawIndividualValue (){
 
@@ -911,9 +914,14 @@ function drawBackground(){
     var gesamt = 7;
 
     var prozent = (passend*100)/gesamt;
+    //setPushValue = prozent;
+    //console.log(setPushValue);
     endPercent = (prozent/100);
 
-    console.log(passend);
+    //datasetIndividual.push([(counterGesamt),Math.round(prozent)]);
+    console.log(datasetIndividual);
+
+    //console.log(passend);
 
     var count = Math.abs((endPercent - startPercent) / 0.01);
     var countTwo = Math.abs((full - startPercent) / 0.01);
@@ -1059,8 +1067,14 @@ var gesamt = passend + unpassend;
 
 var prozent = (passend*100)/gesamt;
 
+var individualPushValue = (setPushValue*100)/7 ;
+
 dataset.push([(counterGesamt),Math.round(prozent)]);
-console.log(dataset);
+
+datasetIndividual.push([(counterGesamt),Math.round(individualPushValue)]);
+
+//console.log(datasetIndividual);
+//console.log(dataset);
 
 //console.log(passend+"+"+unpassend+"+"+gesamt);
 
@@ -1153,9 +1167,10 @@ var progressTwo = startPercent;
   ();
 };
 
+drawIndividualDonut();
 drawDonut();
 
-drawIndividualDonut();
+
 
 
 
