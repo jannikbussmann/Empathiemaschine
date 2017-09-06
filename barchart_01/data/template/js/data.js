@@ -27,706 +27,6 @@ var w = 1060,
 h = 400,
 padding = 25;
 
-var percentArray = [];
-
-//console.log(percentArray);
-//function drawLineDiagram(){
-var dataset = [
-  [1, 50],
-  /*[2, (Math.round(Math.random() * 50) + 50)],
-  [3, (Math.round(Math.random() * 50) + 50)],
-  [4, (Math.round(Math.random() * 50) + 50)],
-  [5, (Math.round(Math.random() * 50) + 50)],
-  [6, (Math.round(Math.random() * 50) + 50)],
-  [7, (Math.round(Math.random() * 50) + 50)],
-  [8, (Math.round(Math.random() * 50) + 50)],
-  [9, (Math.round(Math.random() * 50) + 50)],
-  [10, (Math.round(Math.random() * 50) + 50)],
-  [11, (Math.round(Math.random() * 50) + 50)],
-  [12, (Math.round(Math.random() * 50) + 50)],
-  [13, (Math.round(Math.random() * 50) + 50)],
-  [14, (Math.round(Math.random() * 50) + 50)],
-  [15, (Math.round(Math.random() * 50) + 50)],
-  [16, (Math.round(Math.random() * 50) + 50)],
-  [17, (Math.round(Math.random() * 50) + 50)],
-  [18, (Math.round(Math.random() * 50) + 50)],
-  [19, (Math.round(Math.random() * 50) + 50)],
-  [20, (Math.round(Math.random() * 50) + 50)],
-  [21, (Math.round(Math.random() * 50) + 50)],
-  [22, (Math.round(Math.random() * 50) + 50)],
-  [23, (Math.round(Math.random() * 50) + 50)],
-  [24, (Math.round(Math.random() * 50) + 50)],
-  [25, (Math.round(Math.random() * 50) + 50)],
-  [26, (Math.round(Math.random() * 50) + 50)],
-  [27, (Math.round(Math.random() * 50) + 50)],
-  [28, (Math.round(Math.random() * 50) + 50)],
-  [29, (Math.round(Math.random() * 50) + 50)],
-  [30, (Math.round(Math.random() * 50) + 50)],
-  [31, (Math.round(Math.random() * 50) + 50)],
-  [32, (Math.round(Math.random() * 50) + 50)],
-  [33, (Math.round(Math.random() * 50) + 50)],
-  [34, (Math.round(Math.random() * 50) + 50)],
-  [35, (Math.round(Math.random() * 50) + 50)],
-  [36, (Math.round(Math.random() * 50) + 50)],
-  [37, (Math.round(Math.random() * 50) + 50)],
-  [38, (Math.round(Math.random() * 50) + 50)],
-  [39, (Math.round(Math.random() * 50) + 50)],
-  [40, (Math.round(Math.random() * 50) + 50)],
-  [41, (Math.round(Math.random() * 50) + 50)],
-  [42, (Math.round(Math.random() * 50) + 50)],
-  [43, (Math.round(Math.random() * 50) + 50)],
-  [44, (Math.round(Math.random() * 50) + 50)],
-  [45, (Math.round(Math.random() * 50) + 50)],
-  [46, (Math.round(Math.random() * 50) + 50)],
-  [47, (Math.round(Math.random() * 50) + 50)],
-  [48, (Math.round(Math.random() * 50) + 50)],
-  [49, (Math.round(Math.random() * 50) + 50)],
-  [50, (Math.round(Math.random() * 50) + 50)],
-  [51, (Math.round(Math.random() * 50) + 50)],
-  [52, (Math.round(Math.random() * 50) + 50)]*/
-];
-
-var datasetIndividual = [
-  [1, 60]
-  /*[2, (Math.round(Math.random() * 50) + 50)],
-  [3, (Math.round(Math.random() * 50) + 50)],
-  [4, (Math.round(Math.random() * 50) + 50)],
-  [5, (Math.round(Math.random() * 50) + 50)],
-  [6, (Math.round(Math.random() * 50) + 50)],
-  [7, (Math.round(Math.random() * 50) + 50)],
-  [8, (Math.round(Math.random() * 50) + 50)],
-  [9, (Math.round(Math.random() * 50) + 50)],
-  [10, (Math.round(Math.random() * 50) + 50)],
-  [11, (Math.round(Math.random() * 50) + 50)],
-  [12, (Math.round(Math.random() * 50) + 50)],
-  [13, (Math.round(Math.random() * 50) + 50)],
-  [14, (Math.round(Math.random() * 50) + 50)],
-  [15, (Math.round(Math.random() * 50) + 50)],
-  [16, (Math.round(Math.random() * 50) + 50)],
-  [17, (Math.round(Math.random() * 50) + 50)],
-  [18, (Math.round(Math.random() * 50) + 50)],
-  [19, (Math.round(Math.random() * 50) + 50)],
-  [20, (Math.round(Math.random() * 50) + 50)],
-  [21, (Math.round(Math.random() * 50) + 50)],
-  [22, (Math.round(Math.random() * 50) + 50)],
-  [23, (Math.round(Math.random() * 50) + 50)],
-  [24, (Math.round(Math.random() * 50) + 50)],
-  [25, (Math.round(Math.random() * 50) + 50)],
-  [26, (Math.round(Math.random() * 50) + 50)],
-  [27, (Math.round(Math.random() * 50) + 50)],
-  [28, (Math.round(Math.random() * 50) + 50)],
-  [29, (Math.round(Math.random() * 50) + 50)],
-  [30, (Math.round(Math.random() * 50) + 50)],
-  [31, (Math.round(Math.random() * 50) + 50)],
-  [32, (Math.round(Math.random() * 50) + 50)],
-  [33, (Math.round(Math.random() * 50) + 50)],
-  [34, (Math.round(Math.random() * 50) + 50)],
-  [35, (Math.round(Math.random() * 50) + 50)],
-  [36, (Math.round(Math.random() * 50) + 50)],
-  [37, (Math.round(Math.random() * 50) + 50)],
-  [38, (Math.round(Math.random() * 50) + 50)],
-  [39, (Math.round(Math.random() * 50) + 50)],
-  [40, (Math.round(Math.random() * 50) + 50)],
-  [41, (Math.round(Math.random() * 50) + 50)],
-  [42, (Math.round(Math.random() * 50) + 50)],
-  [43, (Math.round(Math.random() * 50) + 50)],
-  [44, (Math.round(Math.random() * 50) + 50)],
-  [45, (Math.round(Math.random() * 50) + 50)],
-  [46, (Math.round(Math.random() * 50) + 50)],
-  [47, (Math.round(Math.random() * 50) + 50)],
-  [48, (Math.round(Math.random() * 50) + 50)],
-  [49, (Math.round(Math.random() * 50) + 50)],
-  [50, (Math.round(Math.random() * 50) + 50)],
-  [51, (Math.round(Math.random() * 50) + 50)],
-  [52, (Math.round(Math.random() * 50) + 50)]*/
-];
-
-function updateLineChart(){
-
-//d3.select('.linechart').remove();
-
-/*create svg element*/
-var svg = d3.select('.linechart')
-.append('svg')
-.attr('width', w)
-.attr('height', h)
-.attr('id', 'chart');
-
-
-/*x scale*/
-var xScale = d3.scale.linear()
-/*.domain([0, d3.max(dataset, function(d) {
-  return d[0];
-})])
-.domain([1, 52])*/
-.domain([1, (datasetIndividual.length+1)])
-.range([padding, w - padding]);
-
-/*y scale*/
-var yScale = d3.scale.linear()
-.domain([0, 100])
-/*.domain([0, d3.max(datasetIndividual, function(d) {
-  return d[1];
-})])*/
-.range([h - padding, padding]);
-
-/*x axis*/
-var xAxis = d3.svg.axis()
-.scale(xScale)
-.orient('bottom')
-.ticks(20)
-.tickSize(0, 0)
-//.tickPadding(padding);
-
-/*append x axis*/
-svg.append('g')
-.attr({
-  'class': 'xaxis',
-  //'transform': 'translate(0,' + (h - padding) + ')'
-  'transform': 'translate(0,' + 0 + ')'
-})
-.call(xAxis);
-
-/*y axis*/
-var yAxis = d3.svg.axis()
-.scale(yScale)
-.orient('left')
-.tickSize(0, 0)
-.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
-
-/*append y axis*/
-svg.append('g')
-.attr({
-  'class': 'yaxis',
-  'transform': 'translate(' + padding + ',0)'
-})
-.call(yAxis);
-
-
-//d3.selectAll("path").remove();
-//d3.selectAll("points").remove();
-
-/*define line*/
-var lines = d3.svg.line()
-.x(function(d) {
-  return xScale(d[0])
-})
-.y(function(d) {
-  return yScale(d[1])
-})
-.interpolate('monotone');
-
-
-/*append line*/
-
-
-
-
-var path = svg.append('path')
-.attr({
-  'd': lines(dataset),
-  'fill': 'none',
-  'class': 'lineChart'
-});
-
-/*get length*/
-var length = svg.select('.lineChart').node().getTotalLength();
-
-/*animate line chart*/
-svg.select('.lineChart')
-.attr("stroke-dasharray", length + " " + length)
-.attr("stroke-dashoffset", length)
-.transition()
-.ease('linear')
-.delay(function(d) {
-  return dataset.length * 100;
-})
-.duration(3000)
-.attr("stroke-dashoffset", 0);
-
-/*add points*/
-var points = svg.selectAll('circle')
-.data(dataset)
-.enter()
-.append('circle');
-
-/*point attributes*/
-points.attr('cy', function(d) {
-  return yScale(d[1])
-})
-.style('opacity', 0)
-.transition()
-.duration(1000)
-.ease('elastic')
-.delay(function(d, i) {
-  return i * 100;
-})
-.attr({
-  'cx': function(d) {
-    return xScale(d[0]);
-  },
-  'cy': function(d) {
-    return yScale(d[1]);
-  },
-  'r': 5,
-  'class': 'datapoint',
-  'id': function(d, i) {
-    return i;
-  }
-})
-
-
-.style('opacity', 1);
-
-
-var mouseG = svg.append("g")
-.attr("class", "mouse-over-effects");
-
-mouseG.append("path") // this is the white vertical line to follow mouse
-.attr("class", "mouse-line")
-.style("stroke", "white")
-.style("stroke-width", "1px")
-.style("opacity", "0");
-
-var linesForMouse = document.getElementsByClassName('lineChart');
-var linesIndividualForMouse = document.getElementsByClassName('lineChartIndividual');
-
-var mousePerLine = mouseG.selectAll('.mouse-per-line')
-.data(dataset)
-.enter()
-.append("g")
-.attr("class", "mouse-per-line");
-
-mousePerLine.append("circle")
-.attr("r", 7)
-.style("stroke", "#A0B1AB")
-.style("fill", "none")
-.style("stroke-width", "1px")
-.style("opacity", "0");
-
-mousePerLine.append("text")
-.attr("transform", "translate(10,3)");
-
-mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
-.attr('width', w) // can't catch mouse events on a g element
-.attr('height', h)
-.attr('fill', 'none')
-.attr('pointer-events', 'all')
-.on('mouseout', function() { // on mouse out hide line, circles and text
-  d3.select(".mouse-line")
-  .style("opacity", "0");
-  d3.selectAll(".mouse-per-line circle")
-  .style("opacity", "0");
-  d3.selectAll(".mouse-per-line text")
-  .style("opacity", "0");
-})
-.on('mouseover', function() { // on mouse in show line, circles and text
-  d3.select(".mouse-line")
-  .style("opacity", "1");
-  d3.selectAll(".mouse-per-line circle")
-  .style("opacity", "1");
-  d3.selectAll(".mouse-per-line text")
-  .style("opacity", "1");
-})
-.on('mousemove', function() { // mouse moving over canvas
-  var mouse = d3.mouse(this);
-  d3.select(".mouse-line")
-  .attr("d", function() {
-    var d = "M" + mouse[0] + "," + height;
-    d += " " + mouse[0] + "," + 0;
-    return d;
-  });
-
-  d3.selectAll(".mouse-per-line")
-  .attr("transform", function(d, i) {
-    //console.log(w/mouse[0])
-    //var xDate = xScale.invert(mouse[0]),
-    //bisect = d3.bisector(function(d) { return d.date; }).right;
-    //		idx = bisect(d.values, xDate);
-
-    var beginning = 0,
-    end = length,
-    target = null
-    //console.log(end);
-
-    while (true) {
-      target = Math.floor((beginning + end) / 2);
-      //pos = linesForMouse[i].getPointAtLength(target);
-      pos = svg.select('.lineChart').node().getPointAtLength(target);
-      //console.log(pos);
-      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-        break;
-      }
-      if (pos.x > mouse[0]) end = target;
-      else if (pos.x < mouse[0]) beginning = target;
-      else break; //position found
-    }
-
-    d3.select(this).select('text')
-    .text(yScale.invert(pos.y).toFixed(2))
-    .attr("fill", "#fff");
-
-    return "translate(" + mouse[0] + "," + pos.y + ")";
-  });
-});
-
-//	LINES INDIVIDUAL
-function drawIndividualLines (){
-
-  /*define line*/
-  var linesIndividual = d3.svg.line()
-  .x(function(d) {
-    return xScale(d[0])
-  })
-  .y(function(d) {
-    return yScale(d[1])
-  })
-  .interpolate('monotone');
-
-  /*append line*/
-  var pathIndividual = svg.append('path')
-  .attr({
-    //'d': linesIndividual(datasetIndividual),
-    'd': linesIndividual(datasetIndividual),
-    'fill': 'none',
-    'class': 'lineChartIndividual'
-  });
-
-  /*get length*/
-  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
-
-  /*animate line chart*/
-  svg.select('.lineChartIndividual')
-  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
-  .attr("stroke-dashoffset", lengthIndividual)
-  .transition()
-  .ease('linear')
-  .delay(function(d) {
-    return datasetIndividual.length * 100;
-  })
-  .duration(3000)
-  .attr("stroke-dashoffset", 0);
-
-  /*add points*/
-  var pointsIndividual = svg.selectAll('circleIndividual')
-  .data(datasetIndividual)
-  .enter()
-  .append('circle');
-
-  /*point attributes*/
-  pointsIndividual.attr('cy', function(d) {
-    return yScale(d[1])
-  })
-  .style('opacity', 0)
-  .transition()
-  .duration(1000)
-  .ease('elastic')
-  .delay(function(d, i) {
-    return i * 100;
-  })
-  .attr({
-    'cx': function(d) {
-      return xScale(d[0]);
-    },
-    'cy': function(d) {
-      return yScale(d[1]);
-    },
-    'r': 5,
-    'class': 'datapointIndividual',
-    'id': function(d, i) {
-      return i;
-    }
-  })
-
-  .style('opacity', 1);
-};
-
-function deleteIndividualLines(){
-  svg.selectAll(".datapointIndividual").remove();
-  svg.selectAll(".lineChartIndividual").remove();
-  //meter.selectAll("text").remove();
-  //console.log("ok");
-};
-
-
-$(".individual").click(function() {
-
-  //swapShifts();
-
-  if(swapped == true){
-    drawIndividualLines();
-    drawIndividualLegend();
-  }
-  else{
-    deleteIndividualLines();
-  };
-
-});
-
-};
-//var updater = updateLineChart();
-
-$(".individual").click(function() {
-
-  swapShifts();
-
-});
-
-
-
-
-
-
-
-function deleteLineChart(){
-  d3.select('#chart').remove();
-};
-
-updateLineChart();
-
-
-
-// LEGEND
-
-var legend = d3.select(".legend-1")
-.append('svg')
-.attr('width', 500)
-.attr('height', 45)
-.attr('id', 'legend-1');
-
-legend.append('circle')
-.attr('class', 'datapoint')
-.attr('r', '5')
-.attr("cx", 10)
-.attr("cy", 25);
-
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("ø Wunscherfüllungsgrad")
-.style("fill", "white");
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("aller Fahrer pro Woche")
-.style("fill", "white");
-
-
-function drawIndividualLegend(){
-legend.append('circle')
-.attr('class', 'datapointIndividual')
-.attr('r', '5')
-.attr("cx", 230)
-.attr("cy", 25);
-
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 245)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Ihr ø Wunscherfüllungsgrad")
-.style("fill", "white");
-
-legend.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 245)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("pro Woche")
-.style("fill", "white");
-
-legend2 = d3.select("#legend-2")
-.attr('hidden', true);
-
-legend3 = d3.select("#legend-3")
-.attr('hidden', null);
-
-};
-
-
-
-// LEGEND-2
-
-var legend2 = d3.select(".legend-2")
-.append('svg')
-.attr('width', 800)
-.attr('height', 45)
-.attr('id', 'legend-2')
-.attr('hidden', null);
-
-legend2.append('circle')
-.attr('class', 'datapoint deficit')
-.attr('r', '4')
-.attr("cx", 10)
-.attr("cy", 25);
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Benötigte Dienste")
-.style("fill", "white");
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("früh (F) | mittel (M) | spät (S) | geteilt (G)")
-.style("fill", "white");
-
-
-legend2.append('circle')
-.attr('class', 'surplus')
-.attr('r', '4')
-.attr("cx", 280)
-.attr("cy", 25);
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 295)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Wunschprofilüberschuss")
-.style("fill", "white");
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 295)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("je Dienst")
-.style("fill", "white");
-
-
-legend2.append('circle')
-.attr('class', 'cmatch')
-.attr('r', '4')
-.attr("cx", 470)
-.attr("cy", 25);
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 485)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Übereinstimmung mit")
-.style("fill", "white");
-
-
-legend2.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 485)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("Wunschprofil")
-.style("fill", "white");
-
-
-// LEGEND-3
-
-var legend3 = d3.select(".legend-3")
-.append('svg')
-.attr('width', 800)
-.attr('height', 45)
-.attr('id', 'legend-3')
-.attr('hidden', true);
-
-legend3.append('circle')
-.attr('class', 'datapoint cmoved')
-.attr('r', '4')
-.attr("cx", 10)
-.attr("cy", 25);
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Umverteilter")
-.style("fill", "white");
-
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 25)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("Wunschprofilüberschuss")
-.style("fill", "white");
-
-
-legend3.append('circle')
-.attr('class', 'cmatch')
-.attr('r', '4')
-.attr("cx", 200)
-.attr("cy", 25);
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 215)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Übereinstimmung mit")
-.style("fill", "white");
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 215)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("Wunschprofil")
-.style("fill", "white");
-
-
-legend3.append('circle')
-.attr('class', 'individualMatch')
-.attr('r', '4')
-.attr("cx", 370)
-.attr("cy", 25);
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 385)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Ihre Einplanung")
-.style("fill", "white");
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 385)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("gemäß Wunschprofil")
-.style("fill", "white");
-
-legend3.append('circle')
-.attr('class', 'individualMismatch')
-.attr('r', '4')
-.attr("cx", 530)
-.attr("cy", 25);
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 545)
-.attr("y", 20)
-.attr("dy", "0em")
-.text("Ihre Einplanung")
-.style("fill", "white");
-
-legend3.append("text")
-.attr("class", "calendarWeek")
-.attr("x", 545)
-.attr("y", 20)
-.attr("dy", "1.4em")
-.text("entgg. Wunschprofil")
-.style("fill", "white");
 
 
 /*
@@ -827,8 +127,7 @@ $( ".addWeek" ).click(function() {
   //window.location.reload();
   //deleteLineChart();
 
-  updateLineChart();
-  deleteLineChart();
+
   //deleteIndividualLines();
 
   counter += 1;
@@ -837,6 +136,10 @@ $( ".addWeek" ).click(function() {
   if (counter > 6) {
     counter = 1
   }
+
+  //deleteLineChart();
+  //updateLineChart();
+
 
   //console.log("counter: "+counter);
 
@@ -852,13 +155,13 @@ $( ".addWeek" ).click(function() {
   d3.csv("data/template/csv/week"+counter+".csv", function(error, data){
 
 
-var setPushValue = 0;
+  var setPushValue = 0;
 
-data.forEach(function(d) {
-      if(d.Frühschicht_Status == "passend"){
-      setPushValue++;
-    };
-});
+  data.forEach(function(d) {
+        if(d.Frühschicht_Status == "passend"){
+        setPushValue++;
+      };
+  });
 
   function drawIndividualDonut (){
 
@@ -985,13 +288,13 @@ function drawBackground(){
     function updateProgress(progress) {
       // middle.attr('d', arc.endAngle(twoPi * progressTwo));
       foreground.attr('d', arc.endAngle(twoPi * progress));
-      numberText.text(formatPercent(progress));
+      numberText.text(Math.round(prozent)+"%");
     }
 
     function updateProgressTwo(progressTwo) {
       middle.attr('d', arc.endAngle(twoPi * progressTwo));
       // foreground.attr('d', arc.endAngle(twoPi * progress));
-      //numberText.text(formatPercent(progress));
+      //numberText.text(Math.round(prozent)+"%");
     }
 
 
@@ -1034,7 +337,7 @@ function drawBackground(){
 
   //};
 };
-  function drawDonut (){
+function drawDonut (){
 
     var passend =
     (d3.sum(data, function(d){return d.Frühschicht_gedeckt;})
@@ -1072,7 +375,10 @@ var individualPushValue = (setPushValue*100)/7 ;
 
 dataset.push([(counterGesamt),Math.round(prozent)]);
 
-datasetIndividual.push([(counterGesamt-1),Math.round(individualPushValue)]);
+datasetIndividual.push([(counterGesamt),Math.round(individualPushValue)]);
+
+deleteLineChart();
+updateLineChart();
 
 //console.log(datasetIndividual);
 //console.log(dataset);
@@ -1134,13 +440,13 @@ var numberText = meter.append('text')
 function updateProgress(progress) {
   // middle.attr('d', arc.endAngle(twoPi * progressTwo));
   foreground.attr('d', arc.endAngle(twoPi * progress));
-  numberText.text(formatPercent(progress));
+  numberText.text(Math.round(prozent)+"%");
 }
 
 function updateProgressTwo(progressTwo) {
   middle.attr('d', arc.endAngle(twoPi * progressTwo));
   // foreground.attr('d', arc.endAngle(twoPi * progress));
-  //numberText.text(formatPercent(progress));
+  //numberText.text(Math.round(prozent)+"%");
 }
 
 var progress = startPercent;
@@ -1282,13 +588,13 @@ var numberText = meter.append('text')
 function updateProgress(progress) {
   // middle.attr('d', arc.endAngle(twoPi * progressTwo));
   foreground.attr('d', arc.endAngle(twoPi * progress));
-  numberText.text(formatPercent(progress));
+  numberText.text(Math.round(prozent)+"%");
 }
 
 function updateProgressTwo(progressTwo) {
   middle.attr('d', arc.endAngle(twoPi * progressTwo));
   // foreground.attr('d', arc.endAngle(twoPi * progress));
-  //numberText.text(formatPercent(progress));
+  //numberText.text(Math.round(prozent)+"%");
 }
 
 var progress = startPercent;
@@ -1893,13 +1199,13 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
     function updateProgress(progress) {
       // middle.attr('d', arc.endAngle(twoPi * progressTwo));
       foreground.attr('d', arc.endAngle(twoPi * progress));
-      numberText.text(formatPercent(progress));
+      numberText.text(Math.round(prozent)+"%");
     }
 
     function updateProgressTwo(progressTwo) {
       middle.attr('d', arc.endAngle(twoPi * progressTwo));
       // foreground.attr('d', arc.endAngle(twoPi * progress));
-      //numberText.text(formatPercent(progress));
+      //numberText.text(Math.round(prozent)+"%");
     }
 
 
@@ -2053,13 +1359,13 @@ var numberText = meter.append('text')
 function updateProgress(progress) {
   // middle.attr('d', arc.endAngle(twoPi * progressTwo));
   foreground.attr('d', arc.endAngle(twoPi * progress));
-  numberText.text(formatPercent(progress));
+  numberText.text(Math.round(prozent)+"%");
 }
 
 function updateProgressTwo(progressTwo) {
   middle.attr('d', arc.endAngle(twoPi * progressTwo));
   // foreground.attr('d', arc.endAngle(twoPi * progress));
-  //numberText.text(formatPercent(progress));
+  //numberText.text(Math.round(prozent)+"%");
 }
 
 var progress = startPercent;
@@ -2678,13 +1984,14 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
       function updateProgress(progress) {
         // middle.attr('d', arc.endAngle(twoPi * progressTwo));
         foreground.attr('d', arc.endAngle(twoPi * progress));
-        numberText.text(formatPercent(progress));
+        numberText.text(Math.round(prozent)+"%");
+
       }
 
       function updateProgressTwo(progressTwo) {
         middle.attr('d', arc.endAngle(twoPi * progressTwo));
         // foreground.attr('d', arc.endAngle(twoPi * progress));
-        //numberText.text(formatPercent(progress));
+        //numberText.text(Math.round(prozent)+"%");
       }
 
 
@@ -2770,9 +2077,7 @@ var prozent = (passend*100)/gesamt;
 var endPercent = (prozent/100);
 //console.log(endPercent);
 
-percentArray.push(Math.round(prozent));
 
-//console.log(percentArray);
 
 
 var count = Math.abs((endPercent - startPercent) / 0.01);
@@ -2841,13 +2146,13 @@ var numberText = meter.append('text')
 function updateProgress(progress) {
   // middle.attr('d', arc.endAngle(twoPi * progressTwo));
   foreground.attr('d', arc.endAngle(twoPi * progress));
-  numberText.text(formatPercent(progress));
+  numberText.text(Math.round(prozent)+"%");
 }
 
 function updateProgressTwo(progressTwo) {
   middle.attr('d', arc.endAngle(twoPi * progressTwo));
   // foreground.attr('d', arc.endAngle(twoPi * progress));
-  //numberText.text(formatPercent(progress));
+  //numberText.text(Math.round(prozent)+"%");
 }
 
 var progress = startPercent;
@@ -3319,3 +2624,708 @@ mitarbeitermangel.each(function(a,i) {
   }
 })
 })
+
+
+var percentArray = [];
+
+//console.log(percentArray);
+//function drawLineDiagram(){
+var dataset = [
+  [1, 72],
+  [2, 72]
+  /*[2, (Math.round(Math.random() * 50) + 50)],
+  [3, (Math.round(Math.random() * 50) + 50)],
+  [4, (Math.round(Math.random() * 50) + 50)],
+  [5, (Math.round(Math.random() * 50) + 50)],
+  [6, (Math.round(Math.random() * 50) + 50)],
+  [7, (Math.round(Math.random() * 50) + 50)],
+  [8, (Math.round(Math.random() * 50) + 50)],
+  [9, (Math.round(Math.random() * 50) + 50)],
+  [10, (Math.round(Math.random() * 50) + 50)],
+  [11, (Math.round(Math.random() * 50) + 50)],
+  [12, (Math.round(Math.random() * 50) + 50)],
+  [13, (Math.round(Math.random() * 50) + 50)],
+  [14, (Math.round(Math.random() * 50) + 50)],
+  [15, (Math.round(Math.random() * 50) + 50)],
+  [16, (Math.round(Math.random() * 50) + 50)],
+  [17, (Math.round(Math.random() * 50) + 50)],
+  [18, (Math.round(Math.random() * 50) + 50)],
+  [19, (Math.round(Math.random() * 50) + 50)],
+  [20, (Math.round(Math.random() * 50) + 50)],
+  [21, (Math.round(Math.random() * 50) + 50)],
+  [22, (Math.round(Math.random() * 50) + 50)],
+  [23, (Math.round(Math.random() * 50) + 50)],
+  [24, (Math.round(Math.random() * 50) + 50)],
+  [25, (Math.round(Math.random() * 50) + 50)],
+  [26, (Math.round(Math.random() * 50) + 50)],
+  [27, (Math.round(Math.random() * 50) + 50)],
+  [28, (Math.round(Math.random() * 50) + 50)],
+  [29, (Math.round(Math.random() * 50) + 50)],
+  [30, (Math.round(Math.random() * 50) + 50)],
+  [31, (Math.round(Math.random() * 50) + 50)],
+  [32, (Math.round(Math.random() * 50) + 50)],
+  [33, (Math.round(Math.random() * 50) + 50)],
+  [34, (Math.round(Math.random() * 50) + 50)],
+  [35, (Math.round(Math.random() * 50) + 50)],
+  [36, (Math.round(Math.random() * 50) + 50)],
+  [37, (Math.round(Math.random() * 50) + 50)],
+  [38, (Math.round(Math.random() * 50) + 50)],
+  [39, (Math.round(Math.random() * 50) + 50)],
+  [40, (Math.round(Math.random() * 50) + 50)],
+  [41, (Math.round(Math.random() * 50) + 50)],
+  [42, (Math.round(Math.random() * 50) + 50)],
+  [43, (Math.round(Math.random() * 50) + 50)],
+  [44, (Math.round(Math.random() * 50) + 50)],
+  [45, (Math.round(Math.random() * 50) + 50)],
+  [46, (Math.round(Math.random() * 50) + 50)],
+  [47, (Math.round(Math.random() * 50) + 50)],
+  [48, (Math.round(Math.random() * 50) + 50)],
+  [49, (Math.round(Math.random() * 50) + 50)],
+  [50, (Math.round(Math.random() * 50) + 50)],
+  [51, (Math.round(Math.random() * 50) + 50)],
+  [52, (Math.round(Math.random() * 50) + 50)]*/
+];
+
+var datasetIndividual = [
+  [1, 71],
+  [2, 86]
+  /*[2, (Math.round(Math.random() * 50) + 50)],
+  [3, (Math.round(Math.random() * 50) + 50)],
+  [4, (Math.round(Math.random() * 50) + 50)],
+  [5, (Math.round(Math.random() * 50) + 50)],
+  [6, (Math.round(Math.random() * 50) + 50)],
+  [7, (Math.round(Math.random() * 50) + 50)],
+  [8, (Math.round(Math.random() * 50) + 50)],
+  [9, (Math.round(Math.random() * 50) + 50)],
+  [10, (Math.round(Math.random() * 50) + 50)],
+  [11, (Math.round(Math.random() * 50) + 50)],
+  [12, (Math.round(Math.random() * 50) + 50)],
+  [13, (Math.round(Math.random() * 50) + 50)],
+  [14, (Math.round(Math.random() * 50) + 50)],
+  [15, (Math.round(Math.random() * 50) + 50)],
+  [16, (Math.round(Math.random() * 50) + 50)],
+  [17, (Math.round(Math.random() * 50) + 50)],
+  [18, (Math.round(Math.random() * 50) + 50)],
+  [19, (Math.round(Math.random() * 50) + 50)],
+  [20, (Math.round(Math.random() * 50) + 50)],
+  [21, (Math.round(Math.random() * 50) + 50)],
+  [22, (Math.round(Math.random() * 50) + 50)],
+  [23, (Math.round(Math.random() * 50) + 50)],
+  [24, (Math.round(Math.random() * 50) + 50)],
+  [25, (Math.round(Math.random() * 50) + 50)],
+  [26, (Math.round(Math.random() * 50) + 50)],
+  [27, (Math.round(Math.random() * 50) + 50)],
+  [28, (Math.round(Math.random() * 50) + 50)],
+  [29, (Math.round(Math.random() * 50) + 50)],
+  [30, (Math.round(Math.random() * 50) + 50)],
+  [31, (Math.round(Math.random() * 50) + 50)],
+  [32, (Math.round(Math.random() * 50) + 50)],
+  [33, (Math.round(Math.random() * 50) + 50)],
+  [34, (Math.round(Math.random() * 50) + 50)],
+  [35, (Math.round(Math.random() * 50) + 50)],
+  [36, (Math.round(Math.random() * 50) + 50)],
+  [37, (Math.round(Math.random() * 50) + 50)],
+  [38, (Math.round(Math.random() * 50) + 50)],
+  [39, (Math.round(Math.random() * 50) + 50)],
+  [40, (Math.round(Math.random() * 50) + 50)],
+  [41, (Math.round(Math.random() * 50) + 50)],
+  [42, (Math.round(Math.random() * 50) + 50)],
+  [43, (Math.round(Math.random() * 50) + 50)],
+  [44, (Math.round(Math.random() * 50) + 50)],
+  [45, (Math.round(Math.random() * 50) + 50)],
+  [46, (Math.round(Math.random() * 50) + 50)],
+  [47, (Math.round(Math.random() * 50) + 50)],
+  [48, (Math.round(Math.random() * 50) + 50)],
+  [49, (Math.round(Math.random() * 50) + 50)],
+  [50, (Math.round(Math.random() * 50) + 50)],
+  [51, (Math.round(Math.random() * 50) + 50)],
+  [52, (Math.round(Math.random() * 50) + 50)]*/
+];
+
+function updateLineChart(){
+
+//d3.select('.linechart').remove();
+
+/*create svg element*/
+var svg = d3.select('.linechart')
+.append('svg')
+.attr('width', w)
+.attr('height', h)
+.attr('id', 'chart');
+
+
+/*x scale*/
+var xScale = d3.scale.linear()
+/*.domain([0, d3.max(dataset, function(d) {
+  return d[0];
+})])
+.domain([1, 52])*/
+.domain([1, (datasetIndividual.length)])
+.range([padding, w - padding]);
+
+/*y scale*/
+var yScale = d3.scale.linear()
+.domain([0, 100])
+/*.domain([0, d3.max(datasetIndividual, function(d) {
+  return d[1];
+})])*/
+.range([h - padding, padding]);
+
+/*x axis*/
+var xAxis = d3.svg.axis()
+.scale(xScale)
+.orient('bottom')
+.tickFormat(d3.format("d"))
+.ticks(20)
+.tickSize(0, 0)
+//.tickPadding(padding);
+
+/*append x axis*/
+svg.append('g')
+.attr({
+  'class': 'xaxis',
+  //'transform': 'translate(0,' + (h - padding) + ')'
+  'transform': 'translate(0,' + 0 + ')'
+})
+.call(xAxis);
+
+/*y axis*/
+var yAxis = d3.svg.axis()
+.scale(yScale)
+.orient('left')
+.tickSize(0, 0)
+.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+
+/*append y axis*/
+svg.append('g')
+.attr({
+  'class': 'yaxis',
+  'transform': 'translate(' + padding + ',0)'
+})
+.call(yAxis);
+
+
+//d3.selectAll("path").remove();
+//d3.selectAll("points").remove();
+
+/*define line*/
+var lines = d3.svg.line()
+.x(function(d) {
+  return xScale(d[0])
+})
+.y(function(d) {
+  return yScale(d[1])
+})
+.interpolate('monotone');
+
+
+/*append line*/
+
+
+
+
+var path = svg.append('path')
+.attr({
+  'd': lines(dataset),
+  'fill': 'none',
+  'class': 'lineChart'
+});
+
+/*get length*/
+var length = svg.select('.lineChart').node().getTotalLength();
+
+/*animate line chart*/
+svg.select('.lineChart')
+.attr("stroke-dasharray", length + " " + length)
+.attr("stroke-dashoffset", length)
+.transition()
+.ease('linear')
+.delay(function(d) {
+  return dataset.length * 100;
+})
+.duration(3000)
+.attr("stroke-dashoffset", 0);
+
+/*add points*/
+var points = svg.selectAll('circle')
+.data(dataset)
+.enter()
+.append('circle');
+
+/*point attributes*/
+points.attr('cy', function(d) {
+  return yScale(d[1])
+})
+.style('opacity', 0)
+.transition()
+.duration(1000)
+.ease('elastic')
+.delay(function(d, i) {
+  return i * 100;
+})
+.attr({
+  'cx': function(d) {
+    return xScale(d[0]);
+  },
+  'cy': function(d) {
+    return yScale(d[1]);
+  },
+  'r': 5,
+  'class': 'datapoint',
+  'id': function(d, i) {
+    return i;
+  }
+})
+
+
+.style('opacity', 1);
+
+
+var mouseG = svg.append("g")
+.attr("class", "mouse-over-effects");
+
+mouseG.append("path") // this is the white vertical line to follow mouse
+.attr("class", "mouse-line")
+.style("stroke", "white")
+.style("stroke-width", "1px")
+.style("opacity", "0");
+
+var linesForMouse = document.getElementsByClassName('lineChart');
+var linesIndividualForMouse = document.getElementsByClassName('lineChartIndividual');
+
+var mousePerLine = mouseG.selectAll('.mouse-per-line')
+.data(dataset)
+.enter()
+.append("g")
+.attr("class", "mouse-per-line");
+
+mousePerLine.append("circle")
+.attr("r", 7)
+.style("stroke", "#A0B1AB")
+.style("fill", "none")
+.style("stroke-width", "1px")
+.style("opacity", "0");
+
+mousePerLine.append("text")
+.attr("transform", "translate(10,3)");
+
+mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
+.attr('width', w) // can't catch mouse events on a g element
+.attr('height', h)
+.attr('fill', 'none')
+.attr('pointer-events', 'all')
+.on('mouseout', function() { // on mouse out hide line, circles and text
+  d3.select(".mouse-line")
+  .style("opacity", "0");
+  d3.selectAll(".mouse-per-line circle")
+  .style("opacity", "0");
+  d3.selectAll(".mouse-per-line text")
+  .style("opacity", "0");
+})
+.on('mouseover', function() { // on mouse in show line, circles and text
+  d3.select(".mouse-line")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line circle")
+  .style("opacity", "1");
+  d3.selectAll(".mouse-per-line text")
+  .style("opacity", "1");
+})
+.on('mousemove', function() { // mouse moving over canvas
+  var mouse = d3.mouse(this);
+  d3.select(".mouse-line")
+  .attr("d", function() {
+    var d = "M" + mouse[0] + "," + height;
+    d += " " + mouse[0] + "," + 0;
+    return d;
+  });
+
+  d3.selectAll(".mouse-per-line")
+  .attr("transform", function(d, i) {
+    //console.log(w/mouse[0])
+    //var xDate = xScale.invert(mouse[0]),
+    //bisect = d3.bisector(function(d) { return d.date; }).right;
+    //		idx = bisect(d.values, xDate);
+
+    var beginning = 0,
+    end = length,
+    target = null
+    //console.log(end);
+
+    while (true) {
+      target = Math.floor((beginning + end) / 2);
+      //pos = linesForMouse[i].getPointAtLength(target);
+      pos = svg.select('.lineChart').node().getPointAtLength(target);
+      //console.log(pos);
+      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
+        break;
+      }
+      if (pos.x > mouse[0]) end = target;
+      else if (pos.x < mouse[0]) beginning = target;
+      else break; //position found
+    }
+
+    d3.select(this).select('text')
+    .text(yScale.invert(pos.y).toFixed(2))
+    .attr("fill", "#fff");
+
+    return "translate(" + mouse[0] + "," + pos.y + ")";
+  });
+});
+
+//	LINES INDIVIDUAL
+function drawIndividualLines (){
+
+  /*define line*/
+  var linesIndividual = d3.svg.line()
+  .x(function(d) {
+    return xScale(d[0])
+  })
+  .y(function(d) {
+    return yScale(d[1])
+  })
+  .interpolate('monotone');
+
+  /*append line*/
+  var pathIndividual = svg.append('path')
+  .attr({
+    //'d': linesIndividual(datasetIndividual),
+    'd': linesIndividual(datasetIndividual),
+    'fill': 'none',
+    'class': 'lineChartIndividual'
+  });
+
+  /*get length*/
+  var lengthIndividual = svg.select('.lineChartIndividual').node().getTotalLength();
+
+  /*animate line chart*/
+  svg.select('.lineChartIndividual')
+  .attr("stroke-dasharray", lengthIndividual + " " + lengthIndividual)
+  .attr("stroke-dashoffset", lengthIndividual)
+  .transition()
+  .ease('linear')
+  .delay(function(d) {
+    return datasetIndividual.length * 100;
+  })
+  .duration(3000)
+  .attr("stroke-dashoffset", 0);
+
+  /*add points*/
+  var pointsIndividual = svg.selectAll('circleIndividual')
+  .data(datasetIndividual)
+  .enter()
+  .append('circle');
+
+  /*point attributes*/
+  pointsIndividual.attr('cy', function(d) {
+    return yScale(d[1])
+  })
+  .style('opacity', 0)
+  .transition()
+  .duration(1000)
+  .ease('elastic')
+  .delay(function(d, i) {
+    return i * 100;
+  })
+  .attr({
+    'cx': function(d) {
+      return xScale(d[0]);
+    },
+    'cy': function(d) {
+      return yScale(d[1]);
+    },
+    'r': 5,
+    'class': 'datapointIndividual',
+    'id': function(d, i) {
+      return i;
+    }
+  })
+
+  .style('opacity', 1);
+};
+
+function deleteIndividualLines(){
+  svg.selectAll(".datapointIndividual").remove();
+  svg.selectAll(".lineChartIndividual").remove();
+  //meter.selectAll("text").remove();
+  //console.log("ok");
+};
+
+
+$(".individual").click(function() {
+
+  //swapShifts();
+
+  if(swapped == true){
+    drawIndividualLines();
+    drawIndividualLegend();
+  }
+  else{
+    deleteIndividualLines();
+  };
+
+});
+
+};
+//var updater = updateLineChart();
+
+$(".individual").click(function() {
+
+  swapShifts();
+
+});
+
+
+
+
+
+
+
+function deleteLineChart(){
+  d3.select('#chart').remove();
+};
+
+updateLineChart();
+
+
+
+// LEGEND
+
+var legend = d3.select(".legend-1")
+.append('svg')
+.attr('width', 500)
+.attr('height', 45)
+.attr('id', 'legend-1');
+
+legend.append('circle')
+.attr('class', 'datapoint')
+.attr('r', '5')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("ø Wunscherfüllungsgrad")
+.style("fill", "white");
+legend.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("aller Fahrer pro Woche")
+.style("fill", "white");
+
+
+function drawIndividualLegend(){
+legend.append('circle')
+.attr('class', 'datapointIndividual')
+.attr('r', '5')
+.attr("cx", 230)
+.attr("cy", 25);
+
+legend.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 245)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Ihr ø Wunscherfüllungsgrad")
+.style("fill", "white");
+
+legend.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 245)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("pro Woche")
+.style("fill", "white");
+
+legend2 = d3.select("#legend-2")
+.attr('hidden', true);
+
+legend3 = d3.select("#legend-3")
+.attr('hidden', null);
+
+};
+
+
+
+// LEGEND-2
+
+var legend2 = d3.select(".legend-2")
+.append('svg')
+.attr('width', 800)
+.attr('height', 45)
+.attr('id', 'legend-2')
+.attr('hidden', null);
+
+legend2.append('circle')
+.attr('class', 'datapoint deficit')
+.attr('r', '4')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Benötigte Dienste")
+.style("fill", "white");
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("früh (F) | mittel (M) | spät (S) | geteilt (G)")
+.style("fill", "white");
+
+
+legend2.append('circle')
+.attr('class', 'surplus')
+.attr('r', '4')
+.attr("cx", 280)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 295)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Wunschprofilüberschuss")
+.style("fill", "white");
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 295)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("je Dienst")
+.style("fill", "white");
+
+
+legend2.append('circle')
+.attr('class', 'cmatch')
+.attr('r', '4')
+.attr("cx", 470)
+.attr("cy", 25);
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 485)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Übereinstimmung mit")
+.style("fill", "white");
+
+
+legend2.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 485)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofil")
+.style("fill", "white");
+
+
+// LEGEND-3
+
+var legend3 = d3.select(".legend-3")
+.append('svg')
+.attr('width', 800)
+.attr('height', 45)
+.attr('id', 'legend-3')
+.attr('hidden', true);
+
+legend3.append('circle')
+.attr('class', 'datapoint cmoved')
+.attr('r', '4')
+.attr("cx", 10)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Umverteilter")
+.style("fill", "white");
+
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 25)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofilüberschuss")
+.style("fill", "white");
+
+
+legend3.append('circle')
+.attr('class', 'cmatch')
+.attr('r', '4')
+.attr("cx", 200)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 215)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Übereinstimmung mit")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 215)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("Wunschprofil")
+.style("fill", "white");
+
+
+legend3.append('circle')
+.attr('class', 'individualMatch')
+.attr('r', '4')
+.attr("cx", 370)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 385)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Ihre Einplanung")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 385)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("gemäß Wunschprofil")
+.style("fill", "white");
+
+legend3.append('circle')
+.attr('class', 'individualMismatch')
+.attr('r', '4')
+.attr("cx", 530)
+.attr("cy", 25);
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 545)
+.attr("y", 20)
+.attr("dy", "0em")
+.text("Ihre Einplanung")
+.style("fill", "white");
+
+legend3.append("text")
+.attr("class", "calendarWeek")
+.attr("x", 545)
+.attr("y", 20)
+.attr("dy", "1.4em")
+.text("entgg. Wunschprofil")
+.style("fill", "white");
