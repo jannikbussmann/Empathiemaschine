@@ -32,9 +32,9 @@ var percentArray = [];
 //console.log(percentArray);
 //function drawLineDiagram(){
 var dataset = [
-  [1, (Math.round(Math.random() * 50) + 50)],
-  [2, (Math.round(Math.random() * 50) + 50)],
-  /*[3, (Math.round(Math.random() * 50) + 50)],
+  [1, 50],
+  /*[2, (Math.round(Math.random() * 50) + 50)],
+  [3, (Math.round(Math.random() * 50) + 50)],
   [4, (Math.round(Math.random() * 50) + 50)],
   [5, (Math.round(Math.random() * 50) + 50)],
   [6, (Math.round(Math.random() * 50) + 50)],
@@ -152,12 +152,13 @@ var svg = d3.select('.linechart')
 .attr('height', h)
 .attr('id', 'chart');
 
+
 /*x scale*/
 var xScale = d3.scale.linear()
 /*.domain([0, d3.max(dataset, function(d) {
   return d[0];
 })])*/
-.domain([0, 52])
+.domain([1, (dataset.length+1)])
 .range([padding, w - padding]);
 
 /*y scale*/
