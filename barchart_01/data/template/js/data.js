@@ -159,14 +159,15 @@ var xScale = d3.scale.linear()
   return d[0];
 })])
 .domain([1, 52])*/
-.domain([1, (dataset.length+1)])
+.domain([1, (datasetIndividual.length+1)])
 .range([padding, w - padding]);
 
 /*y scale*/
 var yScale = d3.scale.linear()
-.domain([0, d3.max(dataset, function(d) {
+.domain([0, 100])
+/*.domain([0, d3.max(datasetIndividual, function(d) {
   return d[1];
-})])
+})])*/
 .range([h - padding, padding]);
 
 /*x axis*/
