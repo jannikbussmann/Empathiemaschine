@@ -1,5 +1,4 @@
 var swapped = false;
-
 function swapShifts(){
 
   if ( swapped == false ) {
@@ -162,7 +161,7 @@ var xScale = d3.scale.linear()
 /*.domain([0, d3.max(dataset, function(d) {
   return d[0];
 })])*/
-.domain([1, 30])
+.domain([1, 52])
 //.domain([1, (datasetIndividual.length)])
 .range([padding, w - padding]);
 
@@ -203,7 +202,8 @@ var yAxis = d3.svg.axis()
 svg.append('g')
 .attr({
   'class': 'yaxis',
-  'transform': 'translate(' + padding + ',0)'
+  //'transform': 'translate(' + padding + ',0)' //muss um 5px nach links versetzt werden
+  'transform': 'translate(' + (padding-5) + ',0)'
 })
 .call(yAxis);
 
@@ -1388,7 +1388,7 @@ var progressTwo = startPercent;
   .attr("x", 120)
   .attr("y", 10)
   .attr("dy", ".35em")
-  .text("KW" + counterGesamt )
+  .text("KW " + counterGesamt )
   .style("fill", "white");
 
   //Wochentage
@@ -2163,7 +2163,7 @@ text.insert("text")
 .attr("x", 120)
 .attr("y", 10)
 .attr("dy", ".35em")
-.text("KW" + counter )
+.text("KW " + counter )
 .style("fill", "white");
 
 
@@ -2953,7 +2953,7 @@ text.insert("text")
 .attr("x", 120)
 .attr("y", 10)
 .attr("dy", ".35em")
-.text("KW" + counter )
+.text("KW " + 1 )
 .style("fill", "white");
 
 //Wochentage

@@ -80,6 +80,7 @@ h2 {
   font-size:21px;
   margin-top: 15px;
   margin-bottom: 15px;
+  padding-left: 0px !important;
 }
 
 h2.legend-short {
@@ -87,7 +88,6 @@ h2.legend-short {
     font-size: 21px;
     margin-top: 15px;
     margin-bottom: 15px;
-    padding-left: 0px !important;
 }
 
 button {

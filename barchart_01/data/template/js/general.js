@@ -150,97 +150,97 @@ $(document).ready(function() {
   function getVariable1() {
     getVariable(varKey1, function (res) {
       if(res === var1onState)
-        $("#var-val-1").val(var1onLabel);
+      $("#var-val-1").val(var1onLabel);
       else if(res === var1offState)
-        $("#var-val-1").val(var1offLabel);
+      $("#var-val-1").val(var1offLabel);
       else
-        $("#var-val-1").val(res);
+      $("#var-val-1").val(res);
 
-        curIR = res;
-        console.log(curIR);
+      curIR = res;
+      console.log(curIR);
 
     });
   }
   function getVariable2() {
     getVariable(varKey2, function (res) {
       if(res === var2onState)
-        $("#var-val-2").val(var2onLabel);
+      $("#var-val-2").val(var2onLabel);
       else if(res === var2offState)
-        $("#var-val-2").val(var2offLabel);
+      $("#var-val-2").val(var2offLabel);
       else
-        $("#var-val-2").val(res);
+      $("#var-val-2").val(res);
 
-        curRFID = res;
-        console.log(curRFID);
+      curRFID = res;
+      console.log(curRFID);
 
     });
   }
 
-});
 
 
 
-/* Drop Shadow on scrolled Content */
+
+  /* Drop Shadow on scrolled Content */
 
 
-$(".allCharts").scroll(function() {
+  $(".allCharts").scroll(function() {
     if($(this).scrollTop()  > 0) {
-        $('#section2').addClass('drop-shadow-down');
+      $('#section2').addClass('drop-shadow-down');
     } else {
-        $('#section2').removeClass('drop-shadow-down');
+      $('#section2').removeClass('drop-shadow-down');
     }
-});
+  });
 
 
-/* DEMO-MODE */
+  /* DEMO-MODE */
 
-function statusWifi() {
+  function statusWifi() {
     if(navigator.onLine) {
-        $('.statusWifi').html('Aktiv');
+      $('.statusWifi').html('Aktiv');
     }
     else {
-        $('.statusWifi').html("Inaktiv");
+      $('.statusWifi').html("Inaktiv");
     }
 
 
     window.addEventListener("online", function(e) {
-        $('.statusWifi').html('aktiv');
+      $('.statusWifi').html('aktiv');
     });
     window.addEventListener("offline", function(e) {
-        $('.statusWifi').html("inaktiv");
+      $('.statusWifi').html("inaktiv");
     });
 
 
-}
+  }
 
-statusWifi();
+  statusWifi();
 
-/*
-function triggerIndividual() {
+  /*
+  function triggerIndividual() {
   drawIndividualLines();
   drawIndividualLegend();
   swapShifts();
 }
 
 function revertIndividual() {
-  deleteIndividualLines();
-  drawGeneralLegend();
-  swapShifts();
+deleteIndividualLines();
+drawGeneralLegend();
+swapShifts();
 }*/
 
-var checkbox = $('#individual')
+  var checkbox = $('#individual')
 
-$('#individual').click(function () {
+  $('#individual').click(function () {
     if ($(this).is(':checked')) {
-        checkbox.attr("checked", true);
-        //that.pageselected = true;
+      checkbox.attr("checked", true);
+      //that.pageselected = true;
     } else {
-        checkbox.attr("checked", false);
-        //that.pageselected = false;
+      checkbox.attr("checked", false);
+      //that.pageselected = false;
     }
 
     if ($('#individual').is(':checked')) {
-      drawIndividualLines();
+      //drawIndividualLines();
       drawIndividualLegend();
       swapShifts();
     } else {
@@ -248,56 +248,7 @@ $('#individual').click(function () {
       drawGeneralLegend();
       swapShifts();
     }
+
+  });
+
 });
-
-
-
-
-
-
-
-/* Swap classes
-var swapped = false;
-
-$( ".swap" ).click(function() {
-if ( swapped == false ) {
-$('.csurplus').addClass('cmoved');
-$('.cdeficit').addClass('csurplus');
-swapped = true;
-} else {
-$('.csurplus.cmoved').removeClass('cmoved');
-$('.cdeficit.csurplus').removeClass('csurplus');
-swapped = false;
-}
-
-//alert('Geklickt');
-});
-*/
-
-
-/* individual classes  */
-
-
-/* Swap classes */
-/*var swapped = false;
-
-function swapShifts(){
-
-if ( swapped == false ) {
-$('.csurplus').addClass('cmoved');
-$('.cdeficit').addClass('csurplus');
-$('.passend').addClass('fillPassend');
-$('.unpassend').addClass('fillUnpassend');
-swapped = true;
-} else {
-$('.csurplus.cmoved').removeClass('cmoved');
-$('.cdeficit.csurplus').removeClass('csurplus');
-$('.passend.fillPassend').removeClass('fillPassend');
-$('.unpassend.fillUnpassend').removeClass('fillUnpassend');
-swapped = false;
-}
-};
-
-$( ".swap" ).click(function() {
-swapShifts();
-});*/
