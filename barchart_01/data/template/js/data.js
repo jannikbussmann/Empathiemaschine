@@ -161,9 +161,9 @@ var svg = d3.select('.linechart')
 var xScale = d3.scale.linear()
 /*.domain([0, d3.max(dataset, function(d) {
   return d[0];
-})])
-.domain([1, 52])*/
-.domain([1, (datasetIndividual.length)])
+})])*/
+.domain([1, 30])
+//.domain([1, (datasetIndividual.length)])
 .range([padding, w - padding]);
 
 /*y scale*/
@@ -246,7 +246,7 @@ svg.select('.lineChart')
 .delay(function(d) {
   return dataset.length * 100;
 })
-.duration(3000)
+.duration(dataset.length * 100)
 .attr("stroke-dashoffset", 0);
 
 /*add points*/
@@ -283,7 +283,7 @@ points.attr('cy', function(d) {
 
 .style('opacity', 1);
 
-
+/*
 var mouseG = svg.append("g")
 .attr("class", "mouse-over-effects");
 
@@ -399,44 +399,10 @@ mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
     .attr("fill", "#fff");
 
     return "translate(" + mouse[0] + "," + pos.y + ")";
-    //console.log(pos.y);
+
   });
 
-  d3.selectAll(".mouse-per-line-individual")
-  .attr("transform", function(d, i) {
-    //console.log(w/mouse[0])
-    //var xDate = xScale.invert(mouse[0]),
-    //bisect = d3.bisector(function(d) { return d.date; }).right;
-    //		idx = bisect(d.values, xDate);
-    //console.log("test");
-    var beginning = 0,
-    end = length,
-    target = null
-    //console.log(end);
-
-    while (true) {
-      target = Math.floor((beginning + end) / 2);
-      //pos = linesForMouse[i].getPointAtLength(target);
-      pos = svg.select('.lineChart').node().getPointAtLength(target);
-      //console.log(pos);
-      if ((target === end || target === beginning) && pos.x !== mouse[0]) {
-        break;
-      }
-      if (pos.x > mouse[0]) end = target;
-      else if (pos.x < mouse[0]) beginning = target;
-      else break; //position found
-    }
-
-    d3.select(this).select('text')
-    .text(yScale.invert(pos.y).toFixed(2))
-    .attr("fill", "#fff");
-
-    return "translate(" + mouse[0] + "," + pos.y + ")";
-  });
-
-
-
-});
+});*/
 
 //	LINES INDIVIDUAL
 function drawIndividualLines (){
@@ -472,7 +438,7 @@ function drawIndividualLines (){
   .delay(function(d) {
     return datasetIndividual.length * 100;
   })
-  .duration(3000)
+  .duration(datasetIndividual.length * 100)
   .attr("stroke-dashoffset", 0);
 
   /*add points*/
@@ -895,8 +861,6 @@ var paddingGeteilt = paddingSchichtart + paddingSchichtart + paddingSchichtart;
 $( ".addWeek" ).click(function() {
   //window.location.reload();
   //deleteLineChart();
-
-
   //deleteIndividualLines();
 
   counter += 1;
