@@ -144,6 +144,8 @@ var datasetIndividual = [
   [52, (Math.round(Math.random() * 50) + 50)]*/
 ];
 
+//updateLineChart();
+
 function updateLineChart(){
 
 //d3.select('.linechart').remove();
@@ -195,8 +197,11 @@ svg.append('g')
 var yAxis = d3.svg.axis()
 .scale(yScale)
 .orient('left')
-.tickSize(0, 0)
-.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
+
+.tickValues([0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100])
+.innerTickSize(-width)
+.outerTickSize(0)
+.tickPadding(10);
 
 /*append y axis*/
 svg.append('g')
@@ -493,13 +498,13 @@ $(".individual").click(function() {
   }
   else{
     deleteIndividualLines();
-    drawGeneralLegend();
   };
 
 });
 
 };
 //var updater = updateLineChart();
+//updateLineChart();
 
 $(".individual").click(function() {
 
@@ -517,7 +522,7 @@ function deleteLineChart(){
   d3.select('#chart').remove();
 };
 
-updateLineChart();
+//updateLineChart();
 
 
 
@@ -582,13 +587,7 @@ legend3 = d3.select("#legend-3")
 
 };
 
-function drawGeneralLegend(){
-  legend2 = d3.select("#legend-2")
-  .attr('hidden', null);
 
-  legend3 = d3.select("#legend-3")
-  .attr('hidden', true);
-}
 
 // LEGEND-2
 
@@ -769,7 +768,7 @@ legend3.append("text")
 .text("entgg. Wunschprofil")
 .style("fill", "white");
 
-
+updateLineChart();
 
 /*
 --------------------------------
@@ -1064,7 +1063,7 @@ function drawBackground(){
 
     };
 
-    $( ".individual" ).click(function() {
+    $( "#individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -1975,7 +1974,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 
     };
 
-    $( ".individual" ).click(function() {
+    $( "#individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -2163,7 +2162,7 @@ text.insert("text")
 .attr("x", 120)
 .attr("y", 10)
 .attr("dy", ".35em")
-.text("KW " + counter )
+.text("KW " + counterGesamt )
 .style("fill", "white");
 
 
@@ -2761,7 +2760,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 
       };
 
-      $( ".individual" ).click(function() {
+      $( "#individual" ).click(function() {
         if(swapped ==true){
         drawIndividualValue();
       }else {

@@ -305,6 +305,7 @@ circle.individualMismatch {
 .yaxis path,
 .yaxis line {
     stroke: #aaa;
+		opacity: 0.1;
     fill: none;
     shape-rendering: crispEdges;
 }
