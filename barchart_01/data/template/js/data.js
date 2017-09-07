@@ -1,4 +1,6 @@
 var swapped = false;
+var indiMode = false;
+
 function swapShifts(){
 
   if ( swapped == false ) {
@@ -488,6 +490,7 @@ function deleteIndividualLines(){
 };
 
 
+
 $(".individual").click(function() {
 
   //swapShifts();
@@ -501,6 +504,36 @@ $(".individual").click(function() {
   };
 
 });
+
+setInterval(function(){
+  console.log("curRFID=" + curRFID)
+  if(curRFID != "" && indiMode === 0) {
+    // Setzte Status Individuell auf 1
+    indiMode = 1;
+  }
+
+  else if(curRFID != "" && indiMode === 1) {
+    // Mach nix
+  }
+
+  else {
+    // Setzte Status Individuell auf 0
+    indiMode = 0;
+  }
+}, 3000);
+
+if (indiMode = 1) {
+  alert("Individuelle Ansicht");
+  //drawIndividualLines();
+  //drawIndividualLegend();
+  //swapShifts();
+}
+if (indiMode = 0) {
+  alert("Algemeine Ansicht Ansicht");
+  //drawIndividualLines();
+  //drawIndividualLegend();
+  //swapShifts();
+}
 
 };
 //var updater = updateLineChart();

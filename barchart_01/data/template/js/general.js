@@ -1,4 +1,4 @@
-$(document).ready(function() {
+//$(document).ready(function() {
   var statusTimer = null;
   var timer1, timer2, timer3, timer4;
   var baseURL = "https://api.spark.io/v1/devices/";
@@ -28,7 +28,7 @@ $(document).ready(function() {
 
   //Current Variables
   var curIR;
-  var curRFID;
+  var curRFID ="";
   //
   //--------------------------------------------------------------
 
@@ -161,6 +161,7 @@ $(document).ready(function() {
 
     });
   }
+
   function getVariable2() {
     getVariable(varKey2, function (res) {
       if(res === var2onState)
@@ -171,7 +172,7 @@ $(document).ready(function() {
       $("#var-val-2").val(res);
 
       curRFID = res;
-      console.log(curRFID);
+
 
     });
   }
@@ -251,4 +252,12 @@ swapShifts();
 
   });
 
-});
+setInterval(function(){
+  console.log("curRFID=" + curRFID)
+  if(curRFID != "") {
+    console.log("Karte ist drin");
+  }
+}, 3000);
+
+
+//});
