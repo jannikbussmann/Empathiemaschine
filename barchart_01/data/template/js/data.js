@@ -493,6 +493,7 @@ $(".individual").click(function() {
   }
   else{
     deleteIndividualLines();
+    drawGeneralLegend();
   };
 
 });
@@ -581,7 +582,13 @@ legend3 = d3.select("#legend-3")
 
 };
 
+function drawGeneralLegend(){
+  legend2 = d3.select("#legend-2")
+  .attr('hidden', null);
 
+  legend3 = d3.select("#legend-3")
+  .attr('hidden', true);
+}
 
 // LEGEND-2
 
@@ -1057,7 +1064,7 @@ function drawBackground(){
 
     };
 
-    $( "#individual" ).click(function() {
+    $( ".individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -1968,7 +1975,7 @@ d3.csv("data/template/csv/week2.csv", function(error, data){
 
     };
 
-    $( "#individual" ).click(function() {
+    $( ".individual" ).click(function() {
       if(swapped ==true){
       drawIndividualValue();
     }else {
@@ -2754,7 +2761,7 @@ d3.csv("data/template/csv/week1.csv", function(error, data){
 
       };
 
-      $( "#individual" ).click(function() {
+      $( ".individual" ).click(function() {
         if(swapped ==true){
         drawIndividualValue();
       }else {
